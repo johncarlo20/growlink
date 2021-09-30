@@ -1,0 +1,32 @@
+<mat-card class="auto-width" [ngClass.gt-sm]="custom ? '' : 'mr-32'" [class.custom-dashboard]="custom" style="height: 100%">
+
+  <div fxLayout="row" fxLayoutAlign="center flex-start" [class.status-loading]="updating | async"
+    [class.outdated]="device.outdated" style="height: 100%">
+
+    <div class="wrapper text-center">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-8">
+        <div class="h3 secondary-text">{{customName || device.name}}</div>
+        <div class="secondary-text ">{{(device.currentState | async) || 'Offline'}}</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <img style="opacity: 0.8;" [src]="device.image" width="30px">
+        <div *ngIf="device.state">
+          <span *ngIf="bacNet" class="h2" [innerHTML]="bacNetValue"></span>
+          <span *ngIf="throttleVisible" class="h2 mr-8">{{device.throttle}}%</span>
+          <img width="30px" *ngIf="!noControl" [ngClass]="{addPointer: !isReadOnly && state !== 'Manual-Off'}"
+            [src]="device.stateImages[0]" (click)="updateDeviceState(device, 'false')">
+          <img width="30px" [ngClass]="{addPointer: !isReadOnly && state.indexOf('Auto') === -1}"
+            [src]="device.stateImages[1]" (click)="updateDeviceState(device, 'auto')">
+          <img width="30px" *ngIf="!noControl" [ngClass]="{addPointer: !isReadOnly && state !== 'Manual-On'}"
+            [src]="device.stateImages[2]" (click)="updateDeviceState(device, 'true')">
+        </div>
+      </div>
+      <div *ngIf="throttleAllowed" fxLayout="row" fxLayoutAlign="stretch center" class="mt-16">
+        <mat-slider fxFlex="grow" min="0" max="100" step="5" thumbLabel [value]="device.throttle" [disabled]="throttleDisabled"
+          (change)="updateThrottle($event.value)"></mat-slider>
+        <mat-label>{{device.throttle}}%</mat-label>
+      </div>
+    </div>
+  </div>
+
+</mat-card>

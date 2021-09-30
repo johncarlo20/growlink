@@ -1,0 +1,51 @@
+@import 'src/@fuse/scss/fuse';
+
+fuse-navigation {
+    display: flex;
+    flex: 1 0 auto;
+
+    > .nav {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .left-navbar {
+        background-color: #000 !important;
+        font-weight: 500;
+    }
+
+    .nav-link-icon {
+       // opacity: 0;
+    }
+
+    .nav .nav-item .nav-link {
+        height: 40px;
+        font-weight: 500;
+        padding-left: 32px;
+    }
+
+    .open {
+        border-bottom: 2px solid #374151;
+        padding-bottom: 30px;
+        margin-bottom: 16px;
+    }
+
+    .nav-profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 30px;
+
+        img {
+            margin-bottom: 8px;
+        }
+
+        .nav-email {
+            font-weight: 500;
+            color: #fff;
+        }
+    }
+}

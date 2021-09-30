@@ -1,0 +1,87 @@
+<mat-accordion>
+  <mat-expansion-panel *ngIf="ruleGroup.SensorTriggers" (opened)="panelStates.triggers = true"
+    (closed)="panelStates.triggers = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.triggers">
+      <mat-panel-title>Sensor Triggers</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.SensorTriggers.length}} trigger(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-sensor-trigger-rules [controller]="controller" [ruleGroup]="ruleGroup" [deviceOptions]="deviceOptions"
+      [sharedDevices]="sharedDevices" [sensorOptions]="sensorOptions" [deviceAllowsThrottles]="deviceAllowsThrottles"
+      [dosingRecipes]="dosingRecipes" [SensorTriggers]="ruleGroup.SensorTriggers" (ruleChanged)="ruleWasChanged()"
+      (ruleGroupChanged)="ruleGroupWasChanged()" (pushUpdate)="pushUpdateCalled()"
+      (controllerUpdate)="controllerUpdateCalled($event)" *ngIf="panelStates.triggers">
+    </fuse-sensor-trigger-rules>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="ruleGroup.Timers" (opened)="panelStates.timers = true"
+    (closed)="panelStates.timers = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.timers">
+      <mat-panel-title>Timers</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.Timers.length}} timer(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-timer-rules [controller]="controller" [ruleGroup]="ruleGroup" [deviceOptions]="deviceOptions"
+      [sharedDevices]="sharedDevices" [deviceAllowsThrottles]="deviceAllowsThrottles" [dosingRecipes]="dosingRecipes"
+      [Timers]="ruleGroup.Timers" (ruleChanged)="ruleWasChanged()" (ruleGroupChanged)="ruleGroupWasChanged()"
+      (pushUpdate)="pushUpdateCalled()" (controllerUpdate)="controllerUpdateCalled($event)" *ngIf="panelStates.timers">
+    </fuse-timer-rules>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="controller.SupportsCropSteering && ruleGroup.CropSteeringPrograms" (opened)="panelStates.programs = true"
+    (closed)="panelStates.programs = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.programs">
+      <mat-panel-title>Crop Steering (Beta)</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.CropSteeringPrograms.length}} program(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-crop-steering-programs [controller]="controller" [ruleGroup]="ruleGroup" [sensorOptions]="sensorOptions"
+      [deviceOptions]="deviceOptions" [sharedDevices]="sharedDevices" [Programs]="ruleGroup.CropSteeringPrograms"
+      (ruleChanged)="ruleWasChanged()" (ruleGroupChanged)="ruleGroupWasChanged()"
+      (pushUpdate)="pushUpdateCalled()" (controllerUpdate)="controllerUpdateCalled($event)" *ngIf="panelStates.programs">
+    </fuse-crop-steering-programs>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="ruleGroup.Schedules" (opened)="panelStates.schedules = true"
+    (closed)="panelStates.schedules = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.schedules">
+      <mat-panel-title>Schedules</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.Schedules.length}} schedule(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-schedule-rules [controller]="controller" [ruleGroup]="ruleGroup" [deviceOptions]="deviceOptions"
+      [sharedDevices]="sharedDevices" [deviceAllowsThrottles]="deviceAllowsThrottles" [dosingRecipes]="dosingRecipes"
+      [Schedules]="ruleGroup.Schedules" (ruleChanged)="ruleWasChanged()" (ruleGroupChanged)="ruleGroupWasChanged()"
+      (pushUpdate)="pushUpdateCalled()" (controllerUpdate)="controllerUpdateCalled($event)"
+      *ngIf="panelStates.schedules">
+    </fuse-schedule-rules>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="ruleGroup.ManualTasks" (opened)="panelStates.tasks = true"
+    (closed)="panelStates.tasks = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.tasks">
+      <mat-panel-title>Manual Tasks</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.ManualTasks.length}} task(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-task-rules [controller]="controller" [ruleGroup]="ruleGroup" [deviceOptions]="deviceOptions"
+      [sharedDevices]="sharedDevices" [deviceAllowsThrottles]="deviceAllowsThrottles" [dosingRecipes]="dosingRecipes"
+      [Tasks]="ruleGroup.ManualTasks" (ruleChanged)="ruleWasChanged()" (ruleGroupChanged)="ruleGroupWasChanged()"
+      (pushUpdate)="pushUpdateCalled()" (controllerUpdate)="controllerUpdateCalled($event)" *ngIf="panelStates.tasks">
+    </fuse-task-rules>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="ruleGroup.Alerts" (opened)="panelStates.alerts = true"
+    (closed)="panelStates.alerts = false">
+    <mat-expansion-panel-header [class.accent-100-bg]="panelStates.alerts">
+      <mat-panel-title>Alerts</mat-panel-title>
+      <mat-panel-description fxLayoutAlign="end center">
+        {{ruleGroup.Alerts.length}} alert(s)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <fuse-alert-rules [controller]="controller" [ruleGroup]="ruleGroup" [sensorOptions]="sensorOptions"
+      [Alerts]="ruleGroup.Alerts" (ruleChanged)="ruleWasChanged()" (ruleGroupChanged)="ruleGroupWasChanged()"
+      (pushUpdate)="pushUpdateCalled()" (controllerUpdate)="controllerUpdateCalled($event)" *ngIf="panelStates.alerts">
+    </fuse-alert-rules>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,99 @@
+<ngx-charts-chart [view]="[width, height]" [showLegend]="false" [activeEntries]="activeEntries"
+  [animations]="animations">
+  <svg:defs>
+    <svg:clipPath [attr.id]="clipPathId">
+      <svg:rect [attr.width]="dims.width + 10" [attr.height]="dims.height + 10"
+        [attr.transform]="'translate(-5, -5)'" />
+    </svg:clipPath>
+  </svg:defs>
+  <svg:g [attr.transform]="transform" class="line-chart chart">
+    <svg:g *ngIf="anyData" ngx-charts-x-axis [xScale]="xScale" [dims]="dims" [showGridLines]="true"
+      [showLabel]="false" [tickFormatting]="xFormat"
+      (dimensionsChanged)="updateXAxisHeight($event)">
+    </svg:g>
+    <svg:g *ngFor="let yAxis of yAxes; index as i">
+      <svg:g ngx-charts-y-axis [yScale]="yAxis.scale" [dims]="dims" [showGridLines]="i < 1"
+        [showLabel]="true" [labelText]="yAxis.axisLabel" [yAxisOffset]="getYOffset(i)"
+        (dimensionsChanged)="updateYAxisWidth(i, $event)">
+      </svg:g>
+    </svg:g>
+    <svg:g *ngIf="deviceData" ngx-charts-y-axis [yScale]="yScale2" [dims]="dims" [yOrient]="rightOrientation"
+      [showLabel]="true" [labelText]="'Device Throttle [%]'"
+      [showGridLines]="true" (dimensionsChanged)="updateYAxis2Width($event)">
+    </svg:g>
+    <svg:g [attr.clip-path]="clipPath">
+      <svg:g ngx-charts-area-series *ngIf="anyData && isHourly" [xScale]="xScale" [yScale]="yScale2"
+        [colors]="colorsShading" [data]="shadingSeries" [scaleType]="scaleType" [curve]="curve2" />
+
+      <svg:g *ngFor="let yAxis of yAxes; index as i">
+        <svg:g *ngFor="let seriesIdx of yAxis.seriesIndexes" [@animationState]="'active'">
+          <svg:g ngx-charts-line-series [xScale]="xScale" [yScale]="yAxis.scale" [colors]="colors" [data]="results[seriesIdx]"
+            [activeEntries]="activeEntries" [scaleType]="scaleType" [curve]="curve"
+            [hasRange]="false" [animations]="animations" />
+        </svg:g>
+      </svg:g>
+      <svg:g *ngFor="let series of deviceSeries" [@animationState]="'active'">
+        <svg:g ngx-charts-line-series [xScale]="xScale" [yScale]="yScale2" [colors]="colors2" [data]="series"
+          [activeEntries]="activeEntries" [scaleType]="scaleType" [curve]="curve2"
+          [hasRange]="false" [animations]="animations" />
+      </svg:g>
+
+      <svg:g (mouseleave)="hideCircles()">
+        <svg:g *ngIf="seriesData || deviceSeries" ngx-charts-tooltip-area [dims]="dims" [xSet]="xSet"
+        [xScale]="xScale" [yScale]="yScale" [results]="allSeries" [colors]="colors" [tooltipDisabled]="false"
+          [tooltipTemplate]="seriesTooltipTemplate" (hover)="updateHoveredVertical($event)" />
+
+        <svg:g *ngFor="let yAxis of yAxes; index as i">
+          <svg:g *ngFor="let seriesIdx of yAxis.seriesIndexes" [@animationState]="'active'">
+            <svg:g ngx-charts-circle-series [xScale]="xScale" [yScale]="yAxis.scale" [colors]="colors"
+              [data]="results[seriesIdx]" [scaleType]="scaleType" [visibleValue]="true"
+              [activeEntries]="activeEntries" [tooltipDisabled]="false" [tooltipTemplate]="tooltipTemplate"
+              (select)="onClick($event, results[seriesIdx])" (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)" />
+          </svg:g>
+        </svg:g>
+        <svg:g *ngFor="let series of deviceSeries">
+          <svg:g ngx-charts-circle-series [xScale]="xScale" [yScale]="yScale2" [colors]="colors2" [data]="series"
+            [scaleType]="scaleType" [visibleValue]="true" [activeEntries]="activeEntries"
+            [tooltipDisabled]="false" [tooltipTemplate]="tooltipTemplate2" (select)="onClick($event, series)"
+            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" />
+        </svg:g>
+      </svg:g>
+    </svg:g>
+  </svg:g>
+  <svg:g *ngIf="deviceData" [attr.transform]="transform" class="bubble-chart chart">
+    <svg:g [attr.clip-path]="clipPath">
+      <svg:g *ngFor="let series of modeSeries" [@animationState]="'active'">
+        <svg:g ngx-charts-bubble-series [xScale]="xScale" [yScale]="yScale2" [colors]="colors2" [data]="series"
+          [activeEntries]="activeEntries" [rScale]="rScale" [tooltipTemplate]="tooltipTemplate3" />
+      </svg:g>
+    </svg:g>
+  </svg:g>
+  <svg:g *ngIf="anyData" ngx-charts-timeline [attr.transform]="timelineTransform"
+    [results]="deviceSeries.length ? deviceSeries : results"
+    [view]="[timelineWidth, height]" [height]="timelineHeight" [scheme]="scheme" [customColors]="customColors"
+    [scaleType]="timelineScaleType" [legend]="false" (onDomainChange)="updateDomain($event)">
+    <svg:g *ngFor="let yAxis of yAxes; index as i">
+      <svg:g *ngFor="let seriesIdx of yAxis.seriesIndexes">
+        <svg:g ngx-charts-line-series [xScale]="timelineXScale" [yScale]="yAxis.timelineScale" [colors]="colors"
+          [data]="results[seriesIdx]" [scaleType]="scaleType" [curve]="curve" [hasRange]="false" [animations]="animations" />
+      </svg:g>
+    </svg:g>
+    <svg:g *ngFor="let series of deviceSeries">
+      <svg:g ngx-charts-line-series [xScale]="timelineXScale" [yScale]="timelineYScale2" [colors]="colors2"
+        [data]="series" [scaleType]="scaleType" [curve]="curve2" [hasRange]="false" [animations]="animations" />
+    </svg:g>
+  </svg:g>
+  <ng-template #tooltipTemplate let-model="model">
+    <span class="tooltip-label">{{model.series}} • {{toTimestamp(model.name)}} - {{toTimePlusOne(model.name)}}</span>
+    <span class="tooltip-val">{{model.value.toLocaleString()}}</span>
+  </ng-template>
+  <ng-template #tooltipTemplate2 let-model="model">
+    <span class="tooltip-label">{{model.series}} • {{toTimestamp2(model.name)}}</span>
+    <span class="tooltip-val">{{model.value.toLocaleString()}} ({{model.auto ? 'Auto' : 'Manual'}})</span>
+  </ng-template>
+  <ng-template #tooltipTemplate3 let-model="model">
+    <span class="tooltip-label">{{model.series}} • {{toTimestamp2(model.name)}}</span>
+    <span class="tooltip-val">{{model.radius === 50 ? 'Auto' : 'Manual'}}</span>
+  </ng-template>
+</ngx-charts-chart>

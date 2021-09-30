@@ -1,0 +1,22 @@
+div {
+  display: flex;
+  height: 98%;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  &.underline {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  &.bold {
+    font-weight: 600;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+}

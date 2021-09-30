@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Full Billing History</h2>
+<mat-dialog-content>
+  <fuse-payment-history [pagination]="true" [history]="history">
+  </fuse-payment-history>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button mat-dialog-close color="primary">Close</button>
+</div>

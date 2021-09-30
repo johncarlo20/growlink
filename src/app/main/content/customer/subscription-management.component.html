@@ -1,0 +1,116 @@
+<div id="subscription" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="column" class="content mat-white-bg">
+    <div class="grid-container">
+      <div class="overview">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Billing Overview</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center stretch">
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Your Plan</mat-label>
+                <input matInput placeholder="Your Plan" value="Growlink Pro Standard" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Status</mat-label>
+                <input matInput placeholder="Status" [value]="Status" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Billing Plan</mat-label>
+                <input matInput placeholder="Billing Plan" [value]="BillingCycle" readonly>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <!-- <div class="bottom-action">
+            <a href="#">Terms of Service</a>
+          </div> -->
+        </mat-card>
+      </div>
+      <div class="usage">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>General Usage</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center stretch">
+              <mat-form-field *ngFor="let price of Prices" appearance="outline" class="hidden-hint">
+                <mat-label>{{price}}</mat-label>
+                <input matInput [placeholder]="price" [value]="PriceDetails[price]" readonly>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="services">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Services</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center stretch">
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>{{BillingCycleSingle}} Charges</mat-label>
+                <input matInput  [value]="NextBillingAmount" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Next Billing Date</mat-label>
+                <input matInput placeholder="Next Billing Date" [value]="NextBillingDate" readonly>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="payment">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Payment Method</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column" fxLayoutAlign="center stretch" *ngIf="PaymentMethod">
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Payment Type</mat-label>
+                <input matInput [value]="PaymentMethod" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Card Type</mat-label>
+                <input matInput [value]="CardType" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Card Number</mat-label>
+                <input matInput [value]="Last4Digits" readonly>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="hidden-hint">
+                <mat-label>Expiration Date</mat-label>
+                <input matInput [value]="Expiry" readonly>
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center stretch" *ngIf="!PaymentMethod">
+              <h3 style="text-align: center;">No Payment Method has been set up</h3>
+              <button mat-raised-button (click)="editPaymentMethod()" color="primary">Set up now</button>
+            </div>
+          </mat-card-content>
+          <div class="bottom-action">
+            <a class="nav-link pointer" *ngIf="PaymentMethod" (click)="editPaymentMethod()">
+              Edit
+            </a>
+          </div>
+        </mat-card>
+      </div>
+      <div class="history">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Billing History</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <fuse-payment-history [history]="history">
+            </fuse-payment-history>
+          </mat-card-content>
+          <div class="bottom-action">
+            <a class="nav-link pointer" (click)="fullPaymentHistory()">View Full Billing History</a>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

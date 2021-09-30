@@ -1,0 +1,15 @@
+<mat-dialog-content>
+  <p>
+    Your Growlink Pro subscription is now expired. Portal access is disabled until payment is received.<br/>
+    <span *ngIf="IsAccountAdmin">Please go to <a [routerLink]="['subscription']">Manage Subscriptions</a> to put a valid credit card on file</span>
+    <span>
+      Please contact your account administrator, or continue for free by using our
+      mobile app available for both
+      <a href="https://play.google.com/store/apps/details?id=com.hydropods.mobileapp">Android</a> and
+      <a href="https://apps.apple.com/us/app/growlink/id1108096591">iOS</a>
+    </span>
+  </p>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+</div>

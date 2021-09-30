@@ -1,0 +1,111 @@
+<div id="modules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <!-- <div class="header mat-bg p-24" fxLayout="row" fxLayoutAlign="start center">
+    <h2>Calibration Report</h2>
+  </div> -->
+  <div fxLayout="column" class="content mat-white-bg">
+    <form class="p-24" style="padding-bottom: 0px !important" name="searchForm" (ngSubmit)="search()" [formGroup]="searchForm"
+      novalidate>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="33">
+          <input matInput [matDatepicker]="startDatepicker" placeholder="Start Date" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatepicker></mat-datepicker>
+          <mat-error *ngIf="startDate.hasError('required')">
+            Start Date is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="33">
+          <input matInput [matDatepicker]="endDatepicker" placeholder="End Date" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatepicker></mat-datepicker>
+          <mat-error *ngIf="endDate.hasError('required')">
+            End Date is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="33">
+          <mat-select placeholder="Range" formControlName="range">
+            <mat-option *ngFor="let rng of searchRanges" [value]="rng.value">{{rng.caption}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="range.hasError('required')">
+            Range is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Controller" formControlName="controllers">
+            <mat-option *ngFor="let cn of allControllers" [value]="cn.value">{{cn.caption}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="controllers.hasError('required')">
+            Controller is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Sensor" formControlName="sensors">
+            <mat-option *ngFor="let sensor of sensorTypes" [value]="sensor.value">{{sensor.caption}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="sensors.hasError('required')">
+            Sensor is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-24">
+        <button class="m-8" mat-raised-button color="primary" [disabled]="loading || searchForm.invalid">Search</button>
+        <button class="m-8" *ngIf="entriesDataSource.data.length" mat-raised-button color="accent" [disabled]="loading"
+          (click)="exportCalibrationData()">Export calibration data</button>
+        <!-- <button class="m-8" *ngIf="chartData.length" mat-raised-button color="accent" [disabled]="loading" (click)="exportDeviceData()">Export
+          device data</button> -->
+      </div>
+    </form>
+
+    <mat-table *ngIf="!loading && entriesDataSource.data.length" [dataSource]="entriesDataSource">
+      <ng-container matColumnDef="controller">
+        <mat-header-cell *matHeaderCellDef>Controller</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.ControllerName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="module">
+        <mat-header-cell *matHeaderCellDef>Module</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.ModuleName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sensor">
+        <mat-header-cell *matHeaderCellDef>Sensor</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.SensorName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fieldName">
+        <mat-header-cell *matHeaderCellDef>Field</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.FieldName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="oldValue">
+        <mat-header-cell *matHeaderCellDef>Old Value</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.OldValue}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="newValue">
+        <mat-header-cell *matHeaderCellDef>New Value</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.NewValue}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.UserName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ipAddress">
+        <mat-header-cell *matHeaderCellDef>IP Address</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.IpAddress}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="tstamp">
+        <mat-header-cell *matHeaderCellDef>Changed At</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.Timestamp | mdate:'short'}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="updatesColumns"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: updatesColumns;" matRipple class="mat-ripple mat-row-selectable"
+        [class.accent-50-bg]="selectedEntry == row" (click)="selectEntry(row)"></mat-row>>
+    </mat-table>
+    <mat-paginator [hidden]="loading || entriesDataSource.data.length < 1" [pageSizeOptions]="[5, 10]"
+      showFirstLastButtons></mat-paginator>
+
+    <span *ngIf="!loading && entriesDataSource.data.length === 0">No records found</span>
+  </div>
+</div>

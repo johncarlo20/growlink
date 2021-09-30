@@ -1,0 +1,26 @@
+fuse-quick-panel {
+    display: flex;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    z-index: 99;
+    flex-direction: column;
+
+    .mat-slide-toggle-content {
+        flex: 1;
+    }
+
+    mat-button-toggle-group {
+      min-width: 100%;
+    }
+
+    mat-button-toggle {
+      min-width: 50%;
+      text-align: center;
+    }
+
+    h4.mat-subheader {
+      padding-bottom: 0;
+      height: 24px !important;
+    }
+}

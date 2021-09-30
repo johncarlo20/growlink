@@ -1,0 +1,39 @@
+div.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "overview usage"
+    "services payment"
+    "history history";
+  gap: 1rem;
+  padding: 1rem;
+}
+
+div.overview, div.usage, div.services, div.payment, div.history {
+  min-height: 100px;
+
+  > mat-card {
+    height: 100%;
+  }
+}
+div.overview {
+  grid-area: overview;
+}
+div.usage {
+  grid-area: usage;
+}
+div.services {
+  grid-area: services;
+}
+div.payment {
+  grid-area: payment;
+}
+div.history {
+  grid-area: history;
+}
+
+div.bottom-action {
+  position: absolute;
+  bottom: 8px;
+}

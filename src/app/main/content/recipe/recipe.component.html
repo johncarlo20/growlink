@@ -1,0 +1,119 @@
+<div id="modules" ngClass.xs="mobile" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row">
+    <div fxFlex="70" fxLayout="column">
+      <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start">
+        Recipe
+      </div>
+      <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start">Monitor metrics, check reports and review performance</div>    
+    </div>
+    <div fxFlex="30" fxLayoutAlign="end center" class="justify-content-flexend">
+      <div class="card-tabs tabs mt-24">
+        <div class="card-tab active">Board</div>
+        <div routerLink="/recipe-timeline" class="card-tab">Timeline</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-24" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="column">
+        <div class="task">
+          <div class="task-header">
+            <div class="task-search-input">
+              <input type="text" placeholder="Created today">
+            </div>
+
+            <button class="btn-tool">
+              <svg ibmIconCheckmark size="20"></svg>
+              <span>All tasks</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconFilter size="20"></svg>
+              <span>Filter</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconCaretSort size="20"></svg>
+              <span>Sort</span>
+            </button>
+            <button class="btn-tool customize">
+              <svg ibmIconEdit size="20"></svg>
+              <span>Customize</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+            </button>
+          </div>
+          <div class="task-board">
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <div fxFlex="33" fxLayout="column" class="task-board-col">
+                <div class="task-board-title">
+                  <span>Set point</span>
+
+                  <svg ibmIconAdd size="20"></svg>
+                  <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+                </div>
+                <div class="task-board-card">
+                  <div class="task-board-card-title">
+                    <svg ibmIconCheckmarkOutline size="20"></svg>
+                    <span>Veg week 01</span>
+                  </div>
+                  <div class="task-board-card-desc">
+                    None
+                  </div>
+                  <div class="task-board-card-author">
+                    <svg ibmIconUserAvatar size="20"></svg>
+                    <span>Today – 18 Aug</span>
+                  </div>
+                </div>
+                <div class="task-board-card">
+                  <div class="task-board-card-title">
+                    <svg ibmIconCheckmarkOutline size="20"></svg>
+                    <span>Veg week 02</span>
+                  </div>
+                  <div class="task-board-card-desc">
+                    None
+                  </div>
+                  <div class="task-board-card-author">
+                    <svg ibmIconUserAvatar size="20"></svg>
+                    <span>11 – 18 Aug</span>
+                  </div>
+                </div>
+                <div class="task-board-add">
+                  <svg ibmIconAdd size="20"></svg>
+                  <span>Add task</span>
+                </div>
+              </div>
+              <div fxFlex="33" fxLayout="column" class="task-board-col">
+                <div class="task-board-title">
+                  <span>Task</span>
+
+                  <svg ibmIconAdd size="20"></svg>
+                  <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+                </div>
+                <div class="task-board-card">
+                  <div class="task-board-card-title">
+                    <svg ibmIconCheckmarkOutline size="20"></svg>
+                    <span>Move plan into veg</span>
+                  </div>
+                  <div class="task-board-card-author">
+                    <svg ibmIconUserAvatar size="20"></svg>
+                    <span>11 – 18 Aug</span>
+                  </div>
+                </div>
+                <div class="task-board-add">
+                  <svg ibmIconAdd size="20"></svg>
+                  <span>Add task</span>
+                </div>
+              </div>
+              <div fxFlex="33" fxLayout="column" class="task-board-col">
+                <div class="task-board-title new">
+                  <svg ibmIconAdd size="20"></svg>
+                  <span>Add section</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

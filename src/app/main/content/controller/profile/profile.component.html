@@ -1,0 +1,159 @@
+<div id="dashboard" class="page-layout simple fullwidth" fusePerfectScrollbar>
+
+  <!-- <div class="header mat-bg p-24" fxLayout="row" fxLayoutAlign="start center">
+    <h2>{{controller.Name}} &gt; </h2>
+    <mat-icon class="s-24">settings</mat-icon>
+    <h3>Profile</h3>
+  </div> -->
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <form class="p-24" name="profileForm" (ngSubmit)="update()" [formGroup]="profileForm" novalidate>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100">
+          <input matInput placeholder="Name" formControlName="name">
+          <mat-error *ngIf="name.hasError('required')">
+            Controller Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Country" formControlName="country">
+            <mat-option *ngFor="let c of countries" [value]="c.value">{{c.caption}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="country.hasError('required')">
+            Country is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Timezone" formControlName="timezone">
+            <mat-option *ngFor="let t of timeZoneIds" [value]="t.value">{{t.caption}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="timezone.hasError('required')">
+            Timezone is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100">
+          <input matInput placeholder="Owner" [value]="controllerResponse.UserName" readonly disabled>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100">
+          <mat-chip-list #emailList>
+            <mat-chip *ngFor="let email of emails.value" [selectable]="true" [removable]="true"
+              (removed)="removeEmail(email)">
+              {{email}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Status Notification Emails" [matChipInputFor]="emailList" [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addEmail($event)" [formControl]="email">
+            <mat-error *ngIf="email.value && email.hasError('email')">
+              Email Address is invalid
+            </mat-error>
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="50">
+          <input id="shutdown" type="number" matInput placeholder="Lighting Shutdown Temp." formControlName="shutdown">
+          <span matSuffix>{{ShutdownTemperatureSuffix}}</span>
+          <mat-hint>Leave blank to disable</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="productType.SupportsDayRangeSettings">
+        <mat-card fxFlex="100">
+          <mat-card-header>
+            <mat-card-title>Day Range</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field fxFlex="50">
+              <fuse-controller-timepicker formControlName="dayStartTime" placeholder="Day Start Time"
+                [timezone]="timezoneAbbr"></fuse-controller-timepicker>
+              <mat-error *ngIf="dayStartTime.hasError('required')">
+                Day Start Time is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="50">
+              <fuse-controller-timepicker formControlName="dayEndTime" placeholder="Day End Time"
+                [timezone]="timezoneAbbr"></fuse-controller-timepicker>
+              <mat-error *ngIf="dayEndTime.hasError('required')">
+                Day End Time is required
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="productType.SupportsLedSettings">
+        <mat-card fxFlex="100">
+          <mat-card-header>
+            <mat-card-title>LED Settings</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field fxFlex="50">
+              <mat-select placeholder="LED Time of Day" formControlName="ledDayNight">
+                <mat-option *ngFor="let d of dayNightOptions" [value]="d.value">{{d.caption}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="ledDayNight.hasError('required')">
+                LED Time of Day is required
+              </mat-error>
+            </mat-form-field>
+            <div fxLayout="column" fxFlex="50">
+              <mat-label>LED Brightness [{{ledBrightness.value}}%]</mat-label>
+              <mat-slider min="0" max="100" step="5" thumbLabel aria-label="LED Brightness" formControlName="ledBrightness">
+              </mat-slider>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="productType.IsLightingController">
+        <mat-card fxFlex="100">
+          <mat-card-header>
+            <mat-card-title>Analog Input</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column" fxFlex="50">
+              <mat-slide-toggle formControlName="analogInput">Enable Analog Input</mat-slide-toggle>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="validNutrientModule">
+        <mat-card fxFlex="100">
+          <mat-card-header>
+            <mat-card-title>Nutrient Dosing</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field fxFlex="50">
+              <fuse-duration-input placeholder="Dosing Run Time" formControlName="dosingRunTime"></fuse-duration-input>
+              <mat-error *ngIf="dosingRunTime.hasError('server')">
+                {{dosingRunTime.getError('server')}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="50">
+              <fuse-duration-input placeholder="Dosing Wait Time" formControlName="dosingWaitTime">
+              </fuse-duration-input>
+              <mat-error *ngIf="dosingWaitTime.hasError('server')">
+                {{dosingWaitTime.getError('server')}}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-24">
+        <button mat-raised-button color="primary" [disabled]="loading || profileForm.invalid">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>

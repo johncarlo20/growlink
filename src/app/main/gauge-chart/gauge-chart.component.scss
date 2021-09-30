@@ -1,0 +1,29 @@
+* {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.gauge-chart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.gauge-chart__label {
+  font-weight: bold;
+}
+
+.active-alert {
+  animation: ease-in-out fadeInOut 3s 0s infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    color: darkred;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: darkred;
+  }
+}

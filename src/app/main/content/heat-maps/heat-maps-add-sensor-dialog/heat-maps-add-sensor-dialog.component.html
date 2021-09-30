@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>
+  <span *ngIf="this.data.type === 'sensor'">Add Sensor</span>
+  <span *ngIf="this.data.type === 'device'">Add Device</span>
+  <svg ibmIconClose size="24" (click)="onNoClick()"></svg>
+</h1>
+<div mat-dialog-content>
+  <div class="mat-select-dialog">
+    <label class="">Controller</label>
+    <mat-select multiple placeholder="Sensor Type">
+      <mat-option>Test</mat-option>
+      <mat-option>Test 1</mat-option>
+      <mat-option>Test 2</mat-option>
+    </mat-select>
+  </div>
+
+  <div class="mat-select-dialog">
+    <label class="">Controller</label>
+    <mat-select multiple placeholder="Sensor Type">
+      <mat-option>Test</mat-option>
+      <mat-option>Test 1</mat-option>
+      <mat-option>Test 2</mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="this.data.type === 'sensor'" class="mat-select-dialog">
+    <label class="">Sensor</label>
+    <mat-select multiple placeholder="Sensor Type">
+      <mat-option>Test</mat-option>
+      <mat-option>Test 1</mat-option>
+      <mat-option>Test 2</mat-option>
+    </mat-select>
+  </div>
+
+  <div *ngIf="this.data.type === 'device'" class="mat-select-dialog">
+    <label class="">Device</label>
+    <mat-select multiple placeholder="Sensor Type">
+      <mat-option>Test</mat-option>
+      <mat-option>Test 1</mat-option>
+      <mat-option>Test 2</mat-option>
+    </mat-select>
+  </div>
+</div>
+  
+<div class="dialog-actions">
+  <button mat-stroked-button class="mr-10" (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" cdkFocusInitial>Add</button>
+</div>

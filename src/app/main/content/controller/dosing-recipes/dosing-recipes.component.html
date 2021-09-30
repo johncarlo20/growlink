@@ -1,0 +1,35 @@
+<div id="dosing-recipes" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-24" *ngIf="!isReadOnly">
+    <button mat-raised-button (click)="pushControllerUpdate()" color="primary" [disabled]="!changes || loading">Update
+      Controller</button>
+    <button mat-raised-button (click)="addDosingRecipe()" color="primary" [disabled]="loading">Add Dosing
+      Recipe</button>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-table [dataSource]="dosingRecipes">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>>
+        <mat-cell *matCellDef="let recipe">{{recipe.Name}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="devices">
+        <mat-header-cell *matHeaderCellDef>Devices</mat-header-cell>>
+        <mat-cell *matCellDef="let recipe">{{getDeviceNames(recipe)}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>>
+        <mat-cell fxFlex="100px" fxLayoutAlign="end center" *matCellDef="let recipe">
+          <button *ngIf="!isReadOnly" mat-icon-button color="primary" (click)="editDosingRecipe(recipe)">
+            <mat-icon aria-label="Edit Dosing Recipe">mode_edit</mat-icon>
+          </button>
+          <button *ngIf="!isReadOnly" mat-icon-button color="warn" (click)="deleteDosingRecipe(recipe)">
+            <mat-icon aria-label="Delete Dosing Recipe">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="recipeColumns"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: recipeColumns;" matRipple class="mat-ripple"></mat-row>>
+    </mat-table>
+  </div>
+</div>

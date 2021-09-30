@@ -1,0 +1,15 @@
+form {
+  max-width: 70rem;
+}
+
+div#cardElement {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+  padding-bottom: 0.4375em;
+}
+
+div#card-element-errors, div#errors {
+  color: #eb1c26;
+}

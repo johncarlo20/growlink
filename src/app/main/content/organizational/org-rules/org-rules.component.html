@@ -1,0 +1,191 @@
+<div id="orgrules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="header mat-bg p-24" fxLayout="row" fxLayoutAlign="start center">
+    <h2>Organization Wide Rules</h2>
+  </div>
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-accordion multi="true">
+      <mat-expansion-panel *ngFor="let ruleGroup of ruleGroups" [expanded]="ruleGroup.IsActive">
+        <mat-expansion-panel-header *ngIf="ruleGroup.HasRules">
+          <mat-panel-title>{{ruleGroup.Name}}</mat-panel-title>
+          <mat-panel-description fxLayoutAlign="end center" style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+            {{ruleGroup.ControllerNames}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" fxLayoutAlign="start start" *ngIf="ruleGroup.HasRules">
+          <div class="w-100-p" fxFlex="100">
+            <mat-accordion>
+              <mat-expansion-panel *ngIf="ruleGroup.SensorTriggers && ruleGroup.SensorTriggers.length" (opened)="panelOpenState[0] = true"
+                (closed)="panelOpenState[0] = false">
+                <mat-expansion-panel-header [class.accent-100-bg]="panelOpenState[0]">
+                  <mat-panel-title>Sensor Triggers</mat-panel-title>
+                  <mat-panel-description fxLayoutAlign="end center">
+                    {{ruleGroup.SensorTriggers.length}} trigger(s)
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-table [dataSource]="dataSourceTriggers(ruleGroup)">
+                  <ng-container matColumnDef="sensor">
+                    <mat-header-cell *matHeaderCellDef>Sensor</mat-header-cell>>
+                    <mat-cell *matCellDef="let trigger">{{trigger.Sensor.Name}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="controllers">
+                    <mat-header-cell *matHeaderCellDef>Controllers</mat-header-cell>>
+                    <mat-cell *matCellDef="let trigger">{{getControllers(trigger)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="device">
+                    <mat-header-cell *matHeaderCellDef>Device</mat-header-cell>>
+                    <mat-cell *matCellDef="let trigger">{{getDeviceNames(trigger)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="condition">
+                    <mat-header-cell *matHeaderCellDef>Condition</mat-header-cell>>
+                    <mat-cell *matCellDef="let trigger">{{trigger.TriggerCondition}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="actions">
+                    <mat-header-cell fxFlex="120px" *matHeaderCellDef></mat-header-cell>>
+                    <mat-cell fxFlex="120px" fxLayoutAlign="end center" *matCellDef="let trigger">
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Edit trigger" (click)="editTrigger(trigger)">
+                        <mat-icon>mode_edit</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Assign trigger" (click)="assignTrigger(trigger)">
+                        <mat-icon>file_copy</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="warn" aria-label="Delete trigger" (click)="deleteTrigger(trigger)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="triggerColumns"></mat-header-row>>
+                  <mat-row *matRowDef="let row; columns: triggerColumns;" matRipple class="mat-ripple mat-row-selectable"
+                    [class.accent-50-bg]="selectedTrigger == row" (click)="selectTrigger(row)"></mat-row>>
+                </mat-table>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="ruleGroup.Timers && ruleGroup.Timers.length" (opened)="panelOpenState[1] = true"
+                (closed)="panelOpenState[1] = false">
+                <mat-expansion-panel-header [class.accent-100-bg]="panelOpenState[1]">
+                  <mat-panel-title>Timers</mat-panel-title>
+                  <mat-panel-description fxLayoutAlign="end center">
+                    {{ruleGroup.Timers.length}} timer(s)
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-table [dataSource]="dataSourceTimers(ruleGroup)">
+                  <ng-container matColumnDef="device">
+                    <mat-header-cell *matHeaderCellDef>Device</mat-header-cell>>
+                    <mat-cell *matCellDef="let timer">{{getDeviceNames(timer)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="controllers">
+                    <mat-header-cell *matHeaderCellDef>Controllers</mat-header-cell>>
+                    <mat-cell *matCellDef="let timer">{{getControllers(timer)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="config">
+                    <mat-header-cell *matHeaderCellDef>Configuration</mat-header-cell>>
+                    <mat-cell *matCellDef="let timer">{{timer.TimerConfig}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="actions">
+                    <mat-header-cell fxFlex="120px" *matHeaderCellDef></mat-header-cell>>
+                    <mat-cell fxFlex="120px" fxLayoutAlign="end center" *matCellDef="let timer">
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Edit timer" (click)="editTimer(timer)">
+                        <mat-icon>mode_edit</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Assign timer" (click)="assignTimer(timer)">
+                        <mat-icon>file_copy</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="warn" aria-label="Delete timer" (click)="deleteTimer(timer)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="timerColumns"></mat-header-row>>
+                  <mat-row *matRowDef="let row; columns: timerColumns;" matRipple class="mat-ripple mat-row-selectable"
+                    [class.accent-50-bg]="selectedTimer == row" (click)="selectTimer(row)"></mat-row>>
+                </mat-table>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="ruleGroup.Schedules && ruleGroup.Schedules.length" (opened)="panelOpenState[2] = true"
+                (closed)="panelOpenState[2] = false">
+                <mat-expansion-panel-header [class.accent-100-bg]="panelOpenState[2]">
+                  <mat-panel-title>Schedules</mat-panel-title>
+                  <mat-panel-description fxLayoutAlign="end center">
+                    {{ruleGroup.Schedules.length}} schedule(s)
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-table [dataSource]="dataSourceSchedules(ruleGroup)">
+                  <ng-container matColumnDef="device">
+                    <mat-header-cell *matHeaderCellDef>Device</mat-header-cell>>
+                    <mat-cell *matCellDef="let schedule">{{getDeviceNames(schedule)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="controllers">
+                    <mat-header-cell *matHeaderCellDef>Controllers</mat-header-cell>>
+                    <mat-cell *matCellDef="let schedule">{{getControllers(schedule)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="config">
+                    <mat-header-cell *matHeaderCellDef>Configuration</mat-header-cell>>
+                    <mat-cell *matCellDef="let schedule">{{schedule.ScheduleConfig}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="actions">
+                    <mat-header-cell fxFlex="120px" *matHeaderCellDef></mat-header-cell>>
+                    <mat-cell fxFlex="120px" fxLayoutAlign="end center" *matCellDef="let schedule">
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Edit schedule" (click)="editSchedule(schedule)">
+                        <mat-icon>mode_edit</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Assign schedule" (click)="assignSchedule(schedule)">
+                        <mat-icon>file_copy</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="warn" aria-label="Delete schedule" (click)="deleteSchedule(schedule)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="scheduleColumns"></mat-header-row>>
+                  <mat-row *matRowDef="let row; columns: scheduleColumns;" matRipple class="mat-ripple mat-row-selectable"
+                    [class.accent-50-bg]="selectedSchedule == row" (click)="selectSchedule(row)"></mat-row>>
+                </mat-table>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="ruleGroup.Alerts && ruleGroup.Alerts.length" (opened)="panelOpenState[3] = true"
+                (closed)="panelOpenState[3] = false">
+                <mat-expansion-panel-header [class.accent-100-bg]="panelOpenState[3]">
+                  <mat-panel-title>Alerts</mat-panel-title>
+                  <mat-panel-description fxLayoutAlign="end center">
+                    {{ruleGroup.Alerts.length}} alert(s)
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-table [dataSource]="dataSourceAlerts(ruleGroup)">
+                  <ng-container matColumnDef="sensor">
+                    <mat-header-cell *matHeaderCellDef>Sensor</mat-header-cell>>
+                    <mat-cell *matCellDef="let alert">{{alert.Sensor.Name}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="condition">
+                    <mat-header-cell *matHeaderCellDef>Condition</mat-header-cell>>
+                    <mat-cell *matCellDef="let alert">{{alert.AlertCondition}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="controllers">
+                    <mat-header-cell *matHeaderCellDef>Controllers</mat-header-cell>>
+                    <mat-cell *matCellDef="let alert">{{getControllers(alert)}}</mat-cell>>
+                  </ng-container>
+                  <ng-container matColumnDef="actions">
+                    <mat-header-cell fxFlex="120px" *matHeaderCellDef></mat-header-cell>>
+                    <mat-cell fxFlex="120px" fxLayoutAlign="end center" *matCellDef="let alert">
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Edit alert" (click)="editAlert(alert)">
+                        <mat-icon>mode_edit</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="accent" aria-label="Assign alert" (click)="assignAlert(alert)">
+                        <mat-icon>file_copy</mat-icon>
+                      </button>
+                      <button *ngIf="!isReadOnly" mat-icon-button color="warn" aria-label="Delete alert" (click)="deleteAlert(alert)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="alertColumns"></mat-header-row>>
+                  <mat-row *matRowDef="let row; columns: alertColumns;" matRipple class="mat-ripple mat-row-selectable"
+                    [class.accent-50-bg]="selectedAlert == row" (click)="selectAlert(row)"></mat-row>>
+                </mat-table>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

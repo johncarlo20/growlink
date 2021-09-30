@@ -1,0 +1,48 @@
+  <label>Time of Day</label>
+  <input (click)="chooseTime = !chooseTime" 
+  [(ngModel)]="value"
+  type="text" placeholder="Custom Time" readonly>
+
+  <div ngClass.xs="mobile" *ngIf="chooseTime" class="calendar c-popup">
+    <div class="calendar-header-top">
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="calendar-header">
+      <div class="calendar-header-date">
+        <b>{{this.date.format('MMMM YYYY')}}</b>
+        <div>
+          <svg ibmIconChevronLeft 
+          (click)="prevDate()"
+          size="20"></svg>
+
+          <svg ibmIconChevronRight 
+          (click)="nextDate()"
+          size="20"></svg>
+
+          <svg ibmIconCalendar 
+          (click)="nowDate()"
+          size="20"></svg>     
+        </div>
+      </div>
+    </div>
+    <div class="calendar-items c-week">
+      <div class="c-item" *ngFor="let item of dates; index as i;">
+        <div>{{item.day}}</div>
+        <span [class]="{active: item.date.isSame(this.dateChoosen)}">{{item.value}}</span>
+      </div>
+    </div>
+    <div class="c-popup-scroll">
+      <div class="calendar-items" *ngFor="let time of times; index as i;">
+        <div (click)="setDate(d, time)" class="c-item"   
+        *ngFor="let d of dates; index as i;">
+          <span [class]="{active: isTime(time, d.date)}">{{time}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ngClass.xs="mobile" class="calendar-overlay" *ngIf="chooseTime" (click)="chooseTime = false"></div>
+
+  <svg class="time" ibmIconTime size="20"></svg>
+

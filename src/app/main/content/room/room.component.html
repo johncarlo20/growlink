@@ -1,0 +1,589 @@
+<div id="modules" ngClass.xs="mobile" ngClass.sm="mobile tablet" ngClass.md="mobile tablet"  class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start center">
+    Analytics dashboard
+  </div>
+  <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start">Monitor metrics, check reports and review performance</div>
+  
+  <div class="top-info" fxLayout="row" fxLayoutAlign="start center">
+    <div class="add-btn-col" fxLayout="column" fxLayoutAlign="center center">
+      <button class="add-btn" color="#0EA5E9">
+        <svg ibmIconAdd size="24"></svg>
+      </button>
+    </div>
+
+    <div class="top-info-col" fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="25" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconHome size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Crop</div>
+            <div class="card-info">20210802</div>
+            <div class="card-info">30211802</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+
+      <div fxFlex="25" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon cultivar">
+            <svg xmlns="http://www.w3.org/2000/svg" id="icon" width="20" height="20" viewBox="0 0 32 32">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: none;
+                  }
+                </style>
+              </defs>
+              <path d="M26.5859,6.5859A1.9862,1.9862,0,0,0,25.1719,6H17V2H15V12H6.8281a1.9862,1.9862,0,0,0-1.414.5859L2,16l3.4141,3.4141A1.9862,1.9862,0,0,0,6.8281,20H15V30h2V14h8.1719a1.9862,1.9862,0,0,0,1.414-.5859L30,10ZM6.8281,18l-2-2,2-2H15v4Zm18.3438-6H17V8h8.1719l2,2Z"/>
+              <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="20" height="20"/>
+            </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Cultivar</div>
+            <div class="card-info">OG Cush</div>
+            <div class="card-info">30211802</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+
+      <div fxFlex="25" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon leaf">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="none">
+              <path d="M18.5 6.75C19.2954 6.74911 20.0579 6.43275 20.6203 5.87033C21.1828 5.30792 21.4991 4.54538 21.5 3.75V1.5H19.25C18.4821 1.50125 17.7443 1.79846 17.1899 2.3298C16.8014 1.62475 16.231 1.03673 15.538 0.626979C14.8451 0.217227 14.055 0.000720084 13.25 0H11V2.25C11.0013 3.44307 11.4758 4.5869 12.3195 5.43053C13.1631 6.27416 14.3069 6.74869 15.5 6.75H16.25V16.5H7.25V12.75H8C8.79537 12.7491 9.55792 12.4327 10.1203 11.8703C10.6827 11.3079 10.9991 10.5454 11 9.75V7.5H8.75C7.98212 7.50125 7.24427 7.79846 6.6899 8.3298C6.30138 7.62475 5.73097 7.03673 5.03804 6.62698C4.34511 6.21723 3.55501 6.00072 2.75 6H0.5V8.25C0.50131 9.44307 0.975837 10.5869 1.81947 11.4305C2.6631 12.2742 3.80693 12.7487 5 12.75H5.75V16.5H0.5V18H21.5V16.5H17.75V6.75H18.5ZM17.75 4.5C17.7504 4.1023 17.9086 3.721 18.1898 3.43978C18.471 3.15856 18.8523 3.0004 19.25 3H20V3.75C19.9996 4.1477 19.8414 4.529 19.5602 4.81022C19.279 5.09144 18.8977 5.2496 18.5 5.25H17.75V4.5ZM7.25 10.5C7.2504 10.1023 7.40856 9.721 7.68978 9.43978C7.971 9.15856 8.3523 9.0004 8.75 9H9.5V9.75C9.4996 10.1477 9.34144 10.529 9.06022 10.8102C8.779 11.0914 8.3977 11.2496 8 11.25H7.25V10.5ZM5.75 11.25H5C4.20462 11.2491 3.44208 10.9327 2.87967 10.3703C2.31725 9.80792 2.00089 9.04537 2 8.25V7.5H2.75C3.54538 7.50089 4.30792 7.81725 4.87033 8.37967C5.43275 8.94208 5.74911 9.70463 5.75 10.5V11.25ZM16.25 5.25H15.5C14.7046 5.24911 13.9421 4.93275 13.3797 4.37033C12.8173 3.80792 12.5009 3.04538 12.5 2.25V1.5H13.25C14.0454 1.50089 14.8079 1.81725 15.3703 2.37967C15.9327 2.94208 16.2491 3.70462 16.25 4.5V5.25Z" fill="#047857"/>
+              </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Stage / Days</div>
+            <div class="card-info">Flower / 33</div>
+            <div class="card-info">Flower / 24</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+
+      <div fxFlex="25" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconRainDrop size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Recipe</div>
+            <div class="card-info">OG Sunny 2021</div>
+            <div class="card-info">OG Sunny 2020</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" class="top-info-mobile">
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconHome size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Crop</div>
+            <div class="card-info">20210802</div>
+            <div class="card-info">30211802</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon cultivar">
+            <svg xmlns="http://www.w3.org/2000/svg" id="icon" width="20" height="20" viewBox="0 0 32 32">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: none;
+                  }
+                </style>
+              </defs>
+              <path d="M26.5859,6.5859A1.9862,1.9862,0,0,0,25.1719,6H17V2H15V12H6.8281a1.9862,1.9862,0,0,0-1.414.5859L2,16l3.4141,3.4141A1.9862,1.9862,0,0,0,6.8281,20H15V30h2V14h8.1719a1.9862,1.9862,0,0,0,1.414-.5859L30,10ZM6.8281,18l-2-2,2-2H15v4Zm18.3438-6H17V8h8.1719l2,2Z"/>
+              <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="20" height="20"/>
+            </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Cultivar</div>
+            <div class="card-info">OG Cush</div>
+            <div class="card-info">30211802</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon leaf">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="none">
+              <path d="M18.5 6.75C19.2954 6.74911 20.0579 6.43275 20.6203 5.87033C21.1828 5.30792 21.4991 4.54538 21.5 3.75V1.5H19.25C18.4821 1.50125 17.7443 1.79846 17.1899 2.3298C16.8014 1.62475 16.231 1.03673 15.538 0.626979C14.8451 0.217227 14.055 0.000720084 13.25 0H11V2.25C11.0013 3.44307 11.4758 4.5869 12.3195 5.43053C13.1631 6.27416 14.3069 6.74869 15.5 6.75H16.25V16.5H7.25V12.75H8C8.79537 12.7491 9.55792 12.4327 10.1203 11.8703C10.6827 11.3079 10.9991 10.5454 11 9.75V7.5H8.75C7.98212 7.50125 7.24427 7.79846 6.6899 8.3298C6.30138 7.62475 5.73097 7.03673 5.03804 6.62698C4.34511 6.21723 3.55501 6.00072 2.75 6H0.5V8.25C0.50131 9.44307 0.975837 10.5869 1.81947 11.4305C2.6631 12.2742 3.80693 12.7487 5 12.75H5.75V16.5H0.5V18H21.5V16.5H17.75V6.75H18.5ZM17.75 4.5C17.7504 4.1023 17.9086 3.721 18.1898 3.43978C18.471 3.15856 18.8523 3.0004 19.25 3H20V3.75C19.9996 4.1477 19.8414 4.529 19.5602 4.81022C19.279 5.09144 18.8977 5.2496 18.5 5.25H17.75V4.5ZM7.25 10.5C7.2504 10.1023 7.40856 9.721 7.68978 9.43978C7.971 9.15856 8.3523 9.0004 8.75 9H9.5V9.75C9.4996 10.1477 9.34144 10.529 9.06022 10.8102C8.779 11.0914 8.3977 11.2496 8 11.25H7.25V10.5ZM5.75 11.25H5C4.20462 11.2491 3.44208 10.9327 2.87967 10.3703C2.31725 9.80792 2.00089 9.04537 2 8.25V7.5H2.75C3.54538 7.50089 4.30792 7.81725 4.87033 8.37967C5.43275 8.94208 5.74911 9.70463 5.75 10.5V11.25ZM16.25 5.25H15.5C14.7046 5.24911 13.9421 4.93275 13.3797 4.37033C12.8173 3.80792 12.5009 3.04538 12.5 2.25V1.5H13.25C14.0454 1.50089 14.8079 1.81725 15.3703 2.37967C15.9327 2.94208 16.2491 3.70462 16.25 4.5V5.25Z" fill="#047857"/>
+              </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Stage / Days</div>
+            <div class="card-info">Flower / 33</div>
+            <div class="card-info">Flower / 24</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconRainDrop size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Recipe</div>
+            <div class="card-info">OG Sunny 2021</div>
+            <div class="card-info">OG Sunny 2020</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="column" class="expand-btn-col" fxLayoutAlign="center center">
+      <button class="expand-btn" color="#0EA5E9">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 9.49995L0.5 1.99995L1.55 0.949951L8 7.39995L14.45 0.949951L15.5 1.99995L8 9.49995Z" fill="#6B7280"/>
+          </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="charts-info" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="65" fxLayout="column">
+      <div class="chart-top mb-24">
+        <div class="card-tabs tabs">
+          <div class="card-tab active">Climate</div>
+          <div class="card-tab">Irrigation</div>
+        </div>
+        <mat-select multiple placeholder="Services">
+          <mat-option>test</mat-option>
+          <mat-option>test</mat-option>
+        </mat-select>
+      </div>
+      <div class="card card-chart-tablet">
+        <div fxLayoutAlign="start" fxLayout="row">
+          <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+            <canvas baseChart
+                width="90"
+                height="90"
+                [options]="{cutoutPercentage: 70}"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [legend]="false"
+                [colors]="chartColors1"
+                [chartType]="doughnutChartType">
+            </canvas>
+            <div class="text-center mt-8">Temp</div>
+            <div class="chart-climate-info">
+              <svg ibmIconAddAlt size="16"></svg>
+              <div>
+                <b>81.4 °F</b>
+                <div class="chart-climate-info-subtitle">69.2 °F</div>
+              </div>
+              <svg ibmIconSubtractAlt size="16"></svg>
+            </div>
+          </div>
+          <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+            <canvas baseChart
+                width="90"
+                height="90"
+                [options]="{cutoutPercentage: 70}"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [legend]="false"
+                [colors]="chartColors2"
+                [chartType]="doughnutChartType">
+            </canvas>
+            <div class="text-center mt-8">Hum</div>
+            <div class="chart-climate-info">
+              <svg ibmIconAddAlt size="16"></svg>
+              <div>
+                <b>42.2%</b>
+                <div class="chart-climate-info-subtitle">30.0%</div>
+              </div>
+              <svg ibmIconSubtractAlt size="16"></svg>
+            </div>
+          </div>
+          <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+            <canvas baseChart
+                width="90"
+                height="90"
+                [options]="{cutoutPercentage: 70}"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [legend]="false"
+                [colors]="chartColors3"
+                [chartType]="doughnutChartType">
+            </canvas>
+            <div class="text-center mt-8">VPD</div>
+            <div class="chart-climate-info">
+              <svg ibmIconAddAlt size="16"></svg>
+              <div>
+                <b>81.4 °F</b>
+                <div class="chart-climate-info-subtitle"> 72.9 °F</div>
+              </div>
+              <svg ibmIconSubtractAlt size="16"></svg>
+            </div>
+          </div>
+          <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+            <canvas baseChart
+                width="90"
+                height="90"
+                [options]="{cutoutPercentage: 70}"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [legend]="false"
+                [colors]="chartColors4"
+                [chartType]="doughnutChartType">
+            </canvas>
+            <div class="text-center mt-8">CO2</div>
+            <div class="chart-climate-info">
+              <svg ibmIconAddAlt size="16"></svg>
+              <div>
+                <b>81.4 °F</b>
+                <div class="chart-climate-info-subtitle">80.1 °F</div>
+              </div>
+              <svg ibmIconSubtractAlt size="16"></svg>
+            </div>
+          </div>
+          <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+            <canvas baseChart
+                width="90"
+                height="90"
+                [options]="{cutoutPercentage: 70}"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [legend]="false"
+                [colors]="chartColors5"
+                [chartType]="doughnutChartType">
+            </canvas>
+            <div class="text-center mt-8">Light</div>
+            <div class="chart-climate-info">
+              <svg ibmIconAddAlt size="16"></svg>
+              <div>
+                <b>4408</b>
+                <div class="chart-climate-info-subtitle">3502</div>
+              </div>
+              <svg ibmIconSubtractAlt size="16"></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-24 line-chart">
+        <div class="card-header">
+          <div class="card-header-title">Line Chart</div>
+          <div class="card-header-tools">
+            <mat-select multiple placeholder="Climate">
+              <mat-option>test</mat-option>
+              <mat-option>test</mat-option>
+            </mat-select>
+            <button>
+              <svg ibmIconMaximize size="20"></svg>
+            </button>
+          </div>
+        </div>
+        <div class="p-24">
+          <canvas baseChart height="150"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="false"
+                [chartType]="lineChartType"
+                ></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="35" fxLayout="column" fxLayoutAlign="center center">
+      <div class="card card-right">
+        <div class="card-top">
+          <div class="card-tabs">
+            <div class="card-tab active">Tasks</div>
+            <div class="card-tab">Notes</div>
+            <div class="card-tab">Insights</div>
+          </div>
+          <div class="card-filter">
+            Filter
+            <svg ibmIconSettingsAdjust size="16"></svg>
+          </div>
+        </div>
+        <div class="card-list">
+          <ul>
+            <li>
+              <svg ibmIconWarningAltFilled size="24"></svg>
+              <span>Increase yield by reducing night temperatures</span>
+              <button>Apply</button>
+            </li>
+            <li>
+              <svg ibmIconRainDrop size="24"></svg>
+              <span>Humidity level are getting to high</span>
+              <button class="resolved">Resolved</button>
+            </li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <button class="add-btn" color="#0EA5E9">
+            <svg ibmIconAdd size="24"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header devices mat-bg my-24" fxLayout="row" fxLayoutAlign="start center">
+    Devices
+  </div>
+
+  <div class="mb-24 room-devices-tablet" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="60" fxLayout="column">
+      <div class="btn-group">
+        <button class="btn">
+          <svg ibmIconAdd size="20"></svg>
+          Add devices
+        </button>
+        <div class="btn-group-addon">
+          <svg ibmIconChevronDown size="20"></svg>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="40" fxLayout="column" fxLayoutAlign="right">
+      <div class="bottom-tabs">
+        <div class="card-tabs tabs">
+          <div class="card-tab active">Valves</div>
+          <div class="card-tab">Pumps</div>
+          <div class="card-tab">Light Dimming</div>
+          <div class="card-tab">Manual Tasks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-info" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power active">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-info" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="25" fxLayout="column">
+      <div class="card card-top">
+        <div class="card-icon valve">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5937 13.875H21.1875C20.6302 13.875 20.1477 14.2008 19.9202 14.6719H17.2969V13.7344C17.2969 13.3461 16.9821 13.0312 16.5937 13.0312H15.5156V10.9219C15.5156 10.5336 15.2008 10.2188 14.8125 10.2188H14.1094V7.98736L18.8513 4.21875H20.7187C21.8819 4.21875 22.8281 3.27248 22.8281 2.10938C22.8281 0.946266 21.8819 0 20.7187 0H3.28125C2.11814 0 1.17187 0.946266 1.17187 2.10938C1.17187 3.27248 2.11814 4.21875 3.28125 4.21875H5.14866L9.89062 7.98736V10.2188H9.1875C8.79919 10.2188 8.48437 10.5336 8.48437 10.9219V13.0312H7.40625C7.01794 13.0312 6.70312 13.3461 6.70312 13.7344V14.6719H4.07977C3.85228 14.2008 3.36975 13.875 2.8125 13.875H1.40625C0.630844 13.875 0 14.5058 0 15.2812V22.2188C0 22.9942 0.630844 23.625 1.40625 23.625H2.8125C3.3697 23.625 3.85228 23.2992 4.07972 22.8281H7.55011C8.17781 23.5455 9.09905 24 10.125 24H13.875C14.9009 24 15.8221 23.5455 16.4498 22.8281H19.9202C20.1476 23.2992 20.6302 23.625 21.1874 23.625H22.5937C23.3691 23.625 23.9999 22.9942 23.9999 22.2188V15.2812C24 14.5058 23.3692 13.875 22.5937 13.875ZM2.8125 22.2188H1.40625L1.40611 15.2812H2.8125V22.2188ZM14.1094 6.19111V4.21875H16.5911L14.1094 6.19111ZM3.28125 2.8125C2.89355 2.8125 2.57812 2.49708 2.57812 2.10938C2.57812 1.72167 2.89355 1.40625 3.28125 1.40625H20.7187C21.1065 1.40625 21.4219 1.72167 21.4219 2.10938C21.4219 2.49708 21.1065 2.8125 20.7187 2.8125H3.28125ZM11.2969 5.625V4.21875H12.7031V5.625H11.2969ZM12.7031 7.03125V10.2188H11.2969V7.03125H12.7031ZM7.40887 4.21875H9.89062V6.19111L7.40887 4.21875ZM9.89062 11.625H14.1094V13.0312H9.89062V11.625ZM4.21875 21.4219V16.0781H6.70312V20.5781C6.70312 20.8692 6.73987 21.1519 6.80864 21.4219H4.21875ZM13.875 22.5938H10.125C9.01359 22.5938 8.10937 21.6895 8.10937 20.5781V14.4375H15.8906V20.5781C15.8906 21.6895 14.9864 22.5938 13.875 22.5938ZM17.2969 20.5781V16.0781H19.7812V21.4219H17.1914C17.2601 21.1519 17.2969 20.8692 17.2969 20.5781ZM22.5937 22.2188H21.1875L21.1874 15.2812H22.5937V22.2188Z" fill="#6366F1"/>
+          </svg>
+        </div>
+        <div class="card-details">
+          <div class="card-title">Valve 02</div>
+          <div class="card-info">Auto-On</div>
+        </div>
+        <div class="card-detail-icons">
+          <div class="auto-on">
+            <svg ibmIconFlashFilled size="16"></svg>
+          </div>
+          <div class="power">
+            <svg ibmIconPower size="16"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div fxLayout="column" class="content mat-white-bg p-8" *ngIf="false">
+    <div>
+      <mat-form-field style="width: 75%">
+        <mat-select placeholder="Controllers" multiple [(value)]="displayedColumns"
+          (selectionChange)="bookmarkChanged($event)">
+          <mat-option *ngFor="let c of Controllers" [value]="c.ControllerId">{{c.ControllerName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 24%" class="ml-4">
+        <mat-select placeholder="Display by" [(value)]="displayStyle" (selectionChange)="styleChanged($event)">
+          <mat-option value="type">Sensor Type</mat-option>
+          <mat-option value="name">Sensor Name</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-table [dataSource]="sensorMatrix" class="matrix">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>>
+        <mat-cell *matCellDef="let sensor">{{sensor.name}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="label">
+        <mat-header-cell *matHeaderCellDef>Sensor</mat-header-cell>>
+        <mat-cell *matCellDef="let sensor">{{sensor.label}}</mat-cell>>
+      </ng-container>
+      <ng-container *ngFor="let c of orgValues" [matColumnDef]="c.ControllerId">
+        <mat-header-cell *matHeaderCellDef><a
+            [routerLink]="GetDashboardUrl(c.ControllerId)">{{c.ControllerName}}</a></mat-header-cell>
+        <mat-cell *matCellDef="let sensor">{{GetReading(sensor, c.ControllerId)}}</mat-cell>>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="DisplayedColumns"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: DisplayedColumns;"></mat-row>>
+    </mat-table>
+  </div>
+</div>

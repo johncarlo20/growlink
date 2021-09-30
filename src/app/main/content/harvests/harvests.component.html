@@ -1,0 +1,235 @@
+<div id="harvests" ngClass.xs="mobile" ngClass.sm="tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start">
+    Analytics dashboard
+  </div>
+  <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start">Monitor metrics, check reports and review performance</div>
+  
+  <div class="mt-32 mb-24" fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="column" fxFlex="10" fxLayoutAlign="center center">
+      <button class="add-btn" color="#0EA5E9" (click)="openDialog()">
+        <svg ibmIconAdd size="24"></svg>
+      </button>
+    </div>
+
+    <div fxLayout="column" fxFlex="90">
+      <div class="top-info" fxLayout="row" fxLayoutAlign="start center">
+        
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon home">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <g clip-path="url(#clip0)">
+                <path d="M17.483 9.69112C16.6352 9.69112 15.8381 9.36097 15.2387 8.7615C14.0012 7.524 14.0012 5.51038 15.2387 4.27288C15.8381 3.67337 16.6352 3.34326 17.483 3.34326C18.3308 3.34326 19.1278 3.67341 19.7273 4.27288C20.9648 5.51038 20.9648 7.524 19.7273 8.7615C19.1278 9.36097 18.3308 9.69112 17.483 9.69112ZM17.483 4.74931C17.0108 4.74931 16.5668 4.93318 16.2329 5.26708C15.5437 5.95639 15.5437 7.07794 16.2329 7.76721C16.5668 8.10111 17.0108 8.28498 17.483 8.28498C17.9552 8.28498 18.3991 8.10111 18.733 7.76721C19.4223 7.07789 19.4223 5.95635 18.733 5.26708C18.3991 4.93318 17.9552 4.74931 17.483 4.74931Z" fill="#047857"/>
+                <path d="M12.0001 15.1736C11.1522 15.1736 10.3552 14.8434 9.75576 14.2439C8.51826 13.0064 8.51826 10.9928 9.75576 9.7553C10.3552 9.15579 11.1522 8.82568 12.0001 8.82568C12.8479 8.82568 13.6449 9.15584 14.2444 9.7553C15.4819 10.9928 15.4819 13.0064 14.2444 14.2439C13.6449 14.8434 12.8479 15.1736 12.0001 15.1736ZM12.0001 10.2317C11.5279 10.2317 11.0839 10.4156 10.75 10.7495C10.0607 11.4388 10.0607 12.5604 10.75 13.2496C11.0839 13.5835 11.5279 13.7674 12.0001 13.7674C12.4722 13.7674 12.9162 13.5835 13.2501 13.2496C13.9394 12.5603 13.9394 11.4388 13.2501 10.7495C12.9162 10.4157 12.4722 10.2317 12.0001 10.2317Z" fill="#047857"/>
+                <path d="M6.51717 20.6569C5.66939 20.6569 4.87232 20.3268 4.27285 19.7273C3.03535 18.4898 3.03535 16.4762 4.27285 15.2387C5.51031 14.0012 7.52398 14.0012 8.76148 15.2387C9.99898 16.4762 9.99898 18.4898 8.76148 19.7273C8.16201 20.3268 7.36495 20.6569 6.51717 20.6569ZM6.51717 15.7151C6.04495 15.7151 5.601 15.899 5.2671 16.2329C4.57784 16.9222 4.57784 18.0437 5.2671 18.733C5.95642 19.4223 7.07792 19.4223 7.76723 18.733C8.4565 18.0437 8.4565 16.9221 7.76723 16.2329C7.43333 15.899 6.98938 15.7151 6.51717 15.7151Z" fill="#047857"/>
+                <path d="M6.53346 24C6.24033 24 5.94482 23.9805 5.64846 23.9409C4.46758 23.7832 3.24292 23.6931 2.0086 23.6732C1.69603 23.6682 1.3752 23.681 1.05551 23.7114L0.208569 23.7919L0.289138 22.9449C0.319509 22.6253 0.332399 22.3046 0.32729 21.9919C0.307323 20.7575 0.217239 19.5328 0.0595695 18.352C-0.212135 16.317 0.461665 14.3202 1.90825 12.8736C2.5672 12.2147 3.34097 11.7147 4.20811 11.3876C4.99121 11.0922 5.6097 10.4737 5.90517 9.6906C6.23227 8.82342 6.73223 8.0496 7.39113 7.3907C8.05007 6.7318 8.82384 6.23184 9.69098 5.90465C10.4741 5.60927 11.0926 4.99073 11.388 4.20768C11.7151 3.34049 12.2151 2.56667 12.874 1.90778C14.3207 0.461236 16.3172 -0.212657 18.3525 0.0590936C19.5334 0.21681 20.758 0.306894 21.9923 0.326814C22.3049 0.331782 22.6257 0.319033 22.9454 0.288662L23.7924 0.20814L23.7118 1.05512C23.6814 1.37478 23.6685 1.69541 23.6736 2.00813C23.6936 3.24258 23.7837 4.46724 23.9414 5.64808C24.2131 7.68307 23.5393 9.67987 22.0927 11.1265C21.4337 11.7854 20.66 12.2853 19.7928 12.6125C19.0097 12.9078 18.3912 13.5264 18.0958 14.3094C17.7687 15.1766 17.2687 15.9504 16.6098 16.6093C15.9509 17.2682 15.1771 17.7682 14.31 18.0954C13.5269 18.3908 12.9084 19.0093 12.6129 19.7924C12.2858 20.6595 11.7858 21.4334 11.1269 22.0923C9.89093 23.3282 8.2533 24 6.53346 24ZM1.87573 22.266C1.92775 22.266 1.97959 22.2665 2.03129 22.2673C3.32007 22.2881 4.5997 22.3823 5.83458 22.5472C7.43195 22.7606 8.99834 22.2322 10.1326 21.098C10.6493 20.5813 11.0411 19.9751 11.2973 19.296C11.7353 18.1349 12.6525 17.2177 13.8136 16.7798C14.4926 16.5236 15.0989 16.1317 15.6156 15.615C16.1322 15.0984 16.524 14.4921 16.7802 13.8131C17.2183 12.652 18.1354 11.7348 19.2965 11.2968C19.9755 11.0407 20.5817 10.6488 21.0984 10.1322C22.2327 8.99787 22.7609 7.43129 22.5476 5.83415C22.3828 4.59937 22.2886 3.31978 22.2677 2.03086C22.2661 1.93215 22.2661 1.83274 22.2675 1.73295C22.1678 1.73445 22.0684 1.73436 21.9696 1.73277C20.6809 1.71196 19.4012 1.61775 18.1663 1.45286C16.5691 1.23951 15.0026 1.76783 13.8683 2.90212C13.3517 3.41877 12.9598 4.02503 12.7036 4.70403C12.2656 5.86518 11.3484 6.78233 10.1873 7.22033C9.50833 7.47647 8.90207 7.86835 8.38538 8.38504C7.86873 8.90169 7.4769 9.50795 7.22076 10.187C6.78266 11.3481 5.86552 12.2653 4.70441 12.7032C4.02546 12.9594 3.4192 13.3513 2.9025 13.8679C1.76825 15.0022 1.24003 16.5688 1.45329 18.1659C1.61818 19.4007 1.71229 20.6803 1.7332 21.9692C1.73479 22.0679 1.73488 22.1673 1.73343 22.2671C1.78096 22.2664 1.82839 22.266 1.87573 22.266Z" fill="#047857"/>
+                </g>
+                <defs>
+                <clipPath id="clip0">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Groups/ Plants</div>
+              <div class="card-info">20/3000</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon cultivar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <g clip-path="url(#clip0)">
+                <path d="M12.7031 14.6618V11.365L17.1959 6.8722C17.9563 6.11184 18.375 5.10094 18.375 4.02562C18.375 2.95031 17.9563 1.93941 17.1959 1.17909C16.4355 0.418734 15.4246 0 14.3494 0C13.4943 0 12.68 0.26475 12 0.755531C11.32 0.26475 10.5057 0 9.65063 0C8.57536 0 7.56441 0.418734 6.80405 1.17909C6.04373 1.93945 5.625 2.95036 5.625 4.02562C5.625 5.10089 6.04373 6.11184 6.80409 6.87216L11.2969 11.365V14.6618C10.4997 13.9128 9.42759 13.4531 8.25 13.4531H5.67188V16.0312C5.67188 18.4867 7.66955 20.4844 10.125 20.4844H11.2969V24H12.7031V20.4844H13.875C16.3305 20.4844 18.3281 18.4867 18.3281 16.0312V13.4531H15.75C14.5724 13.4531 13.5003 13.9128 12.7031 14.6618ZM7.03125 4.02562C7.03125 3.32597 7.30369 2.66817 7.79845 2.17345C8.29317 1.67873 8.95097 1.40625 9.65063 1.40625C10.3503 1.40625 11.008 1.67873 11.5028 2.17345L12 2.67066L12.4972 2.17345C12.9919 1.67873 13.6497 1.40625 14.3494 1.40625C15.049 1.40625 15.7068 1.67873 16.2015 2.1735C16.6963 2.66822 16.9688 3.32602 16.9688 4.02562C16.9688 4.72523 16.6963 5.38303 16.2015 5.8778L12 10.0793L7.79845 5.8778C7.30369 5.38308 7.03125 4.72533 7.03125 4.02562ZM10.125 19.0781C8.44495 19.0781 7.07812 17.7113 7.07812 16.0312V14.8594H8.25C9.93005 14.8594 11.2969 16.2262 11.2969 17.9062V19.0781H10.125ZM16.9219 16.0312C16.9219 17.7113 15.555 19.0781 13.875 19.0781H12.7031V17.9062C12.7031 16.2262 14.07 14.8594 15.75 14.8594H16.9219V16.0312Z" fill="#B45309"/>
+                </g>
+                <defs>
+                <clipPath id="clip0">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Growing</div>
+              <div class="card-info">6/200</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon leaf">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="none">
+                <path d="M18.5 6.75C19.2954 6.74911 20.0579 6.43275 20.6203 5.87033C21.1828 5.30792 21.4991 4.54538 21.5 3.75V1.5H19.25C18.4821 1.50125 17.7443 1.79846 17.1899 2.3298C16.8014 1.62475 16.231 1.03673 15.538 0.626979C14.8451 0.217227 14.055 0.000720084 13.25 0H11V2.25C11.0013 3.44307 11.4758 4.5869 12.3195 5.43053C13.1631 6.27416 14.3069 6.74869 15.5 6.75H16.25V16.5H7.25V12.75H8C8.79537 12.7491 9.55792 12.4327 10.1203 11.8703C10.6827 11.3079 10.9991 10.5454 11 9.75V7.5H8.75C7.98212 7.50125 7.24427 7.79846 6.6899 8.3298C6.30138 7.62475 5.73097 7.03673 5.03804 6.62698C4.34511 6.21723 3.55501 6.00072 2.75 6H0.5V8.25C0.50131 9.44307 0.975837 10.5869 1.81947 11.4305C2.6631 12.2742 3.80693 12.7487 5 12.75H5.75V16.5H0.5V18H21.5V16.5H17.75V6.75H18.5ZM17.75 4.5C17.7504 4.1023 17.9086 3.721 18.1898 3.43978C18.471 3.15856 18.8523 3.0004 19.25 3H20V3.75C19.9996 4.1477 19.8414 4.529 19.5602 4.81022C19.279 5.09144 18.8977 5.2496 18.5 5.25H17.75V4.5ZM7.25 10.5C7.2504 10.1023 7.40856 9.721 7.68978 9.43978C7.971 9.15856 8.3523 9.0004 8.75 9H9.5V9.75C9.4996 10.1477 9.34144 10.529 9.06022 10.8102C8.779 11.0914 8.3977 11.2496 8 11.25H7.25V10.5ZM5.75 11.25H5C4.20462 11.2491 3.44208 10.9327 2.87967 10.3703C2.31725 9.80792 2.00089 9.04537 2 8.25V7.5H2.75C3.54538 7.50089 4.30792 7.81725 4.87033 8.37967C5.43275 8.94208 5.74911 9.70463 5.75 10.5V11.25ZM16.25 5.25H15.5C14.7046 5.24911 13.9421 4.93275 13.3797 4.37033C12.8173 3.80792 12.5009 3.04538 12.5 2.25V1.5H13.25C14.0454 1.50089 14.8079 1.81725 15.3703 2.37967C15.9327 2.94208 16.2491 3.70462 16.25 4.5V5.25Z" fill="#047857"/>
+                </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Vegative</div>
+              <div class="card-info">8/2000</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+  
+      </div>
+      <div class="top-info" fxLayout="row" fxLayoutAlign="start center">
+        
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon flowing">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 21.75C8.69722 21.7485 8.42505 21.5651 8.31 21.285L4.7475 12.75H1.5V11.25H5.25C5.55278 11.2515 5.82495 11.4349 5.94 11.715L9 18.96L15.045 2.7375C15.1548 2.4435 15.4361 2.24898 15.75 2.25C16.0669 2.25554 16.3461 2.4597 16.4475 2.76L19.29 11.25H22.5V12.75H18.75C18.4276 12.7508 18.1407 12.5455 18.0375 12.24L15.75 5.25L9.705 21.2625C9.59515 21.5565 9.31385 21.751 9 21.75Z" fill="#1D4ED8"/>
+                </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Flowing</div>
+              <div class="card-info">2/500</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon curing">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path d="M12.6665 18V16.5C13.2464 16.4498 13.79 16.1966 14.2016 15.7851C14.6131 15.3735 14.8663 14.8299 14.9165 14.25H16.4165C16.3681 15.2289 15.9574 16.1548 15.2644 16.8479C14.5713 17.5409 13.6454 17.9515 12.6665 18Z" fill="#0284C7"/>
+                <path d="M12.6665 21.0001C10.877 20.9978 9.16141 20.2859 7.89603 19.0205C6.63065 17.7552 5.91877 16.0396 5.9165 14.2501C5.95685 12.9343 6.34336 11.6523 7.03708 10.5335L12.0311 2.5776C12.1032 2.4763 12.1985 2.39371 12.3091 2.33672C12.4196 2.27973 12.5421 2.25 12.6665 2.25C12.7909 2.25 12.9134 2.27973 13.0239 2.33672C13.1345 2.39371 13.2298 2.4763 13.3019 2.5776L18.2736 10.4949C18.9791 11.6239 19.3734 12.9195 19.4165 14.2501C19.4142 16.0396 18.7024 17.7552 17.437 19.0205C16.1716 20.2859 14.456 20.9978 12.6665 21.0001ZM12.6665 4.3863L8.33023 11.2922C7.77142 12.1809 7.4563 13.201 7.4165 14.2501C7.4165 15.6425 7.96963 16.9778 8.95419 17.9624C9.93876 18.947 11.2741 19.5001 12.6665 19.5001C14.0589 19.5001 15.3942 18.947 16.3788 17.9624C17.3634 16.9778 17.9165 15.6425 17.9165 14.2501C17.8738 13.1863 17.5509 12.1526 16.9805 11.2536L12.6665 4.3863Z" fill="#0284C7"/>
+              </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Curing</div>
+              <div class="card-info">6/200</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="33" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon harvested">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path d="M17.1945 0.784406C15.9567 0.2805 14.6251 0 13.2584 0C14.6273 0.265125 15.7684 0.84375 16.6817 1.62966C21.5765 5.83889 20.4039 15.479 12.3634 15.479C10.8729 15.479 9.14734 15.1479 7.17929 14.3899L0.969857 20.5987C0.969857 20.5994 0.969857 20.5994 0.969857 20.5994C0.192014 21.3773 0.192014 22.6385 0.969857 23.4163C1.35878 23.8052 1.86854 24 2.37831 24C2.88807 24 3.39784 23.8052 3.78601 23.4163L8.61709 18.5859C10.8173 20.0735 12.8813 20.6865 14.7431 20.6865C20.4677 20.6865 24.2807 14.896 24.2807 10.9343C24.2806 6.4695 21.2382 2.43164 17.1945 0.784406ZM3.08218 22.7124C2.89393 22.8999 2.64418 23.0039 2.37831 23.0039C2.11243 23.0039 1.86193 22.8999 1.67373 22.7124C1.33754 22.3755 1.29287 21.8555 1.53972 21.4702H4.32437L3.08218 22.7124ZM5.32046 20.4741H2.50356L3.60878 19.3689V19.4802H6.31435L5.32046 20.4741ZM7.26578 18.5288V18.4841H4.49354L6.27334 16.7036C6.78751 17.1826 7.29653 17.6118 7.79823 17.9956L7.26578 18.5288ZM20.9027 16.6472C20.1022 17.5796 19.1888 18.3164 18.1884 18.8364C17.0986 19.4033 15.9391 19.6912 14.7431 19.6912C13.4731 19.6912 12.1561 19.3652 10.829 18.7222C9.55534 18.104 8.26262 17.1907 6.97867 15.9998L7.43349 15.5442C9.19426 16.1624 10.8503 16.4751 12.3634 16.4751C13.3288 16.4751 14.2443 16.3462 15.0836 16.0942C15.8922 15.8503 16.6378 15.4899 17.2999 15.0219C18.5311 14.1518 19.4738 12.9037 20.0267 11.4133C20.664 9.69577 20.7621 7.71164 20.3043 5.82492C20.0729 4.87275 19.7096 3.97191 19.2233 3.14644C19.202 3.11053 19.18 3.07538 19.1596 3.03952C19.2357 3.09736 19.3119 3.1567 19.3873 3.21675C20.1732 3.8415 20.8639 4.57027 21.444 5.38106C22.0299 6.20283 22.4862 7.08909 22.7989 8.01487C23.1212 8.9707 23.2853 9.95288 23.2853 10.9343C23.2853 11.7934 23.0729 12.769 22.6729 13.7549C22.2533 14.7876 21.641 15.7881 20.9027 16.6472Z" fill="#4338CA"/>
+              </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Harvested</div>
+              <div class="card-info">600/32000</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-16" fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="column" fxFlex="60" fxLayoutAlign="center center"></div>
+    <div fxLayout="column" fxFlex="40" fxLayoutAlign="center center">
+      <div class="search-field">
+        <svg ibmIconSearch size="20"></svg>
+        <input type="text" placeholder="Search by recipe, stage, room, cultivar">
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-org-table" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="100" fxLayout="column">
+      <div class="card card-top">
+        <table mat-table [dataSource]="items">
+          <!-- Position Column -->
+          <ng-container matColumnDef="groups">
+            <th width="130" mat-header-cell *matHeaderCellDef> Groups </th>
+            <td mat-cell *matCellDef="let element"> {{element.groups}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="cultivar">
+            <th width="130" mat-header-cell *matHeaderCellDef> Cultivar </th>
+            <td mat-cell *matCellDef="let element"> {{element.cultivar}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="plantCount">
+            <th width="130" mat-header-cell *matHeaderCellDef> Plant Count </th>
+            <td mat-cell *matCellDef="let element"> {{element.plantCount}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="stageDays">
+            <th width="130" mat-header-cell *matHeaderCellDef> Stage/Days </th>
+            <td  mat-cell *matCellDef="let element"> {{element.stageDays}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="location">
+            <th width="130" mat-header-cell *matHeaderCellDef> Location </th>
+            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="startDate">
+            <th width="130" mat-header-cell *matHeaderCellDef> Start Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="finishDate">
+            <th width="130" mat-header-cell *matHeaderCellDef> Finish Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.finishDate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th width="130" mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> <a href="#" (click)="openHarvestDialog($event)">Harvests+</a> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div class="harvests-item" *ngFor="let item of items; index as i;">
+          <div>
+            <div class="harvests-item-title">
+              <b>Groups</b>
+              <span>{{item.groups}}</span>
+            </div>
+            <div class="harvests-item-title">
+              <b>Plant Count</b>
+              <span>{{item.plantCount}}</span>
+            </div>
+            <div class="harvests-item-title">
+              <b>Stage/Days</b>
+              <span>{{item.stageDays}}</span>
+            </div>
+          </div>
+          <div>
+            <div class="harvests-item-title">
+              <b>Cultivar</b>
+              <span>{{item.cultivar}}</span>
+            </div>
+            <div class="harvests-item-title">
+              <b>Start Date</b>
+              <span>{{item.startDate}}</span>
+            </div>
+            <div class="harvests-item-title">
+              <b>Finish Date</b>
+              <span>{{item.finishDate}}</span>
+            </div>
+          </div>
+          <div>
+            <div class="harvests-item-title">
+              <b>Location</b>
+              <span>{{item.location}}</span>
+            </div>
+            <div class="harvests-item-title">
+              <b>Action</b>
+              <span><a href="#" (click)="openHarvestDialog($event)">Harvests+</a> </span>
+            </div>
+            <div class="harvests-item-title"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

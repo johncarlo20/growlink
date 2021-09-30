@@ -1,0 +1,40 @@
+<mat-table [dataSource]="historyData">
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+    <mat-cell *matCellDef="let inv">{{inv.Status}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="number">
+    <mat-header-cell *matHeaderCellDef>Invoice Number</mat-header-cell>
+    <mat-cell *matCellDef="let inv">{{inv.Number}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="pdfURL">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let inv">
+      <a *ngIf="inv.PdfUrl" target="_blank" [href]="inv.PdfUrl">View PDF</a>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef>Created At</mat-header-cell>
+    <mat-cell *matCellDef="let inv">{{inv.Date | date}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="paidDate">
+    <mat-header-cell *matHeaderCellDef>Paid At</mat-header-cell>
+    <mat-cell *matCellDef="let inv">{{inv.PaidDate | date}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="paid">
+    <mat-header-cell *matHeaderCellDef>Paid</mat-header-cell>
+    <mat-cell *matCellDef="let inv">
+      <mat-checkbox [checked]="inv.Paid" [disabled]="true">
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="total">
+    <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+    <mat-cell *matCellDef="let inv">{{inv.Total | currency}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="mat-ripple mat-row-selectable"></mat-row>
+</mat-table>
+
+<mat-paginator [hidden]="!pagination" [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>

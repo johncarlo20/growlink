@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>{{device.Name}}</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editDeviceForm" (ngSubmit)="update()" [formGroup]="editDeviceForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('required')">
+          Device Name is required
+        </mat-error>
+        <mat-error *ngIf="name.hasError('server')">
+          {{name.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Device Type" formControlName="devType">
+          <mat-option *ngFor="let dt of deviceTypes" [value]="dt.value">{{dt.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="devType.hasError('server')">
+          {{devType.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dosingPump || isSharedController">
+      <mat-form-field fxFlex="50" *ngIf="dosingPump">
+        <input matInput type="number" step="0.1" placeholder="Maximum Gallons/Hour" formControlName="maxFlow">
+        <mat-error *ngIf="maxFlow.hasError('required')">
+          Maximum Gallons/Hour is required for Dosing Pumps
+        </mat-error>
+        <mat-error *ngIf="maxFlow.hasError('server')">
+          {{maxFlow.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox *ngIf="isSharedController" fxFlex="50" formControlName="isShared">Shared Device</mat-checkbox>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="editDeviceForm.invalid || loading">Save
+    Changes</button>
+  <button mat-raised-button mat-dialog-close [disabled]="loading">Cancel</button>
+</div>

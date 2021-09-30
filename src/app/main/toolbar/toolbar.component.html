@@ -1,0 +1,123 @@
+<mat-toolbar class="p-0 mat-elevation-z1 fuse-white-500">
+
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+
+    <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+
+      <button mat-button class="toggle-button-navbar mat-icon-button ml-3"
+        (click)="toggleSidebarOpen('navbar')">
+        <img class="logo-icon" src="assets/images/logos/menu.svg">
+      </button>
+
+      <div class="toolbar-separator" fxHide.gt-md></div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNav">
+        <div class="logo ml-16">
+          <img class="logo-icon" src="assets/images/logos/leaf.png">
+        </div>
+      </div>
+
+     
+      <!-- uncomment to use shortcuts
+            <div class="px-8 px-mat-16">
+                <fuse-shortcuts></fuse-shortcuts>
+            </div> -->
+
+    </div>
+
+
+    <!-- <div *ngIf="hasProSupport" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center" style="font-size: 14px;"
+      class="mr-8">
+      Growlink Pro Support 800-530-8615
+    </div> -->
+
+    <div *ngIf="isDomainAdmin" class="org-list" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="start center">
+      <mat-select placeholder="All Organizations" [(ngModel)]="selectedOrg" (selectionChange)="changeOrg($event)">
+        <mat-option *ngFor="let org of orgs" [value]="org.Id">
+          {{ org.Name }}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div [matBadge]="UnreadCount | async" [matBadgeHidden]="(UnreadCount | async) == 0" matBadgePosition="before"
+            matBadgeOverlap="false" matBadgeColor="accent" class="username mr-12 text-right" fxHide
+            fxShow.gt-sm>
+             <b>{{username}}</b>
+             <div class="username-status">Online</div>  
+        </div>
+          <img class="avatar" src="assets/images/avatars/profile.svg">    
+        </div>
+      </button>
+
+      <mat-menu #userMenu="matMenu">
+
+        <button mat-menu-item *ngIf="ValidSubscription" [routerLink]="['inbox']">
+          <mat-icon [matBadge]="UnreadCount | async" [matBadgeHidden]="(UnreadCount | async) == 0"
+            matBadgeColor="accent" matBadgeSize="small">notifications</mat-icon>
+          <span>Inbox</span>
+        </button>
+
+        <button mat-menu-item *ngIf="ValidSubscription && (isAccountAdmin || (!isSubscriptionCustomer && isAdmin))" [routerLink]="['users']">
+          <mat-icon>supervisor_account</mat-icon>
+          <span>Manage Users</span>
+        </button>
+
+        <button mat-menu-item *ngIf="ValidSubscription && isAccountAdmin && isSubscriptionCustomer" [routerLink]="['subscription']">
+          <mat-icon>attach_money</mat-icon>
+          <span>Manage Subscription</span>
+        </button>
+
+        <button mat-menu-item class="" (click)="eulaModal()">
+          <mat-icon>business_center</mat-icon>
+          <span>End User License Agreement</span>
+        </button>
+
+        <button mat-menu-item class="" [routerLink]="['login']">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+
+      </mat-menu>
+
+      <div class="toolbar-separator"></div>
+
+      <!-- uncomment if to implement search
+            <fuse-search-bar (onInput)="search($event)"></fuse-search-bar>
+
+            <div class="toolbar-separator"></div> -->
+
+
+      <!-- uncomment if  to implement mulitple languages (multiple steps needed)
+                <button mat-button fxHide fxShow.gt-xs
+                    class="language-button"
+                    [matMenuTriggerFor]="languageMenu">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="flag mr-8" [src]="'assets/images/flags/'+selectedLanguage.flag+'.png'">
+                    <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
+                </div>
+            </button>
+
+            <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
+
+                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
+                        <span class="iso">{{lang.title}}</span>
+                    </div>
+                </button>
+
+            </mat-menu>
+
+            <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+
+      <button mat-icon-button class="quick-panel-toggle-button" (click)="toggleSidebarOpen('quickPanel')"
+        aria-label="Toggle quick panel">
+        <mat-icon class="secondary-text">format_list_bulleted</mat-icon>
+      </button>
+ -->
+    </div>
+  </div>
+</mat-toolbar>

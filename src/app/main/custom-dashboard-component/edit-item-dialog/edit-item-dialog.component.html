@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Edit Dashboard {{itemType}}</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editDashboardItemForm" (ngSubmit)="submit()" [formGroup]="editDashboardItemForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input id="customName" type="text" matInput placeholder="Custom Name" formControlName="customName">
+        <mat-error *ngIf="customName.hasError('server')">
+          {{customName.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dashboardItem.Type == 'label'">
+      <mat-form-field fxFlex="50" class="mr-8">
+        <mat-select placeholder="Caption Size" [formControl]="labelSize">
+          <mat-option *ngFor="let option of labelSizeOptions" [value]="option.value">{{option.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="50">
+        <mat-select placeholder="Alignment" [formControl]="align">
+          <mat-option *ngFor="let option of alignOptions" [value]="option.value">{{option.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dashboardItem.Type == 'label'">
+      <mat-checkbox fxFlex="50" [formControl]="bold">Bold</mat-checkbox>
+      <mat-checkbox fxFlex="50" [formControl]="underline">Underlined</mat-checkbox>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dashboardItem.Type == 'gauge'">
+      <mat-checkbox fxFlex="50" [formControl]="hasEUMin">Set Engineering Minimum</mat-checkbox>
+      <mat-form-field fxFlex="50">
+        <input id="euMin" type="number" matInput placeholder="EU Min" formControlName="euMin">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dashboardItem.Type == 'gauge'">
+      <mat-checkbox fxFlex="50" [formControl]="hasEUMax">Set Engineering Maximum</mat-checkbox>
+      <mat-form-field fxFlex="50">
+        <input id="euMax" type="number" matInput placeholder="EU Max" formControlName="euMax">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dashboardItem.Type == 'light-sensor'">
+      <mat-form-field fxFlex="20" style="padding-right: 16px;">
+        <input id="value" type="number" matInput placeholder="Threshold" formControlName="onThreshold" class="text-right">
+        <span matSuffix>{{lightLevelDisplayUnit}}</span>
+        <mat-error *ngIf="onThreshold.hasError('required')">
+          Threshold is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex="80" *ngIf="dashboardItem.Options?.WidgetSize === 'icon-only'">
+        <mat-select placeholder="Alignment" [formControl]="align">
+          <mat-option *ngFor="let option of alignOptions" [value]="option.value">{{option.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </form>
+  <!-- <pre>{{dashboardItem | json}}</pre> -->
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="editDashboardItemForm.invalid">
+    Update Item
+  </button>
+  <button mat-raised-button (click)="dialogRef.close(null)">Close</button>
+  <button mat-raised-button (click)="removeItem()" color="warn">Remove</button>
+</div>

@@ -1,0 +1,361 @@
+#heat-maps-new {
+  .card {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 100%;
+    padding: 32px;
+    
+    &-title {
+      color: #1E293B;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    &-label {
+      color: #374151;
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input {
+      background: #FFFFFF;
+      border: 1px solid #D1D5DB;
+      border-radius: 6px;
+      padding: 9px 13px;
+      color: #1E293B;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    &-img-upload {
+      margin-top: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #D1D5DB;
+
+      &-label {
+        color: #374151;
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      &-content {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      label.btn-upload {
+        background: #FFFFFF;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        padding: 9px 13px;
+        margin-left: 20px;
+        color: #6B7280;
+        font-weight: 600;
+        font-size: 14px;      
+        cursor: pointer;
+
+        &:hover {
+          opacity: .8;
+        }
+      }
+    }
+
+    &-group {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #D1D5DB;
+
+      &-tool {
+        display: flex;
+        align-items: center;
+        color: #1E293B;
+
+        span {
+          margin-right: 20px;
+          font-weight: 500;
+        }
+
+        svg {
+          margin-top: 2px;
+        }
+      }
+
+      &-expanded {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 24px 0;
+        border-bottom: 1px solid #D1D5DB;
+
+        &-label, &-value {
+          font-weight: 500;
+          font-size: 14px;
+          color: #6B7280;
+          margin-bottom: 16px;
+        }
+
+        &-value {
+          color: #1E293B;
+          margin-bottom: 0;
+        }
+
+        svg {
+          fill: #9CA3AF;
+          cursor: pointer;
+          transition: .3s;
+          margin-right: 10px;
+
+          &:hover {
+            fill: #1E293B;
+
+          }
+        }
+      }
+    } 
+
+    &-add-group {
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #D1D5DB;
+
+      &.btns {
+        justify-content: flex-end;
+
+        button[mat-button] {
+          border: 1px solid #D1D5DB;
+          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05));
+          border-radius: 30px;
+          color: #1E293B;
+          font-weight: 600;
+          font-size: 14px;
+          margin-right: 10px;
+        }
+
+        button[mat-raised-button] {
+          background: #0EA5E9;
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+          border-radius: 30px;
+          color: #fff;
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        svg {
+          fill: #9CA3AF;
+          cursor: pointer;
+          transition: .3s;
+          margin-left: 10px;
+
+          &:hover {
+            fill: #1E293B;
+
+          }
+        }
+      }
+
+      .badge {
+        background: #E2E8F0;
+        border-radius: 20px;
+        margin-right: 16px;
+        padding: 10px 18px;
+        color: #4B5563;
+        align-items: center;
+        display: flex;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: .8;
+        }
+
+        svg {
+          margin-right: 4px;
+          fill: #4B5563;
+        }
+      }
+    }
+
+    &-new-group {
+      padding-top: 24px;
+      border-bottom: 1px solid #D1D5DB;
+
+      &-title {
+        font-weight: 600;
+        font-size: 16px;
+        color: #1E293B;
+      }
+
+      &-content {
+        display: flex;
+        margin-left: -8px;
+        margin-right: -8px;
+
+        div {
+          margin: 24px 8px;
+          flex: 1;
+        }
+
+        .mat-select-placeholder {
+          font-size: 16px;
+        }
+      }
+
+      &-range {
+        position: relative;
+        height: 48px;
+      }
+    }
+
+    &-actions {
+      margin-top: 24px;
+      text-align: right;
+
+      button {
+        background: #0EA5E9;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        border-radius: 30px;
+        width: 300px;
+        padding: 9px;
+        text-align: center;
+        border: 0;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          opacity: .8;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-slide-toggle-content {
+  font-weight: 500;
+  color: #1E293B;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+#heat-maps-new.mobile {
+  padding: 0 24px;
+
+  > div[fxlayout=row] {
+    > div[fxflex] {
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+
+    button {
+      flex: 1;
+    }
+  }
+
+  .card-group-tool span, .card-add-group .badge {
+    white-space: nowrap;
+  }
+
+  .card-add-group {
+    flex-direction: column;
+    
+    div:first-child {
+      margin-bottom: 8px;
+    }
+  }
+
+  .nutrient-new-card-details {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .input-clock {
+    width: 100%;
+  }
+
+  .nutrient-choose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      flex: 1;
+      padding: 4px 16px !important;
+    }
+}
+
+  .mat-slide-toggle {
+    width: 100% !important;
+  }
+
+  .nutrient-new-card-time {
+    flex-direction: column;
+  }
+
+  .nutrient-new-card-actions {
+    display: flex;
+    align-items: center;
+
+    button {
+      flex: 1;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .nutrient-choose-time {
+    flex-direction: column;
+    margin: 0 !important;
+
+    div {
+      width: 100%;     
+      margin-top: 16px !important;
+    }
+  }
+
+  .card-actions {
+    button {
+      width: 100% !important;
+    }
+  }
+
+  .nutrient-new-card-slider-container {
+    margin: 0 !important;
+    flex-direction: column;
+
+    .nutrient-new-card-slider {
+      width: 100%;
+    }
+  }
+}
+
+#heat-maps-new.tablet {
+  div[fxlayout=column] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}

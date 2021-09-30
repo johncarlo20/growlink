@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Delete {{customer.FirstName}} {{customer.LastName}}({{customer.EmailAddress}})</h2>
+<mat-dialog-content>
+  <p>
+    The user account being removed has <strong>{{ownedControllers.length}} controller(s)</strong> attached, which will also be removed from your organization.<br/>
+    If you'd like to avoid this, please contact Growlink Support to migrate those controllers to a different account before deleting this user.
+  </p>
+  <strong>Please confirm that you want to proceed?</strong>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="onConfirm()" color="warn">Proceed</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

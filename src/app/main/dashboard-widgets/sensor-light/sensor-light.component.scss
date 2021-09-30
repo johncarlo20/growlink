@@ -1,0 +1,54 @@
+.outdated {
+  opacity: 0.5;
+}
+
+.ngx-charts-outer svg {
+  overflow: overlay;
+}
+
+fuse-sensor-light .custom-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 99%;
+
+  &.sensor-alert {
+    border: 1px solid darkred;
+  }
+
+  .active-alert {
+    animation: ease-in-out fadeInOut 3s 0s infinite;
+  }
+
+  &.icon-only {
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0;
+    justify-content: flex-end;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  max-width: 100%;
+
+  &.icon-only {
+    grid-template-columns: auto;
+
+    > div {
+      text-align: center;
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    color: darkred;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: darkred;
+  }
+}

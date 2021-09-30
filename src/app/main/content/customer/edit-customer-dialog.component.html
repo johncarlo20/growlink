@@ -1,0 +1,105 @@
+<h2 mat-dialog-title>{{isRegistration ? 'New User' : 'User Details'}}</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editCustomerForm" (ngSubmit)="update()" [formGroup]="editCustomerForm" novalidate>
+
+    <ng-container *ngIf="isRegistration">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100">
+          <input matInput autocomplete="email" placeholder="Email Address" formControlName="email">
+          <mat-error *ngIf="email.hasError('required')">
+            Email Address is required
+          </mat-error>
+          <mat-error *ngIf="email.hasError('email')">
+            Email Address is not a valid address
+          </mat-error>
+          <mat-error *ngIf="email.hasError('server')">
+            {{email.getError('server')}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="100">
+          <input type="password" autocomplete="new-password" matInput placeholder="Password" formControlName="password">
+          <mat-error *ngIf="password.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">
+            Password needs to be minimum 8 characters
+          </mat-error>
+          <mat-error *ngIf="password.hasError('server')">
+            {{password.getError('server')}}
+          </mat-error>
+          </mat-form-field>
+      </div>
+    </ng-container>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="First Name" formControlName="first">
+        <mat-error *ngIf="first.hasError('required')">
+          First Name is required
+        </mat-error>
+        <mat-error *ngIf="first.hasError('server')">
+          {{first.getError('server')}}
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Last Name" formControlName="last">
+        <mat-error *ngIf="last.hasError('required')">
+          Last Name is required
+        </mat-error>
+        <mat-error *ngIf="last.hasError('server')">
+          {{last.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Company" formControlName="company">
+        <mat-error *ngIf="company.hasError('server')">
+          {{company.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div *ngIf="orgs.length" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Organization" [formControl]="organization">
+          <mat-option *ngFor="let org of orgs" [value]="org.Id">{{org.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="organization.hasError('required')">
+          Organization is required
+        </mat-error>
+        <mat-error *ngIf="organization.hasError('server')">
+          {{organization.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Role" [formControl]="role">
+          <mat-option *ngFor="let opt of roles" [value]="opt.value">{{opt.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="role.hasError('required')">
+          User Role is required
+        </mat-error>
+        <mat-error *ngIf="role.hasError('server')">
+          {{role.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start start">
+      <mat-checkbox fxFlex="50" formControlName="offlineNotifications">Receive Offline Notifications</mat-checkbox>
+      <mat-checkbox *ngIf="role.value < 3" fxFlex="50" formControlName="accountAdmin">Manage Users &amp; Subscription</mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="editCustomerForm.invalid || loading">{{isRegistration ? 'Create
+    User' : 'Save Changes'}}</button>
+    <button *ngIf="!isRegistration" mat-raised-button (click)="delete()" color="warn" [disabled]="isCurrentUser || loading">Delete</button>
+    <button mat-raised-button mat-dialog-close [disabled]="loading">Cancel</button>
+</div>

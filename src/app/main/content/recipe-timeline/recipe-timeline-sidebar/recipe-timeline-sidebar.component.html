@@ -1,0 +1,77 @@
+<div class="recipe-timeline-sidebar" [class]="{open: openSidebar}">
+  <div class="recipe-timeline-sidebar-top">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="recipe-timeline-sidebar-header">
+    <button class="recipe-timeline-sidebar-btn">
+      <svg ibmIconCheckmark size="20"></svg>
+      <span>Mark Complete</span>
+    </button>
+    <div class="recipe-timeline-sidebar-tools">
+      <button class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconThumbsUp size="20"></svg>
+      </button>
+      <button class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconAttachment size="20"></svg>
+      </button>
+      <button class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconTask size="20"></svg>
+      </button>
+      <button class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconLink size="20"></svg>
+      </button>
+      <button class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+      </button>
+      <button (click)="closeSidebar()" class="recipe-timeline-sidebar-tools-btn">
+        <svg ibmIconPageLast size="20"></svg>
+      </button>
+    </div>
+  </div>
+  <div class="recipe-timeline-sidebar-title" ngClass.xs="mobile">
+    Move Plan into veg
+  </div>
+  <table>
+    <tr>
+      <td>Assignee</td>
+      <td>
+        <div class="recipe-timeline-sidebar-assignee">
+          <svg ibmIconUserAvatar size="20"></svg>
+          <span>No assignee</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Due Date</td>
+      <td>
+        <div class="recipe-timeline-sidebar-date">
+          <svg ibmIconCalendar size="20"></svg>
+          <span>Today – 11 Aug</span>
+        </div>       
+      </td>
+    </tr>
+    <tr>
+      <td>Priority</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td class="recipe-timeline-sidebar-desc">Add more detail to this task</td>
+    </tr>
+    <tr>
+      <td>Track time</td>
+      <td>
+        <div class="recipe-timeline-sidebar-time">
+          <svg ibmIconTime size="20"></svg>
+          <span>– : – AM</span>
+        </div>      
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="recipe-timeline-sidebar-overlay" (click)="closeSidebar()" [class]="{open: openSidebar}"></div>

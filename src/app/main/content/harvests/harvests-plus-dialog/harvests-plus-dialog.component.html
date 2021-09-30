@@ -1,0 +1,34 @@
+<h1 class="harvest-plus-dialog" mat-dialog-title>
+  <span>Harvest+</span>
+  <svg ibmIconClose size="24" (click)="onNoClick()"></svg>
+</h1>
+
+<div mat-dialog-content>
+  <div class="harvest-plus-dialog-crop">
+    <div>Finish the crop cycle</div>
+    <button mat-button>Stop</button>
+  </div>
+  <div class="harvest-plus-dialog-collect">
+    <div class="harvest-plus-dialog-collect-tab">
+      <div class="active">Harvest</div>
+      <div>Lab</div>
+    </div>
+    <div class="harvest-plus-dialog-collect-item">
+      <div>Wet weight</div>
+      <span>12133</span>
+    </div>
+    <div class="harvest-plus-dialog-collect-item">
+      <div>Dry weight</div>
+      <span>12133</span>
+    </div>
+    <div class="harvest-plus-dialog-collect-item">
+      <div>Plant weight</div>
+      <span>12133</span>
+    </div>
+  </div>
+</div>
+  
+<div class="dialog-actions">
+  <button mat-stroked-button class="mr-10" (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" cdkFocusInitial>Add</button>
+</div>

@@ -1,0 +1,153 @@
+<div id="login" ngClass.xs="mobile" ngClass.sm="mobile tablet" ngClass.md="mobile tablet" fxLayout="column" fusePerfectScrollbar>
+
+  <div id="login-form-wrapper" fxLayout="column">
+
+    <div id="login-form" *fuseIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+      <img class="logo-bottom" src="assets/images/logos/login-logo.svg">
+
+      <div class="logo">
+        <img src="assets/images/logos/leaf.svg">
+      </div>
+
+      <ng-container *ngIf="loginScreen">
+        <div class="title">Login to your account</div>
+        <div class="subtitle">Don't have an account? <a href="">Sign up</a></div>
+      </ng-container>
+
+      
+      <div class="title" *ngIf="!loginScreen">Reset account password </div>
+
+      <div *ngIf="requestScreen" style="text-align: justify; margin-bottom: 2rem; font-size: 14px; color: #7683A1;">
+        If you'd like to reset your password, please enter your e-mail address and press <strong style="color: #0EA5E9">REQUEST PIN</strong>.
+        You will receive a six digit PIN via e-mail, which will allow you to create a new password for your account.
+      </div>
+
+      <form name="loginForm" [formGroup]="loginForm" novalidate>
+        <label for="login-email">Email</label>
+        <mat-form-field floatLabel="never" appearance="outline" class="login-field">
+          <input id="login-email" matInput placeholder="jsaliva@growlink.com" formControlName="email" autocomplete="email">
+          <mat-error *ngIf="email.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="!email.hasError('required') && email.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email.hasError('server')">
+            {{email.getError('server')}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="resetScreen" appearance="outline">
+          <input matInput placeholder="Reset PIN" formControlName="pin">
+          <mat-error *ngIf="pin.hasError('required')">
+            Password Reset PIN required
+          </mat-error>
+          <mat-error *ngIf="pin.hasError('minlength')">
+            Password Reset PIN length is 6 digits
+          </mat-error>
+          <mat-error *ngIf="pin.hasError('maxlength')">
+            Password Reset PIN length is 6 digits
+          </mat-error>
+          <mat-error *ngIf="pin.hasError('server')">
+            {{pin.getError('server')}}
+          </mat-error>
+        </mat-form-field>
+
+        <label *ngIf="loginScreen" for="login-password">Password</label>
+        <mat-form-field *ngIf="loginScreen" appearance="outline" class="login-field">
+          <input id="login-password" matInput type="password" placeholder="••••••••••" formControlName="password"
+            autocomplete="current-password">
+          <mat-error *ngIf="password.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="password.hasError('server')">
+            {{password.getError('server')}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="resetScreen" appearance="outline" class="login-field">
+          <input matInput type="password" placeholder="New Password" formControlName="password"
+            autocomplete="new-password">
+          <mat-error *ngIf="password.hasError('required')">
+            New Password is required
+          </mat-error>
+          <mat-error *ngIf="password.hasError('server')">
+            {{password.getError('server')}}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="forgot-password-container" *ngIf="!showLoadingBar && loginScreen">
+          <mat-checkbox>Remember me</mat-checkbox>
+
+          <a href="#" color="primary" aria-label="Forgot Password"
+             (click)="showRequestScreen($event)">
+            Forgot Password?
+          </a>
+        </div>
+
+        <button mat-flat-button color="accent" class="submit-button" aria-label="LOG IN"
+          [disabled]="loginForm.invalid" *ngIf="!showLoadingBar && loginScreen" (click)="login()">
+          LOGIN
+        </button>
+
+        <div class="continue-with" *ngIf="!showLoadingBar && loginScreen">
+          <div class="continue-with-or">
+            <hr>
+            <span>Or continue with</span>
+            <hr>
+          </div>
+          <div class="continue-with-social">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M10.3506 11.8853H14.9816" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M14.9825 8.02637H14.1725C12.9155 8.02637 11.8955 9.04637 11.8955 10.3034V11.1134V17.1164" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6665 22.5713C18.1894 22.5713 22.6665 18.0941 22.6665 12.5713C22.6665 7.04844 18.1894 2.57129 12.6665 2.57129C7.14366 2.57129 2.6665 7.04844 2.6665 12.5713C2.6665 18.0941 7.14366 22.5713 12.6665 22.5713Z" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                  <path d="M19.95 9.92139C19.95 9.50717 19.6142 9.17139 19.2 9.17139C18.7858 9.17139 18.45 9.50717 18.45 9.92139H19.95ZM3.60565 16.679C3.36134 16.3445 2.89213 16.2714 2.55764 16.5157C2.22314 16.76 2.15004 17.2293 2.39435 17.5637L3.60565 16.679ZM2.87257 16.3823C2.46438 16.4527 2.19053 16.8406 2.2609 17.2488C2.33128 17.657 2.71924 17.9309 3.12743 17.8605L2.87257 16.3823ZM5.7 16.2214L5.93829 16.9325C6.18386 16.8502 6.36961 16.6471 6.4296 16.3951C6.4896 16.1432 6.41535 15.8781 6.23322 15.694L5.7 16.2214ZM4.8 5.42139L5.46058 5.06623C5.33797 4.83817 5.10639 4.68949 4.84798 4.67292C4.58958 4.65636 4.34091 4.77425 4.19018 4.98479L4.8 5.42139ZM10.2 9.92139L10.0229 10.6502C10.2422 10.7035 10.4739 10.6552 10.6537 10.5186C10.8334 10.3821 10.9421 10.1718 10.9496 9.94618L10.2 9.92139ZM18.3 7.22139L17.6738 7.63416C17.8126 7.84468 18.0479 7.97139 18.3 7.97139V7.22139ZM21 7.22139L21.624 7.63741C21.7775 7.40727 21.7918 7.11136 21.6613 6.86749C21.5307 6.62363 21.2766 6.47139 21 6.47139V7.22139ZM18.576 9.50536C18.3462 9.85001 18.4393 10.3157 18.784 10.5454C19.1286 10.7752 19.5943 10.6821 19.824 10.3374L18.576 9.50536ZM18.45 9.92139C18.45 12.9334 17.5901 15.4424 16.0501 17.1877C14.5204 18.9213 12.2593 19.9714 9.3 19.9714V21.4714C12.6407 21.4714 15.3296 20.2715 17.1749 18.1801C19.0099 16.1004 19.95 13.2094 19.95 9.92139H18.45ZM9.3 19.9714C7.64458 19.9714 6.5374 19.5438 5.70459 18.9545C4.84887 18.349 4.23772 17.5444 3.60565 16.679L2.39435 17.5637C3.01928 18.4194 3.75813 19.4148 4.83816 20.179C5.9411 20.9594 7.35542 21.4714 9.3 21.4714V19.9714ZM3.12743 17.8605C3.15119 17.8564 3.16958 17.852 3.17593 17.8505C3.18458 17.8484 3.19158 17.8465 3.19578 17.8454C3.20418 17.8432 3.21102 17.8412 3.21457 17.8401C3.22212 17.8379 3.229 17.8358 3.23345 17.8344C3.24301 17.8314 3.25419 17.8278 3.26552 17.8242C3.28875 17.8167 3.32054 17.8063 3.35881 17.7937C3.43573 17.7684 3.54331 17.7327 3.67073 17.6903C3.92579 17.6055 4.26283 17.4931 4.5986 17.3808C4.93446 17.2686 5.26937 17.1565 5.5203 17.0725C5.64577 17.0305 5.75026 16.9955 5.82338 16.971C5.85994 16.9588 5.88866 16.9492 5.90825 16.9426C5.91804 16.9393 5.92555 16.9368 5.93061 16.9351C5.93314 16.9343 5.93506 16.9336 5.93634 16.9332C5.93699 16.933 5.93747 16.9328 5.9378 16.9327C5.93796 16.9326 5.93808 16.9326 5.93816 16.9326C5.93821 16.9326 5.93824 16.9325 5.93826 16.9325C5.93828 16.9325 5.93829 16.9325 5.7 16.2214C5.46171 15.5102 5.4617 15.5103 5.46168 15.5103C5.46166 15.5103 5.46163 15.5103 5.46159 15.5103C5.46151 15.5103 5.46139 15.5104 5.46123 15.5104C5.46091 15.5105 5.46042 15.5107 5.45978 15.5109C5.4585 15.5113 5.45659 15.512 5.45407 15.5128C5.44902 15.5145 5.44152 15.517 5.43175 15.5203C5.41219 15.5268 5.3835 15.5365 5.34697 15.5487C5.2739 15.5732 5.16949 15.6081 5.0441 15.6501C4.79331 15.7341 4.45867 15.8461 4.12315 15.9582C3.78755 16.0703 3.4514 16.1825 3.19749 16.267C3.07042 16.3092 2.96458 16.3443 2.88987 16.3689C2.85233 16.3812 2.82377 16.3906 2.80469 16.3967C2.79486 16.3999 2.78939 16.4016 2.78715 16.4023C2.78569 16.4028 2.78787 16.4021 2.79198 16.4009C2.79381 16.4003 2.79923 16.3988 2.80654 16.3968C2.8102 16.3958 2.81673 16.3941 2.82499 16.3921C2.83095 16.3907 2.84904 16.3863 2.87257 16.3823L3.12743 17.8605ZM6.23322 15.694C3.48941 12.92 3.28417 8.82698 5.40982 5.85799L4.19018 4.98479C1.64783 8.53579 1.89859 13.4447 5.16678 16.7488L6.23322 15.694ZM4.13942 5.77654C5.31949 7.97146 7.53919 10.0465 10.0229 10.6502L10.3771 9.1926C8.40881 8.71423 6.49451 6.98932 5.46058 5.06623L4.13942 5.77654ZM10.9496 9.94618C10.9872 8.81019 11.388 7.87106 12.0242 7.22095C12.6563 6.57493 13.5621 6.17139 14.7 6.17139V4.67139C13.1869 4.67139 11.8857 5.21784 10.9521 6.17182C10.0225 7.12171 9.49883 8.43258 9.45041 9.89659L10.9496 9.94618ZM14.7 6.17139C15.5057 6.17139 16.0959 6.3243 16.5489 6.56606C17.0003 6.80696 17.3617 7.16074 17.6738 7.63416L18.9262 6.80862C18.5053 6.17003 17.9692 5.62382 17.2551 5.24272C16.5426 4.86248 15.6993 4.67139 14.7 4.67139V6.17139ZM18.3 7.97139H21V6.47139H18.3V7.97139ZM20.376 6.80536L18.576 9.50536L19.824 10.3374L21.624 7.63741L20.376 6.80536Z" fill="#4B5563"/>
+                  </svg>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.73301 6.47129C4.33301 7.97129 3.33301 10.0713 3.33301 12.7713C3.33301 14.7713 4.03301 16.6713 5.13301 18.1713C6.43301 19.8713 8.33301 20.8713 9.33301 21.2713V20.5713C9.33301 20.5713 9.33301 18.9713 10.233 17.5713C8.23301 17.4713 6.63301 15.5713 6.63301 13.3713C6.63301 12.5713 6.93301 11.8713 7.43301 11.2713L7.53301 9.37129C7.53301 8.87129 8.03301 8.57129 8.53301 8.67129L10.633 9.47129C11.233 9.37129 11.833 9.27129 12.533 9.27129C13.233 9.27129 13.833 9.37129 14.433 9.47129L16.233 8.57129C16.733 8.37129 17.233 8.77129 17.233 9.27129L17.333 11.1713C17.833 11.7713 18.133 12.5713 18.133 13.2713C18.133 15.4713 16.533 17.2713 14.533 17.4713C15.433 18.8713 15.433 20.4713 15.433 20.4713V21.1713C16.433 20.7713 18.333 19.7713 19.633 18.0713C20.733 16.6713 21.433 14.6713 21.433 12.6713C21.433 9.97129 20.433 7.87129 19.033 6.37129C17.133 4.47129 14.533 3.57129 12.333 3.57129C10.133 3.57129 7.53301 4.47129 5.73301 6.47129V6.47129Z" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </div>
+          </div>
+        </div>
+
+        <button mat-flat-button color="accent" class="submit-button" aria-label="REQUEST PIN"
+          [disabled]="email.invalid" *ngIf="!showLoadingBar && requestScreen" (click)="requestPasswordReset()">
+          REQUEST PIN
+        </button>
+        <button mat-flat-button color="accent" class="submit-button" aria-label="RESET PASSWORD"
+          [disabled]="loginForm.invalid" *ngIf="!showLoadingBar && resetScreen" (click)="resetPassword()">
+          RESET PASSWORD
+        </button>
+        
+        <button mat-button color="primary" class="forgot-password" aria-label="Already have a PIN?"
+          [disabled]="email.invalid" *ngIf="!showLoadingBar && requestScreen" (click)="showResetScreen()">
+          Already have a PIN?
+        </button>
+        <button mat-button color="primary" class="forgot-password" aria-label="Back to Login"
+          *ngIf="!showLoadingBar && !loginScreen" (click)="showLoginScreen()">
+          Back to Login
+        </button>
+
+        <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate">
+        </mat-progress-bar>
+
+      </form>
+      <mat-error *ngIf="error">
+        {{error}}
+      </mat-error>
+    </div>
+    <div class="login-background">
+
+    </div>
+
+  </div>
+
+</div>

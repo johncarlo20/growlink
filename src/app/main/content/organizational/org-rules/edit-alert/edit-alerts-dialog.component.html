@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>Edit Alert - {{ruleControllers}}</h2>
+<mat-dialog-content>
+  {{ruleDescription}}
+  <form class="p-24" name="editAlertForm" (ngSubmit)="update()" [formGroup]="editAlertForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100" disabled>
+        <input id="sensor" type="text" matInput placeholder="Sensor" readonly [value]="selectedSensor.Name">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="analogSensor">
+      <mat-form-field fxFlex="40">
+        <mat-select placeholder="Comparison" [formControl]="compType">
+          <mat-option *ngFor="let comp of comparisonTypeOptions" [value]="comp.value">{{comp.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="compType.hasError('required')">
+          Comparison is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex="60">
+        <input id="value" type="number" matInput placeholder="Threshold" formControlName="value" class="text-right">
+        <span matSuffix>{{selectedSensor.ReadingSuffix}}</span>
+        <mat-error *ngIf="value.hasError('required')">
+          Threshold is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!analogSensor">
+      <mat-form-field fxFlex="40">
+        <mat-select placeholder="State" (selectionChange)="stateChanged($event)" [value]="value.value == 0 ? 1 : 0">
+          <mat-option *ngIf="lowFullSensor" [value]="0">State is LOW</mat-option>
+          <mat-option *ngIf="lowFullSensor" [value]="1">State is FULL</mat-option>
+          <mat-option *ngIf="onOffSensor" [value]="0">State is OFF</mat-option>
+          <mat-option *ngIf="onOffSensor" [value]="1">State is ON</mat-option>
+        </mat-select>
+        <mat-error *ngIf="compType.hasError('required')">
+          State is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="60" class="deviant-list">
+        <mat-select placeholder="Time of Day" [formControl]="dayNight">
+          <mat-option *ngFor="let opt of dayNightOptions" [value]="opt.value">{{opt.caption}}</mat-option>
+        </mat-select>
+        <mat-hint align="start"><span [innerHTML]="deviantTimeOfDay"></span></mat-hint>
+        <mat-error *ngIf="dayNight.hasError('required')">
+          Time of Day is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex="40" class="deviant-list">
+        <fuse-duration-input placeholder="Minimum Duration" formControlName="minDuration"></fuse-duration-input>
+        <mat-hint align="end"><span [innerHTML]="deviantMinimumDurations"></span></mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100" class="deviant-list">
+        <mat-chip-list #emailList>
+          <mat-chip *ngFor="let email of emails.value" [selectable]="true" [removable]="true" (removed)="removeEmail(email)">
+            {{email}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Emails" [matChipInputFor]="emailList" [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="addEmail($event)"
+            [formControl]="email">
+          <mat-error *ngIf="email.value && email.hasError('email')">
+            Email Address is invalid
+          </mat-error>
+        </mat-chip-list>
+        <mat-hint align="start"><span [innerHTML]="deviantEMails"></span></mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-checkbox fxFlex="50" formControlName="active" [indeterminate]="deviantIsActive.length > 0">Active</mat-checkbox>
+      <mat-checkbox fxFlex="50" formControlName="sendPush" [indeterminate]="deviantSendPush.length > 0">Send Push Notifications</mat-checkbox>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="50" class="mat-hint deviant-hint" [innerHTML]="deviantIsActive"></div>
+      <div fxFlex="50" class="mat-hint deviant-hint" [innerHTML]="deviantSendPush"></div>
+    </div>
+    </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="editAlertForm.invalid">Save Changes</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

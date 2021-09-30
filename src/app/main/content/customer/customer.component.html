@@ -1,0 +1,49 @@
+<div id="modules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div *ngIf="!isReadOnly" class="p-24" fxLayout="row" fxLayoutAlign="start center">
+    <!-- <mat-icon class="s-24">supervisor_account</mat-icon>
+    <h2>User Management</h2> -->
+    <button mat-raised-button (click)="createUser()" color="primary">Create</button>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-table [dataSource]="customers">
+      <ng-container matColumnDef="first">
+        <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>>
+        <mat-cell *matCellDef="let user">{{user.FirstName}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="last">
+        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>>
+        <mat-cell *matCellDef="let user">{{user.LastName}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>>
+        <mat-cell *matCellDef="let user">{{user.Company}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>>
+        <mat-cell *matCellDef="let user">{{user.EmailAddress}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="offlineNotifications">
+        <mat-header-cell *matHeaderCellDef>Offline Notifications</mat-header-cell>>
+        <mat-cell *matCellDef="let user">
+          <mat-checkbox [checked]="user.ReceiveOfflineNotifications" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="manage_users">
+        <mat-header-cell *matHeaderCellDef>Manage Users</mat-header-cell>>
+        <mat-cell *matCellDef="let user">
+          <mat-checkbox [checked]="user.IsAccountAdmin" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="roles">
+        <mat-header-cell *matHeaderCellDef>Roles</mat-header-cell>>
+        <mat-cell *matCellDef="let user">{{getRoles(user)}}</mat-cell>>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="mat-ripple mat-row-selectable" (click)="editUser(row)"></mat-row>>
+    </mat-table>
+  </div>
+</div>

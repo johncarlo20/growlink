@@ -1,0 +1,20 @@
+canvas {
+  max-width: 70%;
+}
+
+@media (max-width: 959px) {
+  canvas {
+    max-width: 100%;
+  }
+  .sensor-list {
+    width: 100%;
+  }
+}
+
+.unsaved {
+  &::after {
+    content: "*";
+    margin-left: 1rem;
+    color: #f44336;
+  }
+}

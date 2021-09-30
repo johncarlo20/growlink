@@ -1,0 +1,7 @@
+<mat-card class="auto-width mb-8" [ngClass.gt-sm]="custom ? '' : 'mr-8'" [class.outdated]="sensor.outdated"
+  [class.custom-dashboard]="custom" [class.sensor-alert]="hasActiveAlerts | async">
+  <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="sensor.numericValue | async"
+    [bottomLabel]="sensor.value | async" [options]="gaugeOptions" [name]="customName || sensor.name"
+    [activeAlerts]="activeAlerts" [readingSuffix]="sensor.readingSuffix">
+  </rg-gauge-chart>
+</mat-card>

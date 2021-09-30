@@ -1,0 +1,39 @@
+<mat-card  class="auto-width" [ngClass.gt-sm]="custom ? '' : 'mr-32'" [class.custom-dashboard]="custom" style="height: 100%">
+
+  <div fxLayout="row" fxLayoutAlign="center flex-start"style="height: 100%">
+
+    <div class="wrapper text-center">
+      <div fxLayout="row" fxLayoutAlign="space-between center" [class.mb-8]="!hasRecipe">
+        <div class="h3 secondary-text">{{customName || task.name}}</div>
+        <mat-label *ngIf="!task.isActive" class="secondary-text" style="font-size: smaller;">(Inactive)</mat-label>
+      </div>
+      <div *ngIf="hasRecipe" fxLayout="row" fxLayoutAlign="space-between center" class="mb-8">
+        <mat-label class="secondary-text" style="font-size: smaller;">{{task.recipe}}</mat-label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <fuse-duration-input *ngIf="!task.isReadOnly && offState" [(ngModel)]="duration" [condensed]="true"
+          [style.opacity]="verifyingDosing ? '0%' : '100%'">
+        </fuse-duration-input>
+        <mat-label *ngIf="task.isReadOnly || !offState" [style.opacity]="verifyingDosing ? '0%' : '100%'">
+          {{remaining}}
+        </mat-label>
+        <div *ngIf="task.state">
+          <img width="30px" [ngClass]="{addPointer: !task.isReadOnly && state === 'Off'}" [src]="task.stateImages[0]"
+            (click)="updateTaskState(task, 'start')">
+            <img width="30px" [ngClass]="{addPointer: !task.isReadOnly && state === 'On'}" [src]="task.stateImages[1]"
+            (click)="updateTaskState(task, 'stop')">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="verifyingDosing" class="loading-overlay" [style.width]="'100%'">
+      <mat-label style="font-size: smaller;">Verifying fertigation status...</mat-label>
+      <mat-spinner [mode]="'indeterminate'" [diameter]="16"
+        style="margin-left: 0.75rem"></mat-spinner>
+    </div>
+
+    <div *ngIf="!task.isActive" class="inactive-overlay" [style.width]="'100%'">
+    </div>
+  </div>
+
+</mat-card>

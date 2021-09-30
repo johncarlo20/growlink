@@ -1,0 +1,18 @@
+mat-form-field {
+    padding-right: 1rem;
+}
+
+mat-card-header {
+    margin-left: -24px;
+    mat-card-title {
+        font-size: 16px;
+    }
+}
+
+form {
+  max-width: 70rem;
+
+  input#shutdown {
+    text-align: right;
+  }
+}

@@ -1,0 +1,38 @@
+<div id="dosing-recipes" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-24" *ngIf="!isReadOnly">
+    <button mat-raised-button (click)="pushControllerUpdate()" color="primary" [disabled]="!changes || loading">Update
+      Controller</button>
+    <button mat-raised-button (click)="addMotorControl()" color="primary" [disabled]="loading">Add Motor Control</button>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-table [dataSource]="motorControls">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>>
+        <mat-cell *matCellDef="let module">{{module.Name}}</mat-cell>>
+      </ng-container>
+      <!-- <ng-container matColumnDef="devices">
+        <mat-header-cell *matHeaderCellDef>Devices</mat-header-cell>>
+        <mat-cell *matCellDef="let recipe">{{getDeviceNames(recipe)}}</mat-cell>>
+      </ng-container> -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell fxFlex="150px" *matHeaderCellDef></mat-header-cell>>
+        <mat-cell fxFlex="150px" fxLayoutAlign="end center" *matCellDef="let module">
+          <button *ngIf="!isReadOnly" mat-icon-button color="primary" (click)="editMotorControl(module)">
+            <mat-icon aria-label="Edit Motor Control">mode_edit</mat-icon>
+          </button>
+          <button mat-icon-button color="secondary" [disabled]="loading"
+            (click)="viewHistory(module.Guid, module.Name)">
+            <mat-icon aria-label="View History">list_alt</mat-icon>
+          </button>
+          <button *ngIf="!isReadOnly" mat-icon-button color="warn" (click)="deleteMotorControl(module)">
+            <mat-icon aria-label="Delete Motor Control">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="motorControlColumns"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: motorControlColumns;" matRipple class="mat-ripple"></mat-row>>
+    </mat-table>
+  </div>
+</div>

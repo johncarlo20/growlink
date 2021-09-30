@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Dosing Recipe</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editRecipeForm" (ngSubmit)="update()" [formGroup]="editRecipeForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input id="name" type="text" matInput placeholder="Recipe Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('server')">
+          {{name.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="30">
+        <input id="tds" type="number" step="0.01" matInput placeholder="Target Tds" formControlName="tds">
+        <span matSuffix>{{tdsDisplayUnit}}</span>
+        <mat-error *ngIf="tds.hasError('server')">
+          {{tds.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxFlex="30">
+        <mat-icon class="mx-8">arrow_forward</mat-icon>
+        <div style="padding-top: 2px;">{{tdsScaled}} {{tdsDisplayUnit}}</div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="column" fxFlex="50">
+        <mat-label class="fake-form-label">{{scaleFactorValue}}</mat-label>
+        <mat-slider [step]="5" [tickInterval]="2" [min]="50" [max]="200" thumbLabel formControlName="scaleFactor">
+        </mat-slider>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start start" *ngFor="let dev of deviceOptions">
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center"
+        style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)">
+        <span style="min-width: 15rem;">{{dev.Name}}</span>
+        <mat-form-field>
+          <input id="name" type="number" min="0" max="100" step=".01" size="5" matInput
+            [formControlName]="'ratio-' + dev.Guid" style="text-align: end">
+          <span matSuffix>ml/gal</span>
+          <mat-icon matSuffix [ngStyle]="isActive(dev)">check</mat-icon>
+        </mat-form-field>
+        <mat-icon class="mx-8">arrow_forward</mat-icon>
+        <span style="min-width: 10rem;text-align: right;">{{scaledValue(dev)}}</span>
+        <mat-checkbox class='ml-8' [formControlName]="'scaling-excluded-' + dev.Guid">Exclude from scaling</mat-checkbox>
+      </div>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="editRecipeForm.invalid || loading">
+    {{recipe.Id ? 'Save Changes' : 'Add Recipe'}}
+  </button>
+  <button mat-raised-button mat-dialog-close [disabled]="loading">Cancel</button>
+</div>

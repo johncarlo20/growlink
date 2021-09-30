@@ -1,0 +1,20 @@
+@mixin toolbar-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    toolbar {
+
+        .toolbar-separator {
+            background: map-get($foreground, divider);
+        }
+    }
+}
+
+.mat-toolbar {
+    box-shadow: 0px 1px 3px rgb(0 0 0 / 10%), 0px 1px 2px rgb(0 0 0 / 6%) !important;
+}
+
+.username-status {
+   color: #4B5563;
+   font-weight: 400;
+}

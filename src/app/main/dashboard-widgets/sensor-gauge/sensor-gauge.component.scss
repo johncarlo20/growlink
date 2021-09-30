@@ -1,0 +1,29 @@
+.chart-loading {
+    opacity: 0.5;
+    mat-spinner {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.nowrap-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.outdated {
+  opacity: 0.5;
+}
+
+fuse-sensor-gauge .custom-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 99%;
+  align-items: center;
+  justify-content: center;
+
+  &.sensor-alert {
+    border: 1px solid darkred;
+  }
+}

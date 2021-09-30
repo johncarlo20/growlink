@@ -1,0 +1,34 @@
+<div id="dashboard" class="page-layout simple fullwidth p-8" fusePerfectScrollbar>
+  <mat-expansion-panel expanded="true" class="mat-primary-50-bg">
+    <form class="p-8 pb-0" name="searchForm" [formGroup]="searchForm" novalidate>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field>
+          <mat-select placeholder="Range" formControlName="range">
+            <mat-option *ngFor="let rng of searchRanges" [value]="rng.value">{{rng.caption}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="config" class="ml-16">
+          <mat-select placeholder="Data Group" formControlName="selectedGroup">
+            <mat-option *ngFor="let group of config.Groups" [value]="group.Id">{{group.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-expansion-panel>
+  <div *ngIf="config">
+    <div *ngIf="!realTime" class="p-8" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center">
+      <div fxFlex="5" class="text-nowrap" style="font-size:1.5rem; margin-left: 1rem;">
+        <button mat-icon-button color="primary" (click)="toggleHistoryPlayback()">
+          <mat-icon>{{!playHistory ? 'play_arrow' : 'pause'}}</mat-icon>
+        </button>
+      </div>
+      <mat-slider fxFlex="85" [min]="minTimestamp" [max]="maxTimestamp" [step]="stepTimestamp" [value]="sliderValue"
+        (input)="onUserChange($event)">
+      </mat-slider>
+      <div fxFlex="10" class="text-nowrap" style="font-size:1.5rem; margin-left: 1rem;">{{currentTimestamp}}<br/>{{useTimezone}}</div>
+    </div>
+    <div class="p-8" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start">
+      <canvas id="heatmap-canvas"></canvas>
+    </div>
+  </div>
+</div>

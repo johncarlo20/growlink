@@ -1,0 +1,636 @@
+.matrix .mat-cell {
+    font-size: 1.1rem;
+}
+
+.matrix {
+    overflow: auto;
+    height: calc(100vh - 160px);
+
+    .mat-cell:first-child,
+    .mat-header-cell:first-child {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 16rem;
+    }
+
+    .mat-cell,
+    .mat-header-cell {
+      min-width: 10rem;
+    }
+}
+
+.filter {
+  padding: 1.75rem;
+
+  mat-form-field {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+}
+
+.header {
+  height: auto !important;
+  min-height: 0 !important;
+  font-weight: 500;
+  font-size: 24px;
+  color: #1E293B;
+
+  &-subtitle {
+    font-weight: normal;
+    font-size: 14px;
+    color: #4B5563;
+    margin-top: 4px;
+  }
+
+  &.devices {
+    font-size: 16px;
+  }
+}
+
+.add-btn {
+  background: #0EA5E9;
+  box-shadow: 0px 1px 3px rgba(14, 165, 233, 0.2), 0px 1px 2px rgba(14, 165, 233, 0.06);
+  border-radius: 100px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
+
+  svg {
+    fill: #FFFFFF;
+  }
+}
+
+.expand-btn {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: #FFFFFF;
+  margin-left: 12px;
+  border: 0;
+}
+
+#harvests .dashboard-org-table {
+  .card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      font-weight: 600;
+      font-size: 16px;
+      color: #000000;
+      padding: 12px 0;
+      text-align: center;
+    }
+
+    td {
+      font-weight: 500;
+      font-size: 14px;
+      color: #4B5563;
+      text-align: center;
+      padding: 25px 0;
+
+      &.sensor {
+        color: #9CA3AF;
+      }
+
+      &.enable {
+        color: #EF4444;
+      }
+    }
+  }
+}
+
+#harvests .search-field {
+  position: relative;
+  width: 100%;
+
+  input {
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 9px 13px;
+    padding-left: 45px;
+    font-weight: 500;
+    font-size: 14px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  svg {
+    fill: #6B7280;
+    position: absolute;
+    top: 8px;
+    left: 17px;
+  }
+}
+
+#harvests .card {
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+
+  &-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    margin-top: 24px;
+    margin-left: 24px;
+  }
+
+  &-list {
+    ul {
+      list-style: none;
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        border-bottom: 1px solid rgba(118, 131, 161, 0.16);
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+        font-size: 14px;
+        cursor: pointer;
+        transition: .3s;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &:hover {
+            opacity: .6;
+        }
+
+        svg {
+            fill: #6B7280;
+        }
+
+        .card-list-title {
+            flex: 1;
+            margin-left: 8px;
+
+            div {
+                margin-top: 4px;
+                color: #4B5563;
+            }
+        }
+
+        .card-list-info {
+            margin-right: 16px;
+
+            &-status {
+                font-weight: 600;
+                font-size: 12px;
+                color: #10B981;
+                margin-bottom: 4px;
+
+                &.running {
+                    color: #F59E0B;
+                }
+            }
+
+            &-time {
+                display: flex;
+                align-items: center;
+                font-weight: 600;
+                font-size: 12px;
+                color: #4B5563;
+
+                svg {
+                    fill: #9CA3AF;
+                    margin-right: 4px;
+                }
+            }
+        }
+      }
+    }
+  }
+
+  &-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+
+    &.home {
+      background: #ECFDF5;
+      fill: #047857;
+    }
+
+    &.cultivar {
+      background: #FFFBEB;
+      fill: #C2410C;
+    }
+
+    &.leaf {
+      background: #ECFEFF;
+      fill: #0F766E;
+    }
+
+    &.flowing {
+      background: #EFF6FF;
+      fill: #1D4ED8;
+    }
+
+    &.curing {
+      background: #F0F9FF;
+      fill: #0284C7;
+    }
+
+    &.harvested {
+      background: #EEF2FF;
+      fill: #4338CA;
+    }
+
+    &-info {
+      fill: #6B7280;
+    }
+
+    &.valve {
+      background: #EEF2FF;
+    }
+  }
+
+  &-top {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+
+    &-title {
+        font-weight: 600;
+        font-size: 16px;
+        color: #1E293B;
+    }
+  }
+
+  &-details {
+    flex: 1;
+  }
+
+  &-tabs {
+    display: flex;
+    color: #4B5563;
+    font-weight: 500;
+    font-size: 14px;    
+  }
+
+  &-tab {
+    padding: 12px 16px;
+    cursor: pointer;
+
+    &.active, &:hover {
+      background: #F1F5F9;
+      border-radius: 100px;
+    }
+  }
+
+  &-right {
+    width: auto;
+    min-height: 60vh;
+    padding: 23px 25px;
+    width: 100%;
+  }
+
+  &-filter {
+    background: #F0F9FF;
+    border-radius: 56px;
+    color: #0EA5E9;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 6px 12px;
+    display: flex;
+    height: 28px;
+
+    svg {
+      margin-left: 5px;
+      fill: #0EA5E9;
+    }
+  }
+
+  &-list {
+    li {
+      svg {
+        fill: #9CA3AF;
+      }
+
+      span {
+        margin: 0 8px;
+        flex: 1;
+      }
+
+      button {
+        border: 0;
+        padding: 6px 17px;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: 100px;
+        background: #E0F2FE;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        color: #0C4A6E;
+
+        &.resolved {
+          background: #FEF3C7;
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+          color: #78350F;
+        }
+      }
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+
+    .add-btn {
+      width: 56px;
+      height: 56px;
+      margin: 0;
+    }
+  }
+}
+
+.bottom-info {
+  margin: 0 -12px;
+  margin-bottom: 24px;
+
+  .card {
+    &-top {
+      align-items: center;
+    }
+
+    &-info {
+      margin-top: 4px;
+    }
+
+    &-details {
+      flex: 1;
+    }
+
+    &-detail-icons {
+      display: flex;
+      align-items: center;
+
+      .auto-on, .power {
+        width: 32px;
+        height: 32px;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .auto-on {
+        background: #FFFBEB;
+        margin-right: 8px;
+
+        svg {
+          fill: #B45309
+        }
+      }
+
+      .power {
+        background: #F1F5F9;
+        
+        svg {
+          fill: #374151;
+        }
+
+        &.active {
+          background: #D1FAE5;
+         
+          svg {
+            fill: #047857;
+          }
+        }
+      }
+    }
+  }
+}
+
+#harvests .top-info {
+  background: #FFFFFF;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  overflow: hidden;
+
+  &:last-child {
+    border-radius: 0 0 16px 16px;
+    border-top: 1px solid #F1F5F9;
+  }
+
+  div[fxlayout=column] {
+      border-right: 1px solid #F1F5F9 !important;
+
+      &:last-child {
+          border-right: 0 !important;
+      }
+  }
+
+  .card {
+    width: auto;
+    border-radius: 0;
+    border-right: 0;
+    border-left: 0;
+    box-shadow: none;
+
+    &-title {
+      margin-top: 0;
+      margin-left: 0;
+    }
+
+    &-info {
+      font-weight: normal;
+      font-size: 14px;
+      color: #4B5563;
+      margin-top: 6px;
+    }
+  }
+}
+
+.tabs {
+  .card-tab {
+    color: #4B5563;
+
+    &.active, &:hover {
+      background: #E2E8F0;
+      color: #1E293B;
+    }
+  }
+}
+
+.bottom-tabs {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.harvests-item {
+  display: none;
+}
+
+#harvests.mobile {
+  > div[fxlayout=row] {
+    flex-direction: column !important;
+
+    > div[fxlayout=column] {
+      max-width: 100% !important;
+      width: 100%;
+    }
+  }
+
+  table {
+    display: none;
+  }
+
+  .card {
+    padding: 16px;
+    margin-bottom: 24px;
+
+    &.card-top {
+      margin-bottom: 0;
+    }
+  }
+
+  .harvests-item {
+    display: block;
+    padding: 0 4px;
+    padding-top: 16px;
+    width: 100%;
+    border-bottom: 1px solid #F1F5F9;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &-title {
+      flex: 1;
+      padding: 0 12px;
+
+      b {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        color: #000000;
+      }
+
+      span {
+        display: block;
+        color: #4B5563;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .card {
+    &-top {
+      overflow-x: scroll !important;
+    }
+
+    &-title {
+      font-size: 14px;
+      margin-top: 8px !important;
+    }
+
+    &-icon-info {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+  .add-btn {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    margin-right: 0;
+  }
+
+  .top-info {
+    flex-direction: column !important;
+    border-top: 0 !important;
+
+    > div[fxlayout=column] {
+      max-width: 100% !important;
+      width: 100%;
+      border-right: 0 !important;
+      border-bottom: 1px solid #F1F5F9 !important;
+
+      .card {
+        width: 100%;
+        border-right: 0;
+
+        &-title {
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+#harvests.tablet {
+  > div[fxlayout=row] {
+    flex-direction: column !important;
+
+    > div[fxlayout=column] {
+      max-width: 100% !important;
+      width: 100%;
+    }
+  }
+
+  th, td {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+
+  .card {
+    &-top {
+      overflow-x: scroll !important;
+    }
+
+    &-title {
+      font-size: 14px;
+      margin-top: 8px !important;
+    }
+
+    &-icon-info {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+  .add-btn {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    margin-right: 0;
+  }
+}

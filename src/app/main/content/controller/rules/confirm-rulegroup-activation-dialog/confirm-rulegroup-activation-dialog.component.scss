@@ -1,0 +1,46 @@
+mat-dialog-content {
+  text-align: center;
+}
+p {
+  margin-top: 0px;
+}
+strong {
+  font-size: larger;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: [old] 1fr [new] 1fr;
+  grid-template-rows: [headers] auto [rules] auto;
+  grid-template-areas:
+    "old-header" "new-header"
+    "old-rules" "new-rules";
+
+  .old-header {
+    grid-area: "old-header";
+  }
+  .new-header {
+    grid-area: "new-header";
+  }
+  .old-header, .new-header {
+    font-size: 18px;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .old-rules {
+    grid-area: "old-rules";
+  }
+  .new-rules {
+    grid-area: "new-rules";
+  }
+
+  .old-rules, .new-rules {
+    margin: 4px;
+    text-overflow: ellipsis;
+
+    li {
+      text-align: start;
+    }
+  }
+}

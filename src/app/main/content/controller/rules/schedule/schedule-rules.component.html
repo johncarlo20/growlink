@@ -1,0 +1,47 @@
+<mat-table [dataSource]="dataSource" matSort matSortActive="device" matSortDirection="asc"
+  (matSortChange)="sortOrderChange($event)">
+  <ng-container matColumnDef="device">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Device</mat-header-cell>
+    <mat-cell *matCellDef="let schedule">{{schedule.DisplayName || schedule.DeviceNames}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="daysOfWeek">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Days of Week</mat-header-cell>
+    <mat-cell *matCellDef="let schedule">{{schedule.DaysOfWeekHuman}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="startTime">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Start</mat-header-cell>
+    <mat-cell *matCellDef="let schedule">{{schedule.ControllerStartTime}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="endTime">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>End</mat-header-cell>
+    <mat-cell *matCellDef="let schedule">{{schedule.ControllerEndTime}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell fxFlex="250px" *matHeaderCellDef></mat-header-cell>
+    <mat-cell fxFlex="250px" fxLayoutAlign="end center" *matCellDef="let schedule">
+      <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading" (click)="editSchedule(schedule)">
+        <mat-icon aria-label="Edit schedule">mode_edit</mat-icon>
+      </button>
+      <button mat-icon-button color="secondary" [disabled]="loading"
+        (click)="viewHistory(schedule.Id, schedule.Name)">
+        <mat-icon aria-label="View History">list_alt</mat-icon>
+      </button>
+      <button *ngIf="!isReadOnly" mat-icon-button color="warn" [disabled]="loading" (click)="deleteSchedule(schedule)">
+        <mat-icon aria-label="Delete schedule">delete</mat-icon>
+      </button>
+      <mat-slide-toggle [checked]="schedule.IsActive" (change)="setScheduleActive($event, schedule)"
+        (click)="ignoreClick($event)" [disabled]="loading || isReadOnly" style="min-width: 100px">
+        {{schedule.IsActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="scheduleColumns"></mat-header-row>>
+  <mat-row *matRowDef="let row; columns: scheduleColumns;" matRipple class="mat-ripple mat-row-selectable"
+    [class.accent-50-bg]="selectedSchedule == row" [class.mat-row-disabled]="row && !row.IsActive"
+    (click)="selectSchedule(row)" (dblclick)="editSchedule(row)"></mat-row>>
+</mat-table>
+<mat-action-row class="mat-primary-100-bg">
+  <button mat-raised-button color="accent" (click)="addSchedule()" [disabled]="loading">Add
+    Schedule
+  </button>
+</mat-action-row>

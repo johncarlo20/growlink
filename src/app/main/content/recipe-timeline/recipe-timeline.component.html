@@ -1,0 +1,70 @@
+<div id="modules" ngClass.xs="mobile" ngClass.sm="tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row">
+    <div fxFlex="70" fxLayout="column">
+      <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start">
+        Recipe
+      </div>
+      <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start">Monitor metrics, check reports and review performance</div>    
+    </div>
+    <div fxFlex="30" fxLayoutAlign="end center" class="justify-content-flexend">
+      <div class="card-tabs tabs mt-24">
+        <div routerLink="/recipes" class="card-tab">Board</div>
+        <div class="card-tab active">Timeline</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-24" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="column">
+        <div class="task">
+          <div class="task-header task-header-fixed">          
+            <button class="btn-tool btn-text">
+              <span>Today</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconCheckmark size="20"></svg>
+              <span>All tasks</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconZoomIn size="20"></svg>
+              <span>Weeks</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconCaretSort size="20"></svg>
+              <span>Sort</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconColorPalette size="20"></svg>
+              <span>Color: Default</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconEdit size="20"></svg>
+              <span>Customize</span>
+            </button>
+            <button class="btn-tool btn-text">
+              <span>Unscheduled</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+            </button>     
+          </div>
+          
+          <div class="task-add task-add-timeline">
+            <div class="btn-group">
+              <button class="btn" (click)="openSidebar = !openSidebar">
+                <svg ibmIconAdd size="20"></svg>
+                Add task
+              </button>
+              <div class="btn-group-addon">
+                <svg ibmIconChevronDown size="20"></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gstc-wrapper" #gstcElement></div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<recipe-timeline-sidebar [openSidebar]="openSidebar" (sidebarClosed)="closeSidebar()"></recipe-timeline-sidebar>

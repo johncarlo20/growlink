@@ -1,0 +1,74 @@
+<h2 mat-dialog-title>Manual Task</h2>
+<mat-dialog-content>
+  {{ruleDescription}}
+
+  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="controller.FirmwareVersion < 204"
+    class="mat-elevation-z8 p-8">
+    <mat-icon aria-hidden="true" class="m-8" style="color: #f44336">warning</mat-icon>
+    The controller does not appear to support manual tasks.<br />
+    You may need to contact Growlink support to request a firmware upgrade.
+  </div>
+
+  <form class="p-24" name="editTriggerForm" (ngSubmit)="update()" [formGroup]="editManualTaskForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input id="displayName" type="text" matInput placeholder="Display Name" formControlName="displayName">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Devices" [formControl]="devices" multiple>
+          <mat-option *ngFor="let device of deviceOptions" [value]="device.Guid">{{device.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="devices.hasError('required')">
+          Device(s) required
+        </mat-error>
+        <mat-error *ngIf="devices.hasError('server')">
+          {{devices.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="controllerDosing && selectedDevicesDosing">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Dosing Recipe" [formControl]="dosingRecipe">
+          <mat-option [value]="null">None</mat-option>
+          <mat-option *ngFor="let recipe of dosingRecipes" [value]="recipe.Id">{{recipe.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="dosingRecipe.hasError('server')">
+          {{dosingRecipe.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <fuse-duration-input placeholder="Duration" formControlName="duration"></fuse-duration-input>
+        <mat-error *ngIf="duration.hasError('required')">
+          Duration is required
+        </mat-error>
+        <mat-error *ngIf="duration.hasError('server')">
+          {{duration.getError('server')}}
+        </mat-error>
+        <mat-error *ngIf="duration.hasError('valid')">
+          {{duration.getError('valid')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <fuse-device-throttles [editForm]="editManualTaskForm" [selectedDeviceThrottles]="selectedDeviceThrottles">
+    </fuse-device-throttles>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-checkbox fxFlex="50" formControlName="active">Active</mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="editManualTaskForm.invalid || loading">{{task.Id ? 'Save
+    Changes'
+    : 'Add Manual Task'}}</button>
+  <button mat-raised-button mat-dialog-close [disabled]="loading">Cancel</button>
+</div>

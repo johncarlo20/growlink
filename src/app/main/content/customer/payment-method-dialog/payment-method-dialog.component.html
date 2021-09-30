@@ -1,0 +1,95 @@
+<h2 mat-dialog-title>Payment Method</h2>
+<mat-dialog-content>
+  <form class="p-24" name="subscriptionForm" (ngSubmit)="createCustomerSubscription()" [formGroup]="subscriptionForm" novalidate>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Company Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('required')">
+          Company Name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="65">
+        <input matInput placeholder="Billing E-Mail Address" formControlName="email">
+        <mat-error *ngIf="email.hasError('required') || email.hasError('email')">
+          Valid Billing E-Mail address required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlexOffset="5" fxFlex="30">
+        <input matInput placeholder="Phone Number" formControlName="phone">
+        <mat-error *ngIf="phone.hasError('required')">
+          Phone Number is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100" class="hidden-hint">
+        <input matInput placeholder="Cardholder Name" formControlName="cardholderName">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100" class="hidden-hint">
+        <input matInput placeholder="Address Line 1" formControlName="addressLine1">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100" class="hidden-hint">
+        <input matInput placeholder="Address Line 2" formControlName="addressLine2">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="50" class="hidden-hint">
+        <mat-select placeholder="Country" formControlName="country">
+          <mat-option *ngFor="let c of countries" [value]="c.value">{{c.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlexOffset="5" fxFlex="50" class="hidden-hint" *ngIf="isUnitedStates">
+        <mat-select placeholder="State" formControlName="state">
+          <mat-option *ngFor="let s of states" [value]="s.value">{{s.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlexOffset="5" fxFlex="50" class="hidden-hint" *ngIf="!isUnitedStates">
+        <input matInput placeholder="Province/Area" formControlName="state">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="60" class="hidden-hint">
+        <input matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+      <mat-form-field fxFlexOffset="5" fxFlex="40" class="hidden-hint">
+        <input matInput placeholder="Postal Code" formControlName="postalCode">
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start" class="pb-8">
+      <mat-error *ngIf="cardholderName.touched && cardholderName.hasError('required')">
+        Cardholder Name is required
+      </mat-error>
+      <mat-error *ngIf="addressLine1.touched && addressLine1.hasError('required')">
+        Address Line 1 is required
+      </mat-error>
+      <mat-error *ngIf="city.touched && city.hasError('required')">
+        City is required
+      </mat-error>
+      <mat-error *ngIf="state.touched && state.hasError('required')">
+        State is required
+      </mat-error>
+      <mat-error *ngIf="postalCode.touched && postalCode.hasError('required')">
+        Postal Code is required
+      </mat-error>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <mat-label>Credit Card Details</mat-label>
+      <div #cardElement id="cardElement"></div>
+      <div id="card-element-errors"></div>
+    </div>
+  </form>
+  <div id="errors"></div>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="createCustomerSubscription()" color="primary" [disabled]="subscriptionForm.invalid || !cardValid || busy">
+    Set Payment Method
+  </button>
+  <button mat-raised-button mat-dialog-close [disabled]="busy">Cancel</button>
+</div>

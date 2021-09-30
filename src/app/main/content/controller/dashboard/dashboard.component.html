@@ -1,0 +1,648 @@
+<div id="dashboard-controller" ngClass.xs="mobile" ngClass.sm="mobile tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+    <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start center">
+      Analytics dashboard
+    </div>
+    <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start">Monitor metrics, check reports and review performance</div>
+    
+    <div class="top-info" fxLayout="row" fxLayoutAlign="start center">
+      
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconHome size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Crop</div>
+            <div class="card-info">Flower 01</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon cultivar">
+            <svg xmlns="http://www.w3.org/2000/svg" id="icon" width="20" height="20" viewBox="0 0 32 32">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: none;
+                  }
+                </style>
+              </defs>
+              <path d="M26.5859,6.5859A1.9862,1.9862,0,0,0,25.1719,6H17V2H15V12H6.8281a1.9862,1.9862,0,0,0-1.414.5859L2,16l3.4141,3.4141A1.9862,1.9862,0,0,0,6.8281,20H15V30h2V14h8.1719a1.9862,1.9862,0,0,0,1.414-.5859L30,10ZM6.8281,18l-2-2,2-2H15v4Zm18.3438-6H17V8h8.1719l2,2Z"/>
+              <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="20" height="20"/>
+            </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Zone</div>
+            <div class="card-info">Row A</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon leaf">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="none">
+              <path d="M18.5 6.75C19.2954 6.74911 20.0579 6.43275 20.6203 5.87033C21.1828 5.30792 21.4991 4.54538 21.5 3.75V1.5H19.25C18.4821 1.50125 17.7443 1.79846 17.1899 2.3298C16.8014 1.62475 16.231 1.03673 15.538 0.626979C14.8451 0.217227 14.055 0.000720084 13.25 0H11V2.25C11.0013 3.44307 11.4758 4.5869 12.3195 5.43053C13.1631 6.27416 14.3069 6.74869 15.5 6.75H16.25V16.5H7.25V12.75H8C8.79537 12.7491 9.55792 12.4327 10.1203 11.8703C10.6827 11.3079 10.9991 10.5454 11 9.75V7.5H8.75C7.98212 7.50125 7.24427 7.79846 6.6899 8.3298C6.30138 7.62475 5.73097 7.03673 5.03804 6.62698C4.34511 6.21723 3.55501 6.00072 2.75 6H0.5V8.25C0.50131 9.44307 0.975837 10.5869 1.81947 11.4305C2.6631 12.2742 3.80693 12.7487 5 12.75H5.75V16.5H0.5V18H21.5V16.5H17.75V6.75H18.5ZM17.75 4.5C17.7504 4.1023 17.9086 3.721 18.1898 3.43978C18.471 3.15856 18.8523 3.0004 19.25 3H20V3.75C19.9996 4.1477 19.8414 4.529 19.5602 4.81022C19.279 5.09144 18.8977 5.2496 18.5 5.25H17.75V4.5ZM7.25 10.5C7.2504 10.1023 7.40856 9.721 7.68978 9.43978C7.971 9.15856 8.3523 9.0004 8.75 9H9.5V9.75C9.4996 10.1477 9.34144 10.529 9.06022 10.8102C8.779 11.0914 8.3977 11.2496 8 11.25H7.25V10.5ZM5.75 11.25H5C4.20462 11.2491 3.44208 10.9327 2.87967 10.3703C2.31725 9.80792 2.00089 9.04537 2 8.25V7.5H2.75C3.54538 7.50089 4.30792 7.81725 4.87033 8.37967C5.43275 8.94208 5.74911 9.70463 5.75 10.5V11.25ZM16.25 5.25H15.5C14.7046 5.24911 13.9421 4.93275 13.3797 4.37033C12.8173 3.80792 12.5009 3.04538 12.5 2.25V1.5H13.25C14.0454 1.50089 14.8079 1.81725 15.3703 2.37967C15.9327 2.94208 16.2491 3.70462 16.25 4.5V5.25Z" fill="#047857"/>
+              </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Recipe</div>
+            <div class="card-info">Flower Stretch</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+  
+      <div fxFlex="22" fxLayout="column">
+        <div class="card card-top">
+          <div class="card-icon home">
+            <svg ibmIconRainDrop size="20"></svg>
+          </div>
+          <div class="card-details">
+            <div class="card-title">Water</div>
+            <div class="card-info">43.2 Gallons</div>
+          </div>
+          <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="top-info-mobile">
+        <div fxFlex="22" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon home">
+              <svg ibmIconHome size="20"></svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Crop</div>
+              <div class="card-info">Flower 01</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="22" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon cultivar">
+              <svg xmlns="http://www.w3.org/2000/svg" id="icon" width="20" height="20" viewBox="0 0 32 32">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: none;
+                    }
+                  </style>
+                </defs>
+                <path d="M26.5859,6.5859A1.9862,1.9862,0,0,0,25.1719,6H17V2H15V12H6.8281a1.9862,1.9862,0,0,0-1.414.5859L2,16l3.4141,3.4141A1.9862,1.9862,0,0,0,6.8281,20H15V30h2V14h8.1719a1.9862,1.9862,0,0,0,1.414-.5859L30,10ZM6.8281,18l-2-2,2-2H15v4Zm18.3438-6H17V8h8.1719l2,2Z"/>
+                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="20" height="20"/>
+              </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Zone</div>
+              <div class="card-info">Row A</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="22" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon leaf">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="none">
+                <path d="M18.5 6.75C19.2954 6.74911 20.0579 6.43275 20.6203 5.87033C21.1828 5.30792 21.4991 4.54538 21.5 3.75V1.5H19.25C18.4821 1.50125 17.7443 1.79846 17.1899 2.3298C16.8014 1.62475 16.231 1.03673 15.538 0.626979C14.8451 0.217227 14.055 0.000720084 13.25 0H11V2.25C11.0013 3.44307 11.4758 4.5869 12.3195 5.43053C13.1631 6.27416 14.3069 6.74869 15.5 6.75H16.25V16.5H7.25V12.75H8C8.79537 12.7491 9.55792 12.4327 10.1203 11.8703C10.6827 11.3079 10.9991 10.5454 11 9.75V7.5H8.75C7.98212 7.50125 7.24427 7.79846 6.6899 8.3298C6.30138 7.62475 5.73097 7.03673 5.03804 6.62698C4.34511 6.21723 3.55501 6.00072 2.75 6H0.5V8.25C0.50131 9.44307 0.975837 10.5869 1.81947 11.4305C2.6631 12.2742 3.80693 12.7487 5 12.75H5.75V16.5H0.5V18H21.5V16.5H17.75V6.75H18.5ZM17.75 4.5C17.7504 4.1023 17.9086 3.721 18.1898 3.43978C18.471 3.15856 18.8523 3.0004 19.25 3H20V3.75C19.9996 4.1477 19.8414 4.529 19.5602 4.81022C19.279 5.09144 18.8977 5.2496 18.5 5.25H17.75V4.5ZM7.25 10.5C7.2504 10.1023 7.40856 9.721 7.68978 9.43978C7.971 9.15856 8.3523 9.0004 8.75 9H9.5V9.75C9.4996 10.1477 9.34144 10.529 9.06022 10.8102C8.779 11.0914 8.3977 11.2496 8 11.25H7.25V10.5ZM5.75 11.25H5C4.20462 11.2491 3.44208 10.9327 2.87967 10.3703C2.31725 9.80792 2.00089 9.04537 2 8.25V7.5H2.75C3.54538 7.50089 4.30792 7.81725 4.87033 8.37967C5.43275 8.94208 5.74911 9.70463 5.75 10.5V11.25ZM16.25 5.25H15.5C14.7046 5.24911 13.9421 4.93275 13.3797 4.37033C12.8173 3.80792 12.5009 3.04538 12.5 2.25V1.5H13.25C14.0454 1.50089 14.8079 1.81725 15.3703 2.37967C15.9327 2.94208 16.2491 3.70462 16.25 4.5V5.25Z" fill="#047857"/>
+                </svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Recipe</div>
+              <div class="card-info">Flower Stretch</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+    
+        <div fxFlex="22" fxLayout="column">
+          <div class="card card-top">
+            <div class="card-icon home">
+              <svg ibmIconRainDrop size="20"></svg>
+            </div>
+            <div class="card-details">
+              <div class="card-title">Water</div>
+              <div class="card-info">43.2 Gallons</div>
+            </div>
+            <svg class="card-icon-info" ibmIconInformationFilled size="16"></svg>
+          </div>
+        </div>
+      </div>
+  
+      <div fxLayout="column" fxLayoutAlign="end center" class="justify-content-end top-info-mobile-expanded">
+        <button class="expand-btn" color="#0EA5E9">
+          <span>More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 9.49995L0.5 1.99995L1.55 0.949951L8 7.39995L14.45 0.949951L15.5 1.99995L8 9.49995Z" fill="#6B7280"/>
+            </svg>
+        </button>
+      </div>
+    </div>
+  
+    <div class="charts-info" fxLayout="row" fxLayoutAlign="start start">
+      <div fxFlex="65" fxFlex.md="60" fxLayout="column">
+        <div class="card card-chart-tablet ">
+          <div fxLayoutAlign="start" fxLayout="row">
+            <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+              <canvas baseChart
+                  width="90"
+                  height="90"
+                  [options]="{cutoutPercentage: 70}"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [legend]="false"
+                  [colors]="chartColors1"
+                  [chartType]="doughnutChartType">
+              </canvas>
+              <div class="text-center mt-8">Flow Rate</div>
+              <div class="chart-climate-info">
+                <svg ibmIconAddAlt size="16"></svg>
+                <div>
+                  <b>30</b>
+                  <div class="chart-climate-info-subtitle">GPM</div>
+                </div>
+                <svg ibmIconSubtractAlt size="16"></svg>
+              </div>
+            </div>
+            <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+              <canvas baseChart
+                  width="90"
+                  height="90"
+                  [options]="{cutoutPercentage: 70}"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [legend]="false"
+                  [colors]="chartColors2"
+                  [chartType]="doughnutChartType">
+              </canvas>
+              <div class="text-center mt-8">TDS</div>
+              <div class="chart-climate-info">
+                <svg ibmIconAddAlt size="16"></svg>
+                <div>
+                  <b>2.0</b>
+                  <div class="chart-climate-info-subtitle">EC</div>
+                </div>
+                <svg ibmIconSubtractAlt size="16"></svg>
+              </div>
+            </div>
+            <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+              <canvas baseChart
+                  width="90"
+                  height="90"
+                  [options]="{cutoutPercentage: 70}"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [legend]="false"
+                  [colors]="chartColors3"
+                  [chartType]="doughnutChartType">
+              </canvas>
+              <div class="text-center mt-8">PH 01</div>
+              <div class="chart-climate-info">
+                <svg ibmIconAddAlt size="16"></svg>
+                <div>
+                  <b>5.3</b>
+                  <div class="chart-climate-info-subtitle">T to 6.0</div>
+                </div>
+                <svg ibmIconSubtractAlt size="16"></svg>
+              </div>
+            </div>
+            <div fxFlex="20" class="chart-climate px-20" fxLayout="column" fxLayoutAlign="center center">
+              <canvas baseChart
+                  width="90"
+                  height="90"
+                  [options]="{cutoutPercentage: 70}"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [legend]="false"
+                  [colors]="chartColors4"
+                  [chartType]="doughnutChartType">
+              </canvas>
+              <div class="text-center mt-8">PH 01</div>
+              <div class="chart-climate-info">
+                <svg ibmIconAddAlt size="16"></svg>
+                <div>
+                  <b>5.3</b>
+                  <div class="chart-climate-info-subtitle">T to 6.0</div>
+                </div>
+                <svg ibmIconSubtractAlt size="16"></svg>
+              </div>
+            </div>
+            <div fxFlex="20" class="chart-climate time px-20" fxLayout="column" fxLayoutAlign="center center">
+              <div class="chart-climate-time">
+                <canvas baseChart
+                    width="48"
+                    height="48"
+                    [options]="{cutoutPercentage: 0}"
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [legend]="false"
+                    [colors]="chartColors5"
+                    [chartType]="doughnutChartType">
+                </canvas>
+              </div>
+              <b class="mt-8">03:30:59</b>
+              <div class="text-center mt-2">Time left</div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-24 line-chart">
+          <div class="card-header">
+            <div class="card-header-title">Line Chart</div>
+          </div>
+          <div class="p-24">
+            <canvas baseChart height="150"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="false"
+                  [chartType]="lineChartType"
+                  ></canvas>
+          </div>
+        </div>
+      </div>
+  
+      <div fxFlex="35" fxFlex.md="40" class="pl-24" fxLayout="column" fxLayoutAlign="center center">
+        <div class="card card-right">
+          <div class="card-top">
+            <div class="card-top-title">Event</div>
+            <div class="card-tabs">
+              <div class="card-tab active">History</div>
+              <div class="card-tab">Active</div>
+              <div class="card-tab">Queue</div>
+            </div>
+          </div>
+          <div class="card-list">
+            <ul>
+              <li>
+                <svg ibmIconRainDrop size="32"></svg>
+                <div class="card-list-title">
+                    <b>Flower room 91</b>
+                    <div>Zone B</div>
+                </div>
+                <div class="card-list-info">
+                    <div class="card-list-info-status">Completed</div>
+                    <div class="card-list-info-time">
+                        <svg ibmIconTime size="16"></svg>
+                        12:30 AM
+                    </div>
+                </div>
+                <svg ibmIconChevronRight size="24"></svg>
+              </li>
+              <li>
+                <svg ibmIconRainDrop size="32"></svg>
+                <div class="card-list-title">
+                    <b>Flower room 91</b>
+                    <div>Zone B</div>
+                </div>
+                <div class="card-list-info">
+                    <div class="card-list-info-status">Completed</div>
+                    <div class="card-list-info-time">
+                        <svg ibmIconTime size="16"></svg>
+                        12:30 AM
+                    </div>
+                </div>
+                <svg ibmIconChevronRight size="24"></svg>
+              </li>
+              <li>
+                <svg ibmIconRainDrop size="32"></svg>
+                <div class="card-list-title">
+                    <b>Flower room 91</b>
+                    <div>Zone B</div>
+                </div>
+                <div class="card-list-info">
+                    <div class="card-list-info-status">Completed</div>
+                    <div class="card-list-info-time">
+                        <svg ibmIconTime size="16"></svg>
+                        12:30 AM
+                    </div>
+                </div>
+                <svg ibmIconChevronRight size="24"></svg>
+              </li>
+              <li>
+                <svg ibmIconRainDrop size="32"></svg>
+                <div class="card-list-title">
+                    <b>Flower room 91</b>
+                    <div>Zone B</div>
+                </div>
+                <div class="card-list-info">
+                    <div class="card-list-info-status running">Running</div>
+                    <div class="card-list-info-time">
+                        <svg ibmIconTime size="16"></svg>
+                        12:30 AM
+                    </div>
+                </div>
+                <svg ibmIconChevronRight size="24"></svg>
+              </li>
+              <li>
+                <svg ibmIconRainDrop size="32"></svg>
+                <div class="card-list-title">
+                    <b>Flower room 91</b>
+                    <div>Zone B</div>
+                </div>
+                <div class="card-list-info">
+                    <div class="card-list-info-status running">Running</div>
+                    <div class="card-list-info-time">
+                        <svg ibmIconTime size="16"></svg>
+                        12:30 AM
+                    </div>
+                </div>
+                <svg ibmIconChevronRight size="24"></svg>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="bottom-info veg" fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="25" fxLayout="column">
+        <div class="card">
+          <div class="card-title">
+              <span>Veg A</span>
+              <span class="card-title-status">Completed</span>
+          </div>
+          <div class="card-veg-info">
+            <div class="card-veg-info-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="146" viewBox="0 0 70 146" fill="none">
+                    <path d="M36.7732 9.58106C35.7233 9.53968 34.8851 8.65093 34.8851 7.56247C34.8851 7.00476 35.1056 6.49921 35.4608 6.13399C35.7985 5.78677 36.2622 5.56368 36.7732 5.54389V1.02817H56.9694V5.54389C58.0193 5.58527 58.8574 6.47402 58.8574 7.56247C58.8574 8.12019 58.637 8.62574 58.2817 8.99095C57.944 9.33818 57.4803 9.56127 56.9694 9.58106V20.6545H62.0071V22.9933C61.5276 23.4845 61.2599 23.7615 60.7822 24.2527H60.1698V28.5705H60.6072C61.0849 29.0616 61.3526 29.3387 61.8321 29.8299V37.386H58.9449V49.7998H65.3317L68.8313 55.2564V59.335H68.3064V65.272H66.2941V106.831L62.2695 110.969V121.044H63.3194V125.722C62.6353 126.425 62.252 126.817 61.5696 127.521H61.1322V129.822C61.1322 131.632 59.7043 133.098 57.9458 133.098H57.5451V135.617H56.4077V137.416H57.6326V143.173H55.2703V144.972H38.4722V143.173H36.11V137.416H37.3348V135.617H36.1975V133.098H35.7968C34.0365 133.098 32.6104 131.632 32.6104 129.822V127.521H32.1729C31.4888 126.817 31.1055 126.425 30.4231 125.722V121.044H31.473V110.969C29.9017 109.353 29.0198 108.447 27.4485 106.831V65.272H25.4362V59.335H24.9112V55.5155H17.0564L16.227 54.6627L12.4211 50.7497L8.47884 46.6964L5.58642 49.6703L3.81911 47.8532L4.67302 42.7833L0.730713 38.73L4.67302 34.6784L8.61358 30.6251L18.9444 20.0032L26.6925 27.9696L30.6348 32.0229L31.9105 33.3345V29.8299C32.3882 29.3387 32.6559 29.0616 33.1353 28.5705H33.5728V24.2527H32.9603C32.4809 23.7615 32.2132 23.4845 31.7355 22.9933V20.6545H36.7714L36.7732 9.58106Z" fill="white"/>
+                    <path d="M36.7578 5.54389V1.02817H56.954V5.54389" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.954 9.58066V20.5605H36.7578V9.58066" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.8771 9.58288H36.8349C35.75 9.58288 34.8699 8.67793 34.8699 7.5625C34.8699 6.44706 35.75 5.54211 36.8349 5.54211H56.8771C57.962 5.54211 58.8422 6.44706 58.8422 7.5625C58.8422 8.67793 57.962 9.58288 56.8771 9.58288Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.7662 24.2525H32.9443C32.4666 23.7614 32.1972 23.4843 31.7195 22.9932V20.6544H61.9911V22.9932C61.5116 23.4843 61.2439 23.7614 60.7662 24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.1532 24.2525H33.5562V28.5703H60.1532V24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.5906 28.5705H33.1187C32.641 29.0616 32.3715 29.3387 31.8938 29.8298V37.386H61.8154V29.8298C61.336 29.3387 61.0683 29.0616 60.5906 28.5705Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M31.8938 32.1169H61.8154" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M39.0263 49.8H58.9285V37.3862H35.4357H34.7812" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M16.2111 54.663L12.4053 50.75L8.46297 46.6966L0.714844 38.7302L4.65715 34.6787L12.4053 42.6433" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M40.0347 41.7038H30.2813V49.7997H39.4257L33.8666 55.5154C27.2961 55.5154 23.611 55.5154 17.0405 55.5154L16.2111 54.6626L12.4053 50.7496L8.46297 46.6963L4.65715 42.7832L0.714844 38.7299L4.65715 34.6783L8.5977 30.625L18.9285 20.0031L26.6767 27.9695L30.619 32.0229L35.8351 37.386L40.0347 41.7038Z" fill="white" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M12.4051 42.6429L4.65698 34.6783L8.59754 30.6249L16.3457 38.5913" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.7884 55.4974L20.2878 42.6429" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M30.6183 32.0225L26.6763 27.9695L8.46219 46.6967L12.4042 50.7497L30.6183 32.0225Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M5.57052 49.67L3.80322 47.8529L4.65713 42.7831L8.46295 46.6961L5.57052 49.67Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8958 55.5153V55.5567H68.8158V55.2562L65.3162 49.7996H39.4646H30.3201" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.8158 55.5569H24.8958V59.335H68.8158V55.5569Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.2898 59.3352H25.4197V65.2722H68.2898V59.3352Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M66.2782 65.2718H27.4326V106.651H66.2782V65.2718Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2537 110.969H31.4572C29.8858 109.353 29.0039 108.447 27.4326 106.831V106.651H66.2782V106.831C64.7069 108.447 63.825 109.353 62.2537 110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2541 110.969H31.4575V121.043H62.2541V110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M63.303 121.044H30.4067V125.182H63.303V121.044Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M61.5532 127.521H32.1565C31.4724 126.818 31.0909 126.425 30.4067 125.722V125.182H63.303V125.722C62.6189 126.425 62.2357 126.818 61.5532 127.521Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.9294 133.097H35.7804C34.0201 133.097 32.594 131.631 32.594 129.821V127.52H61.1158V129.821C61.1158 131.631 59.6879 133.097 57.9294 133.097Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.594 129.822H61.1158" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.5292 133.098H36.1816V135.617H57.5292V133.098Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.391 135.617H37.3181V137.416H56.391V135.617Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.6175 137.416H36.095V143.173H57.6175V137.416Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M55.2547 143.173H38.4565V144.972H55.2547V143.173Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M51.1193 100.038C51.1193 98.1717 50.0497 96.8123 48.5753 96.8166C47.4844 96.8123 46.7003 97.4941 46.5256 98.7172L46.4574 98.7172C46.2528 97.7711 45.5497 97.1362 44.5696 97.1404C43.2401 97.1362 42.1534 98.2697 42.1534 100.013C42.1534 101.709 43.1634 103.021 44.625 103.055L44.625 101.534C43.892 101.508 43.4361 100.827 43.4361 100.021C43.4361 99.2072 43.9304 98.666 44.6634 98.6703C45.4261 98.666 45.9332 99.2967 45.9332 100.2L45.9332 100.971L47.152 100.971L47.152 100.2C47.152 99.0964 47.706 98.4402 48.4943 98.4444C49.2656 98.4402 49.794 99.1092 49.794 100.042C49.794 100.92 49.3381 101.598 48.6264 101.636L48.6264 103.238C50.1009 103.196 51.1193 101.879 51.1193 100.038ZM51.1662 92.128C51.1705 90.0229 49.5085 88.7658 46.6449 88.7658C43.7983 88.7658 42.1534 90.0314 42.1534 92.128C42.1534 94.2246 43.794 95.486 46.6449 95.4902C49.5043 95.4902 51.1662 94.2331 51.1662 92.128ZM49.8324 92.128C49.8324 93.2147 48.7415 93.8965 46.6449 93.8922C44.5653 93.888 43.4702 93.2104 43.4702 92.128C43.4702 91.0414 44.5653 90.3638 46.6449 90.3596C48.7415 90.3596 49.8324 91.0371 49.8324 92.128ZM41.8636 83.7704L41.8636 85.1213L52.3125 87.9338L52.3125 86.5829L41.8636 83.7704ZM51.1193 79.671C51.1193 77.8045 50.0497 76.4451 48.5753 76.4494C47.4844 76.4451 46.7003 77.127 46.5256 78.35L46.4574 78.35C46.2528 77.4039 45.5497 76.769 44.5696 76.7733C43.2401 76.769 42.1534 77.9025 42.1534 79.6454C42.1534 81.3414 43.1634 82.6539 44.625 82.688L44.625 81.1667C43.892 81.1412 43.4361 80.4593 43.4361 79.6539C43.4361 78.84 43.9304 78.2988 44.6634 78.3031C45.4261 78.2988 45.9332 78.9295 45.9332 79.8329L45.9332 80.6042L47.152 80.6042L47.152 79.8329C47.152 78.7292 47.706 78.073 48.4943 78.0772C49.2656 78.073 49.794 78.742 49.794 79.6752C49.794 80.5531 49.3381 81.2306 48.6264 81.269L48.6264 82.8713C50.1009 82.8287 51.1193 81.5119 51.1193 79.671ZM51.1662 71.7608C51.1705 69.6557 49.5085 68.3986 46.6449 68.3986C43.7983 68.3986 42.1534 69.6642 42.1534 71.7608C42.1534 73.8574 43.794 75.1188 46.6449 75.123C49.5043 75.123 51.1662 73.8659 51.1662 71.7608ZM49.8324 71.7608C49.8324 72.8475 48.7415 73.5293 46.6449 73.525C44.5653 73.5208 43.4702 72.8432 43.4702 71.7608C43.4702 70.6742 44.5653 69.9966 46.6449 69.9924C48.7415 69.9924 49.8324 70.6699 49.8324 71.7608Z" fill="#4B5563"/>
+                    </svg>
+            </div>
+            <div class="card-veg-info-details">
+                <div>
+                    <svg ibmIconRainDrop size="32"></svg>
+                    <div>
+                        <div>Inj.</div>
+                        <b>43.2 ml/gal</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconLoop size="32"></svg>
+                    <div>
+                        <div>Inj. Rate</div>
+                        <b>1.0 gpm</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconCalendar size="32"></svg>
+                    <div>
+                        <div>Active event</div>
+                        <b>2</b>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div fxFlex="25" fxLayout="column">
+        <div class="card">
+          <div class="card-title">
+              <span>Veg A</span>
+              <span class="card-title-status running">Running</span>
+          </div>
+          <div class="card-veg-info">
+            <div class="card-veg-info-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="146" viewBox="0 0 70 146" fill="none">
+                    <path d="M36.7732 9.58106C35.7233 9.53968 34.8851 8.65093 34.8851 7.56247C34.8851 7.00476 35.1056 6.49921 35.4608 6.13399C35.7985 5.78677 36.2622 5.56368 36.7732 5.54389V1.02817H56.9694V5.54389C58.0193 5.58527 58.8574 6.47402 58.8574 7.56247C58.8574 8.12019 58.637 8.62574 58.2817 8.99095C57.944 9.33818 57.4803 9.56127 56.9694 9.58106V20.6545H62.0071V22.9933C61.5276 23.4845 61.2599 23.7615 60.7822 24.2527H60.1698V28.5705H60.6072C61.0849 29.0616 61.3526 29.3387 61.8321 29.8299V37.386H58.9449V49.7998H65.3317L68.8313 55.2564V59.335H68.3064V65.272H66.2941V106.831L62.2695 110.969V121.044H63.3194V125.722C62.6353 126.425 62.252 126.817 61.5696 127.521H61.1322V129.822C61.1322 131.632 59.7043 133.098 57.9458 133.098H57.5451V135.617H56.4077V137.416H57.6326V143.173H55.2703V144.972H38.4722V143.173H36.11V137.416H37.3348V135.617H36.1975V133.098H35.7968C34.0365 133.098 32.6104 131.632 32.6104 129.822V127.521H32.1729C31.4888 126.817 31.1055 126.425 30.4231 125.722V121.044H31.473V110.969C29.9017 109.353 29.0198 108.447 27.4485 106.831V65.272H25.4362V59.335H24.9112V55.5155H17.0564L16.227 54.6627L12.4211 50.7497L8.47884 46.6964L5.58642 49.6703L3.81911 47.8532L4.67302 42.7833L0.730713 38.73L4.67302 34.6784L8.61358 30.6251L18.9444 20.0032L26.6925 27.9696L30.6348 32.0229L31.9105 33.3345V29.8299C32.3882 29.3387 32.6559 29.0616 33.1353 28.5705H33.5728V24.2527H32.9603C32.4809 23.7615 32.2132 23.4845 31.7355 22.9933V20.6545H36.7714L36.7732 9.58106Z" fill="white"/>
+                    <path d="M36.7578 5.54389V1.02817H56.954V5.54389" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.954 9.58066V20.5605H36.7578V9.58066" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.8771 9.58288H36.8349C35.75 9.58288 34.8699 8.67793 34.8699 7.5625C34.8699 6.44706 35.75 5.54211 36.8349 5.54211H56.8771C57.962 5.54211 58.8422 6.44706 58.8422 7.5625C58.8422 8.67793 57.962 9.58288 56.8771 9.58288Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.7662 24.2525H32.9443C32.4666 23.7614 32.1972 23.4843 31.7195 22.9932V20.6544H61.9911V22.9932C61.5116 23.4843 61.2439 23.7614 60.7662 24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.1532 24.2525H33.5562V28.5703H60.1532V24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.5906 28.5705H33.1187C32.641 29.0616 32.3715 29.3387 31.8938 29.8298V37.386H61.8154V29.8298C61.336 29.3387 61.0683 29.0616 60.5906 28.5705Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M31.8938 32.1169H61.8154" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M39.0263 49.8H58.9285V37.3862H35.4357H34.7812" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M16.2111 54.663L12.4053 50.75L8.46297 46.6966L0.714844 38.7302L4.65715 34.6787L12.4053 42.6433" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M40.0347 41.7038H30.2813V49.7997H39.4257L33.8666 55.5154C27.2961 55.5154 23.611 55.5154 17.0405 55.5154L16.2111 54.6626L12.4053 50.7496L8.46297 46.6963L4.65715 42.7832L0.714844 38.7299L4.65715 34.6783L8.5977 30.625L18.9285 20.0031L26.6767 27.9695L30.619 32.0229L35.8351 37.386L40.0347 41.7038Z" fill="white" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M12.4051 42.6429L4.65698 34.6783L8.59754 30.6249L16.3457 38.5913" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.7884 55.4974L20.2878 42.6429" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M30.6183 32.0225L26.6763 27.9695L8.46219 46.6967L12.4042 50.7497L30.6183 32.0225Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M5.57052 49.67L3.80322 47.8529L4.65713 42.7831L8.46295 46.6961L5.57052 49.67Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8958 55.5153V55.5567H68.8158V55.2562L65.3162 49.7996H39.4646H30.3201" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.8158 55.5569H24.8958V59.335H68.8158V55.5569Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.2898 59.3352H25.4197V65.2722H68.2898V59.3352Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M66.2782 65.2718H27.4326V106.651H66.2782V65.2718Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2537 110.969H31.4572C29.8858 109.353 29.0039 108.447 27.4326 106.831V106.651H66.2782V106.831C64.7069 108.447 63.825 109.353 62.2537 110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2541 110.969H31.4575V121.043H62.2541V110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M63.303 121.044H30.4067V125.182H63.303V121.044Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M61.5532 127.521H32.1565C31.4724 126.818 31.0909 126.425 30.4067 125.722V125.182H63.303V125.722C62.6189 126.425 62.2357 126.818 61.5532 127.521Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.9294 133.097H35.7804C34.0201 133.097 32.594 131.631 32.594 129.821V127.52H61.1158V129.821C61.1158 131.631 59.6879 133.097 57.9294 133.097Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.594 129.822H61.1158" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.5292 133.098H36.1816V135.617H57.5292V133.098Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.391 135.617H37.3181V137.416H56.391V135.617Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.6175 137.416H36.095V143.173H57.6175V137.416Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M55.2547 143.173H38.4565V144.972H55.2547V143.173Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M51.1193 100.038C51.1193 98.1717 50.0497 96.8123 48.5753 96.8166C47.4844 96.8123 46.7003 97.4941 46.5256 98.7172L46.4574 98.7172C46.2528 97.7711 45.5497 97.1362 44.5696 97.1404C43.2401 97.1362 42.1534 98.2697 42.1534 100.013C42.1534 101.709 43.1634 103.021 44.625 103.055L44.625 101.534C43.892 101.508 43.4361 100.827 43.4361 100.021C43.4361 99.2072 43.9304 98.666 44.6634 98.6703C45.4261 98.666 45.9332 99.2967 45.9332 100.2L45.9332 100.971L47.152 100.971L47.152 100.2C47.152 99.0964 47.706 98.4402 48.4943 98.4444C49.2656 98.4402 49.794 99.1092 49.794 100.042C49.794 100.92 49.3381 101.598 48.6264 101.636L48.6264 103.238C50.1009 103.196 51.1193 101.879 51.1193 100.038ZM51.1662 92.128C51.1705 90.0229 49.5085 88.7658 46.6449 88.7658C43.7983 88.7658 42.1534 90.0314 42.1534 92.128C42.1534 94.2246 43.794 95.486 46.6449 95.4902C49.5043 95.4902 51.1662 94.2331 51.1662 92.128ZM49.8324 92.128C49.8324 93.2147 48.7415 93.8965 46.6449 93.8922C44.5653 93.888 43.4702 93.2104 43.4702 92.128C43.4702 91.0414 44.5653 90.3638 46.6449 90.3596C48.7415 90.3596 49.8324 91.0371 49.8324 92.128ZM41.8636 83.7704L41.8636 85.1213L52.3125 87.9338L52.3125 86.5829L41.8636 83.7704ZM51.1193 79.671C51.1193 77.8045 50.0497 76.4451 48.5753 76.4494C47.4844 76.4451 46.7003 77.127 46.5256 78.35L46.4574 78.35C46.2528 77.4039 45.5497 76.769 44.5696 76.7733C43.2401 76.769 42.1534 77.9025 42.1534 79.6454C42.1534 81.3414 43.1634 82.6539 44.625 82.688L44.625 81.1667C43.892 81.1412 43.4361 80.4593 43.4361 79.6539C43.4361 78.84 43.9304 78.2988 44.6634 78.3031C45.4261 78.2988 45.9332 78.9295 45.9332 79.8329L45.9332 80.6042L47.152 80.6042L47.152 79.8329C47.152 78.7292 47.706 78.073 48.4943 78.0772C49.2656 78.073 49.794 78.742 49.794 79.6752C49.794 80.5531 49.3381 81.2306 48.6264 81.269L48.6264 82.8713C50.1009 82.8287 51.1193 81.5119 51.1193 79.671ZM51.1662 71.7608C51.1705 69.6557 49.5085 68.3986 46.6449 68.3986C43.7983 68.3986 42.1534 69.6642 42.1534 71.7608C42.1534 73.8574 43.794 75.1188 46.6449 75.123C49.5043 75.123 51.1662 73.8659 51.1662 71.7608ZM49.8324 71.7608C49.8324 72.8475 48.7415 73.5293 46.6449 73.525C44.5653 73.5208 43.4702 72.8432 43.4702 71.7608C43.4702 70.6742 44.5653 69.9966 46.6449 69.9924C48.7415 69.9924 49.8324 70.6699 49.8324 71.7608Z" fill="#4B5563"/>
+                    </svg>
+            </div>
+            <div class="card-veg-info-details">
+                <div>
+                    <svg ibmIconRainDrop size="32"></svg>
+                    <div>
+                        <div>Inj.</div>
+                        <b>43.2 ml/gal</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconLoop size="32"></svg>
+                    <div>
+                        <div>Inj. Rate</div>
+                        <b>1.0 gpm</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconCalendar size="32"></svg>
+                    <div>
+                        <div>Active event</div>
+                        <b>2</b>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="25" fxLayout="column">
+        <div class="card">
+          <div class="card-title">
+              <span>Veg A</span>
+              <span class="card-title-status">Completed</span>
+          </div>
+          <div class="card-veg-info">
+            <div class="card-veg-info-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="146" viewBox="0 0 70 146" fill="none">
+                    <path d="M36.7732 9.58106C35.7233 9.53968 34.8851 8.65093 34.8851 7.56247C34.8851 7.00476 35.1056 6.49921 35.4608 6.13399C35.7985 5.78677 36.2622 5.56368 36.7732 5.54389V1.02817H56.9694V5.54389C58.0193 5.58527 58.8574 6.47402 58.8574 7.56247C58.8574 8.12019 58.637 8.62574 58.2817 8.99095C57.944 9.33818 57.4803 9.56127 56.9694 9.58106V20.6545H62.0071V22.9933C61.5276 23.4845 61.2599 23.7615 60.7822 24.2527H60.1698V28.5705H60.6072C61.0849 29.0616 61.3526 29.3387 61.8321 29.8299V37.386H58.9449V49.7998H65.3317L68.8313 55.2564V59.335H68.3064V65.272H66.2941V106.831L62.2695 110.969V121.044H63.3194V125.722C62.6353 126.425 62.252 126.817 61.5696 127.521H61.1322V129.822C61.1322 131.632 59.7043 133.098 57.9458 133.098H57.5451V135.617H56.4077V137.416H57.6326V143.173H55.2703V144.972H38.4722V143.173H36.11V137.416H37.3348V135.617H36.1975V133.098H35.7968C34.0365 133.098 32.6104 131.632 32.6104 129.822V127.521H32.1729C31.4888 126.817 31.1055 126.425 30.4231 125.722V121.044H31.473V110.969C29.9017 109.353 29.0198 108.447 27.4485 106.831V65.272H25.4362V59.335H24.9112V55.5155H17.0564L16.227 54.6627L12.4211 50.7497L8.47884 46.6964L5.58642 49.6703L3.81911 47.8532L4.67302 42.7833L0.730713 38.73L4.67302 34.6784L8.61358 30.6251L18.9444 20.0032L26.6925 27.9696L30.6348 32.0229L31.9105 33.3345V29.8299C32.3882 29.3387 32.6559 29.0616 33.1353 28.5705H33.5728V24.2527H32.9603C32.4809 23.7615 32.2132 23.4845 31.7355 22.9933V20.6545H36.7714L36.7732 9.58106Z" fill="white"/>
+                    <path d="M36.7578 5.54389V1.02817H56.954V5.54389" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.954 9.58066V20.5605H36.7578V9.58066" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.8771 9.58288H36.8349C35.75 9.58288 34.8699 8.67793 34.8699 7.5625C34.8699 6.44706 35.75 5.54211 36.8349 5.54211H56.8771C57.962 5.54211 58.8422 6.44706 58.8422 7.5625C58.8422 8.67793 57.962 9.58288 56.8771 9.58288Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.7662 24.2525H32.9443C32.4666 23.7614 32.1972 23.4843 31.7195 22.9932V20.6544H61.9911V22.9932C61.5116 23.4843 61.2439 23.7614 60.7662 24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.1532 24.2525H33.5562V28.5703H60.1532V24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.5906 28.5705H33.1187C32.641 29.0616 32.3715 29.3387 31.8938 29.8298V37.386H61.8154V29.8298C61.336 29.3387 61.0683 29.0616 60.5906 28.5705Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M31.8938 32.1169H61.8154" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M39.0263 49.8H58.9285V37.3862H35.4357H34.7812" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M16.2111 54.663L12.4053 50.75L8.46297 46.6966L0.714844 38.7302L4.65715 34.6787L12.4053 42.6433" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M40.0347 41.7038H30.2813V49.7997H39.4257L33.8666 55.5154C27.2961 55.5154 23.611 55.5154 17.0405 55.5154L16.2111 54.6626L12.4053 50.7496L8.46297 46.6963L4.65715 42.7832L0.714844 38.7299L4.65715 34.6783L8.5977 30.625L18.9285 20.0031L26.6767 27.9695L30.619 32.0229L35.8351 37.386L40.0347 41.7038Z" fill="white" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M12.4051 42.6429L4.65698 34.6783L8.59754 30.6249L16.3457 38.5913" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.7884 55.4974L20.2878 42.6429" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M30.6183 32.0225L26.6763 27.9695L8.46219 46.6967L12.4042 50.7497L30.6183 32.0225Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M5.57052 49.67L3.80322 47.8529L4.65713 42.7831L8.46295 46.6961L5.57052 49.67Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8958 55.5153V55.5567H68.8158V55.2562L65.3162 49.7996H39.4646H30.3201" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.8158 55.5569H24.8958V59.335H68.8158V55.5569Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.2898 59.3352H25.4197V65.2722H68.2898V59.3352Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M66.2782 65.2718H27.4326V106.651H66.2782V65.2718Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2537 110.969H31.4572C29.8858 109.353 29.0039 108.447 27.4326 106.831V106.651H66.2782V106.831C64.7069 108.447 63.825 109.353 62.2537 110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2541 110.969H31.4575V121.043H62.2541V110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M63.303 121.044H30.4067V125.182H63.303V121.044Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M61.5532 127.521H32.1565C31.4724 126.818 31.0909 126.425 30.4067 125.722V125.182H63.303V125.722C62.6189 126.425 62.2357 126.818 61.5532 127.521Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.9294 133.097H35.7804C34.0201 133.097 32.594 131.631 32.594 129.821V127.52H61.1158V129.821C61.1158 131.631 59.6879 133.097 57.9294 133.097Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.594 129.822H61.1158" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.5292 133.098H36.1816V135.617H57.5292V133.098Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.391 135.617H37.3181V137.416H56.391V135.617Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.6175 137.416H36.095V143.173H57.6175V137.416Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M55.2547 143.173H38.4565V144.972H55.2547V143.173Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M51.1193 100.038C51.1193 98.1717 50.0497 96.8123 48.5753 96.8166C47.4844 96.8123 46.7003 97.4941 46.5256 98.7172L46.4574 98.7172C46.2528 97.7711 45.5497 97.1362 44.5696 97.1404C43.2401 97.1362 42.1534 98.2697 42.1534 100.013C42.1534 101.709 43.1634 103.021 44.625 103.055L44.625 101.534C43.892 101.508 43.4361 100.827 43.4361 100.021C43.4361 99.2072 43.9304 98.666 44.6634 98.6703C45.4261 98.666 45.9332 99.2967 45.9332 100.2L45.9332 100.971L47.152 100.971L47.152 100.2C47.152 99.0964 47.706 98.4402 48.4943 98.4444C49.2656 98.4402 49.794 99.1092 49.794 100.042C49.794 100.92 49.3381 101.598 48.6264 101.636L48.6264 103.238C50.1009 103.196 51.1193 101.879 51.1193 100.038ZM51.1662 92.128C51.1705 90.0229 49.5085 88.7658 46.6449 88.7658C43.7983 88.7658 42.1534 90.0314 42.1534 92.128C42.1534 94.2246 43.794 95.486 46.6449 95.4902C49.5043 95.4902 51.1662 94.2331 51.1662 92.128ZM49.8324 92.128C49.8324 93.2147 48.7415 93.8965 46.6449 93.8922C44.5653 93.888 43.4702 93.2104 43.4702 92.128C43.4702 91.0414 44.5653 90.3638 46.6449 90.3596C48.7415 90.3596 49.8324 91.0371 49.8324 92.128ZM41.8636 83.7704L41.8636 85.1213L52.3125 87.9338L52.3125 86.5829L41.8636 83.7704ZM51.1193 79.671C51.1193 77.8045 50.0497 76.4451 48.5753 76.4494C47.4844 76.4451 46.7003 77.127 46.5256 78.35L46.4574 78.35C46.2528 77.4039 45.5497 76.769 44.5696 76.7733C43.2401 76.769 42.1534 77.9025 42.1534 79.6454C42.1534 81.3414 43.1634 82.6539 44.625 82.688L44.625 81.1667C43.892 81.1412 43.4361 80.4593 43.4361 79.6539C43.4361 78.84 43.9304 78.2988 44.6634 78.3031C45.4261 78.2988 45.9332 78.9295 45.9332 79.8329L45.9332 80.6042L47.152 80.6042L47.152 79.8329C47.152 78.7292 47.706 78.073 48.4943 78.0772C49.2656 78.073 49.794 78.742 49.794 79.6752C49.794 80.5531 49.3381 81.2306 48.6264 81.269L48.6264 82.8713C50.1009 82.8287 51.1193 81.5119 51.1193 79.671ZM51.1662 71.7608C51.1705 69.6557 49.5085 68.3986 46.6449 68.3986C43.7983 68.3986 42.1534 69.6642 42.1534 71.7608C42.1534 73.8574 43.794 75.1188 46.6449 75.123C49.5043 75.123 51.1662 73.8659 51.1662 71.7608ZM49.8324 71.7608C49.8324 72.8475 48.7415 73.5293 46.6449 73.525C44.5653 73.5208 43.4702 72.8432 43.4702 71.7608C43.4702 70.6742 44.5653 69.9966 46.6449 69.9924C48.7415 69.9924 49.8324 70.6699 49.8324 71.7608Z" fill="#4B5563"/>
+                    </svg>
+            </div>
+            <div class="card-veg-info-details">
+                <div>
+                    <svg ibmIconRainDrop size="32"></svg>
+                    <div>
+                        <div>Inj.</div>
+                        <b>43.2 ml/gal</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconLoop size="32"></svg>
+                    <div>
+                        <div>Inj. Rate</div>
+                        <b>1.0 gpm</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconCalendar size="32"></svg>
+                    <div>
+                        <div>Active event</div>
+                        <b>2</b>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="25" fxLayout="column">
+        <div class="card">
+          <div class="card-title">
+              <span>Veg A</span>
+              <span class="card-title-status running">Running</span>
+          </div>
+          <div class="card-veg-info">
+            <div class="card-veg-info-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="146" viewBox="0 0 70 146" fill="none">
+                    <path d="M36.7732 9.58106C35.7233 9.53968 34.8851 8.65093 34.8851 7.56247C34.8851 7.00476 35.1056 6.49921 35.4608 6.13399C35.7985 5.78677 36.2622 5.56368 36.7732 5.54389V1.02817H56.9694V5.54389C58.0193 5.58527 58.8574 6.47402 58.8574 7.56247C58.8574 8.12019 58.637 8.62574 58.2817 8.99095C57.944 9.33818 57.4803 9.56127 56.9694 9.58106V20.6545H62.0071V22.9933C61.5276 23.4845 61.2599 23.7615 60.7822 24.2527H60.1698V28.5705H60.6072C61.0849 29.0616 61.3526 29.3387 61.8321 29.8299V37.386H58.9449V49.7998H65.3317L68.8313 55.2564V59.335H68.3064V65.272H66.2941V106.831L62.2695 110.969V121.044H63.3194V125.722C62.6353 126.425 62.252 126.817 61.5696 127.521H61.1322V129.822C61.1322 131.632 59.7043 133.098 57.9458 133.098H57.5451V135.617H56.4077V137.416H57.6326V143.173H55.2703V144.972H38.4722V143.173H36.11V137.416H37.3348V135.617H36.1975V133.098H35.7968C34.0365 133.098 32.6104 131.632 32.6104 129.822V127.521H32.1729C31.4888 126.817 31.1055 126.425 30.4231 125.722V121.044H31.473V110.969C29.9017 109.353 29.0198 108.447 27.4485 106.831V65.272H25.4362V59.335H24.9112V55.5155H17.0564L16.227 54.6627L12.4211 50.7497L8.47884 46.6964L5.58642 49.6703L3.81911 47.8532L4.67302 42.7833L0.730713 38.73L4.67302 34.6784L8.61358 30.6251L18.9444 20.0032L26.6925 27.9696L30.6348 32.0229L31.9105 33.3345V29.8299C32.3882 29.3387 32.6559 29.0616 33.1353 28.5705H33.5728V24.2527H32.9603C32.4809 23.7615 32.2132 23.4845 31.7355 22.9933V20.6545H36.7714L36.7732 9.58106Z" fill="white"/>
+                    <path d="M36.7578 5.54389V1.02817H56.954V5.54389" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.954 9.58066V20.5605H36.7578V9.58066" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.8771 9.58288H36.8349C35.75 9.58288 34.8699 8.67793 34.8699 7.5625C34.8699 6.44706 35.75 5.54211 36.8349 5.54211H56.8771C57.962 5.54211 58.8422 6.44706 58.8422 7.5625C58.8422 8.67793 57.962 9.58288 56.8771 9.58288Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.7662 24.2525H32.9443C32.4666 23.7614 32.1972 23.4843 31.7195 22.9932V20.6544H61.9911V22.9932C61.5116 23.4843 61.2439 23.7614 60.7662 24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.1532 24.2525H33.5562V28.5703H60.1532V24.2525Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M60.5906 28.5705H33.1187C32.641 29.0616 32.3715 29.3387 31.8938 29.8298V37.386H61.8154V29.8298C61.336 29.3387 61.0683 29.0616 60.5906 28.5705Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M31.8938 32.1169H61.8154" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M39.0263 49.8H58.9285V37.3862H35.4357H34.7812" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M16.2111 54.663L12.4053 50.75L8.46297 46.6966L0.714844 38.7302L4.65715 34.6787L12.4053 42.6433" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M40.0347 41.7038H30.2813V49.7997H39.4257L33.8666 55.5154C27.2961 55.5154 23.611 55.5154 17.0405 55.5154L16.2111 54.6626L12.4053 50.7496L8.46297 46.6963L4.65715 42.7832L0.714844 38.7299L4.65715 34.6783L8.5977 30.625L18.9285 20.0031L26.6767 27.9695L30.619 32.0229L35.8351 37.386L40.0347 41.7038Z" fill="white" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M12.4051 42.6429L4.65698 34.6783L8.59754 30.6249L16.3457 38.5913" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8822 55.4726L16.3467 46.6966" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.7884 55.4974L20.2878 42.6429" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M30.6183 32.0225L26.6763 27.9695L8.46219 46.6967L12.4042 50.7497L30.6183 32.0225Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M5.57052 49.67L3.80322 47.8529L4.65713 42.7831L8.46295 46.6961L5.57052 49.67Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M24.8958 55.5153V55.5567H68.8158V55.2562L65.3162 49.7996H39.4646H30.3201" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.8158 55.5569H24.8958V59.335H68.8158V55.5569Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M68.2898 59.3352H25.4197V65.2722H68.2898V59.3352Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M66.2782 65.2718H27.4326V106.651H66.2782V65.2718Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2537 110.969H31.4572C29.8858 109.353 29.0039 108.447 27.4326 106.831V106.651H66.2782V106.831C64.7069 108.447 63.825 109.353 62.2537 110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M62.2541 110.969H31.4575V121.043H62.2541V110.969Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M63.303 121.044H30.4067V125.182H63.303V121.044Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M61.5532 127.521H32.1565C31.4724 126.818 31.0909 126.425 30.4067 125.722V125.182H63.303V125.722C62.6189 126.425 62.2357 126.818 61.5532 127.521Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.9294 133.097H35.7804C34.0201 133.097 32.594 131.631 32.594 129.821V127.52H61.1158V129.821C61.1158 131.631 59.6879 133.097 57.9294 133.097Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M32.594 129.822H61.1158" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.5292 133.098H36.1816V135.617H57.5292V133.098Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M56.391 135.617H37.3181V137.416H56.391V135.617Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M57.6175 137.416H36.095V143.173H57.6175V137.416Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M55.2547 143.173H38.4565V144.972H55.2547V143.173Z" stroke="#9CA3AF" stroke-width="0.524941" stroke-miterlimit="10"/>
+                    <path d="M51.1193 100.038C51.1193 98.1717 50.0497 96.8123 48.5753 96.8166C47.4844 96.8123 46.7003 97.4941 46.5256 98.7172L46.4574 98.7172C46.2528 97.7711 45.5497 97.1362 44.5696 97.1404C43.2401 97.1362 42.1534 98.2697 42.1534 100.013C42.1534 101.709 43.1634 103.021 44.625 103.055L44.625 101.534C43.892 101.508 43.4361 100.827 43.4361 100.021C43.4361 99.2072 43.9304 98.666 44.6634 98.6703C45.4261 98.666 45.9332 99.2967 45.9332 100.2L45.9332 100.971L47.152 100.971L47.152 100.2C47.152 99.0964 47.706 98.4402 48.4943 98.4444C49.2656 98.4402 49.794 99.1092 49.794 100.042C49.794 100.92 49.3381 101.598 48.6264 101.636L48.6264 103.238C50.1009 103.196 51.1193 101.879 51.1193 100.038ZM51.1662 92.128C51.1705 90.0229 49.5085 88.7658 46.6449 88.7658C43.7983 88.7658 42.1534 90.0314 42.1534 92.128C42.1534 94.2246 43.794 95.486 46.6449 95.4902C49.5043 95.4902 51.1662 94.2331 51.1662 92.128ZM49.8324 92.128C49.8324 93.2147 48.7415 93.8965 46.6449 93.8922C44.5653 93.888 43.4702 93.2104 43.4702 92.128C43.4702 91.0414 44.5653 90.3638 46.6449 90.3596C48.7415 90.3596 49.8324 91.0371 49.8324 92.128ZM41.8636 83.7704L41.8636 85.1213L52.3125 87.9338L52.3125 86.5829L41.8636 83.7704ZM51.1193 79.671C51.1193 77.8045 50.0497 76.4451 48.5753 76.4494C47.4844 76.4451 46.7003 77.127 46.5256 78.35L46.4574 78.35C46.2528 77.4039 45.5497 76.769 44.5696 76.7733C43.2401 76.769 42.1534 77.9025 42.1534 79.6454C42.1534 81.3414 43.1634 82.6539 44.625 82.688L44.625 81.1667C43.892 81.1412 43.4361 80.4593 43.4361 79.6539C43.4361 78.84 43.9304 78.2988 44.6634 78.3031C45.4261 78.2988 45.9332 78.9295 45.9332 79.8329L45.9332 80.6042L47.152 80.6042L47.152 79.8329C47.152 78.7292 47.706 78.073 48.4943 78.0772C49.2656 78.073 49.794 78.742 49.794 79.6752C49.794 80.5531 49.3381 81.2306 48.6264 81.269L48.6264 82.8713C50.1009 82.8287 51.1193 81.5119 51.1193 79.671ZM51.1662 71.7608C51.1705 69.6557 49.5085 68.3986 46.6449 68.3986C43.7983 68.3986 42.1534 69.6642 42.1534 71.7608C42.1534 73.8574 43.794 75.1188 46.6449 75.123C49.5043 75.123 51.1662 73.8659 51.1662 71.7608ZM49.8324 71.7608C49.8324 72.8475 48.7415 73.5293 46.6449 73.525C44.5653 73.5208 43.4702 72.8432 43.4702 71.7608C43.4702 70.6742 44.5653 69.9966 46.6449 69.9924C48.7415 69.9924 49.8324 70.6699 49.8324 71.7608Z" fill="#4B5563"/>
+                    </svg>
+            </div>
+            <div class="card-veg-info-details">
+                <div>
+                    <svg ibmIconRainDrop size="32"></svg>
+                    <div>
+                        <div>Inj.</div>
+                        <b>43.2 ml/gal</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconLoop size="32"></svg>
+                    <div>
+                        <div>Inj. Rate</div>
+                        <b>1.0 gpm</b>
+                    </div>
+                </div>
+                <div>
+                    <svg ibmIconCalendar size="32"></svg>
+                    <div>
+                        <div>Active event</div>
+                        <b>2</b>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  

@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Assign Rule</h2>
+<mat-dialog-content>
+  <form class="p-24" name="assignRuleForm" (ngSubmit)="update()" [formGroup]="assignRuleForm" novalidate>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="To Controllers" [formControl]="selectedControllers" multiple>
+          <mat-option *ngFor="let controller of controllers" [value]="controller.Guid">{{controller.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectedControllers.hasError('required')">
+          At least one Controller is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary" [disabled]="assignRuleForm.invalid">Assign to Controllers</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{controller.Name}} - {{entityName}} - Update Log</h2>
+<mat-dialog-content>
+  <mat-progress-bar *ngIf="loading | async" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+
+  <mat-table *ngIf="!(loading | async) && entriesDataSource.data.length" [dataSource]="entriesDataSource">
+    <ng-container matColumnDef="field">
+      <mat-header-cell *matHeaderCellDef>Field Name</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.FieldName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="oldValue">
+      <mat-header-cell *matHeaderCellDef>Old Value</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.OldValue}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="newValue">
+      <mat-header-cell *matHeaderCellDef>New Value</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.NewValue}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.UserName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ipAddress">
+      <mat-header-cell *matHeaderCellDef>IP Address</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.IpAddress}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tstamp">
+      <mat-header-cell *matHeaderCellDef>Changed At</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.Timestamp | mdate:'short'}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="updatesColumns"></mat-header-row>>
+    <mat-row *matRowDef="let row; columns: updatesColumns;" matRipple class="mat-ripple mat-row-selectable" [class.accent-50-bg]="selectedEntry == row"
+      (click)="selectEntry(row)"></mat-row>>
+  </mat-table>
+
+  <mat-paginator [hidden]="(loading | async) || entriesDataSource.data.length < 1" [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+  <span *ngIf="!(loading | async) && entriesDataSource.data.length === 0">No records found</span>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button mat-dialog-close color="primary">Close</button>
+</div>

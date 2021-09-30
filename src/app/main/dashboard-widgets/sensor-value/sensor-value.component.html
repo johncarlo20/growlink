@@ -1,0 +1,14 @@
+<mat-card class="auto-width mb-8" [ngClass.gt-sm]="custom ? '' : 'mr-8'" *ngIf="sensor"
+  [class.custom-dashboard]="custom" [class.sensor-alert]="hasActiveAlerts | async">
+
+  <div class="grid-container">
+
+    <div class="h3 secondary-text nowrap-text" [class.active-alert]="(hasActiveAlerts | async)">
+      {{customName || sensor.name}}
+    </div>
+    <div class="h3 nowrap-text text-right" [class.outdated]="sensor.outdated"
+      [class.active-alert]="(hasActiveAlerts | async)">
+      {{sensor.age == -1 ? '--' : sensor.value | async}}
+    </div>
+  </div>
+</mat-card>

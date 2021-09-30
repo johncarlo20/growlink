@@ -1,0 +1,134 @@
+<div id="modules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-24" *ngIf="!isReadOnly">
+    <button mat-raised-button (click)="pushControllerUpdate()" color="primary" [disabled]="!changes || loading">Update
+      Controller</button>
+    <button mat-raised-button (click)="showAvailableModules()" color="primary"
+      [disabled]="loading || isReadOnly">Add Modules</button>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-table [dataSource]="modules">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>>
+        <mat-cell *matCellDef="let module">{{module.Name}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>>
+        <mat-cell *matCellDef="let module">{{getTypeName(module)}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="serial">
+        <mat-header-cell *matHeaderCellDef>Serial #</mat-header-cell>>
+        <mat-cell *matCellDef="let module">{{module.SerialNumber}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell fxFlex="150px" *matHeaderCellDef></mat-header-cell>
+        <mat-cell fxFlex="150px" fxLayoutAlign="end center" *matCellDef="let module">
+          <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading" (click)="editModule(module)">
+            <mat-icon aria-label="Edit Module">mode_edit</mat-icon>
+          </button>
+          <button mat-icon-button color="secondary" [disabled]="loading"
+            (click)="viewHistory(module.Guid, module.Name)">
+            <mat-icon aria-label="View History">list_alt</mat-icon>
+          </button>
+          <button *ngIf="!isReadOnly" mat-icon-button color="warn" [disabled]="loading"
+            (click)="deleteModule(module, $event)">
+            <mat-icon aria-label="Delete Module">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="mat-ripple mat-row-selectable"
+        [class.accent-50-bg]="selectedModule?.Guid === row.Guid" (click)="selectModule(row)"></mat-row>>
+    </mat-table>
+
+    <mat-card *ngIf="selectedModule">
+      <mat-card-title>{{selectedModule.Name}}</mat-card-title>
+      <mat-table [dataSource]="sensors" *ngIf="sensors.any">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *matCellDef="let sensor">
+            <mat-form-field fxFlex="100" floatLabel="never" class="input-field">
+              <input matInput placeholder="Name" [value]="sensor.Name" [disabled]="loading"
+                (change)="setSensorName($event, sensor)">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sensorType">
+          <mat-header-cell fxFlex="20" *matHeaderCellDef>Sensor</mat-header-cell>
+          <mat-cell fxFlex="20" *matCellDef="let sensor">{{getSensorName(sensor)}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sensorSerial">
+          <mat-header-cell fxFlex="10" *matHeaderCellDef>Serial Number</mat-header-cell>
+          <mat-cell fxFlex="10" *matCellDef="let sensor">
+            <div *ngIf="sensor.SerialNumber?.length">#{{sensor.SerialNumber}}</div>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sensorAdjust">
+          <mat-header-cell *matHeaderCellDef>Adjustment</mat-header-cell>
+          <mat-cell *matCellDef="let sensor">{{getAdjustment(sensor)}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>
+          <mat-cell fxFlex="100px" fxLayoutAlign="end center" *matCellDef="let sensor">
+            <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading"
+              (click)="editSensor(sensor)">
+              <mat-icon aria-label="Edit Sensor">mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button color="secondary" [disabled]="loading"
+              (click)="viewHistory(sensor.Guid, sensor.Name)">
+              <mat-icon aria-label="View History">list_alt</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="sensorsColumns"></mat-header-row>>
+        <mat-row *matRowDef="let row; columns: sensorsColumns" matRipple class="mat-ripple mat-row-selectable">
+        </mat-row>
+      </mat-table>
+      <mat-table [dataSource]="devices" *ngIf="devices.any">
+        <ng-container matColumnDef="device">
+          <mat-header-cell fxFlex="30" *matHeaderCellDef>Device</mat-header-cell>
+          <mat-cell fxFlex="30" *matCellDef="let device">{{getDevice(device.ParticleDevice)}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *matCellDef="let device">
+            <mat-form-field fxFlex="100" floatLabel="never" class="input-field">
+              <input matInput placeholder="Name" [value]="device.Name" [disabled]="loading"
+                (change)="setDeviceName($event, device)">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="devType">
+          <mat-header-cell *matHeaderCellDef>Device Type</mat-header-cell>
+          <mat-cell *matCellDef="let device">
+            <mat-form-field fxFlex="100" floatLabel="never" class="input-field">
+              <mat-select placeholder="Type" [value]="device.DeviceType" [disabled]="isFixedDeviceProduct || loading"
+                (selectionChange)="setDeviceType($event, device)">
+                <mat-option *ngFor="let dt of getDeviceAvailTypes(device)" [value]="dt.value">{{dt.caption}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>
+          <mat-cell fxFlex="100px" fxLayoutAlign="end center" *matCellDef="let device">
+            <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading"
+              (click)="editDevice(device)">
+              <mat-icon aria-label="Edit Device">mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button color="secondary" [disabled]="loading"
+              (click)="viewHistory(device.Guid, device.Name)">
+              <mat-icon aria-label="View History">list_alt</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="devicesColumns"></mat-header-row>>
+        <mat-row *matRowDef="let row; columns: devicesColumns" matRipple class="mat-ripple mat-row-selectable">
+        </mat-row>
+      </mat-table>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Rule Group Activation</h2>
+<mat-dialog-content>
+  <p>{{data.message}}</p>
+  <div *ngIf="data.hasLights" class="grid-container">
+    <div class="old-header">Old Lighting Schedule(s)</div>
+    <div class="new-header">New Lighting Schedule(s)</div>
+    <div class="old-rules">
+      <ul>
+        <li *ngIf="CurrentDescriptions.length === 0">NONE</li>
+        <li *ngFor="let desc of CurrentDescriptions">{{desc}}</li>
+      </ul>
+    </div>
+    <div class="new-rules">
+      <ul>
+        <li *ngIf="NewDescriptions.length === 0">NONE</li>
+        <li *ngFor="let desc of NewDescriptions">{{desc}}</li>
+      </ul>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="onConfirm()" color="warn">Proceed</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

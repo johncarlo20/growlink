@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Save Dashboard As...</h2>
+<mat-dialog-content>
+  <form class="p-24" name="saveDashboardForm" (ngSubmit)="submit()" [formGroup]="saveDashboardForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input id="name" type="text" matInput placeholder="Dashboard Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('server')">
+          {{name.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+  <!-- <pre>{{dashboard | json}}</pre> -->
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="saveDashboardForm.invalid">
+    Save Dashboard
+  </button>
+  <button mat-raised-button (click)="dialogRef.close(null)">Close</button>
+</div>

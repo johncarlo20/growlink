@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>{{mod.Name}}</h2>
+<mat-dialog-content>
+  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="unsupportedSettings"
+    class="mat-elevation-z8 p-8">
+    <mat-icon aria-hidden="true" class="m-8" style="color: #f44336">warning</mat-icon>
+    The controller does not appear to support settings for Grow Medium or EC Type.<br />
+    You may need to contact Growlink support to request a firmware upgrade.
+  </div>
+
+  <form class="p-24" name="editModuleForm" (ngSubmit)="update()" [formGroup]="editModuleForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('required')">
+          Module Name is required
+        </mat-error>
+        <mat-error *ngIf="name.hasError('server')">
+          {{name.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="isEC5 || isTeros12">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Grow Medium" formControlName="growMedium">
+          <mat-option *ngFor="let gm of growthMediums" [value]="gm.value">{{gm.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="growMedium.hasError('server')">
+          {{growMedium.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="isTeros12">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="EC Type" formControlName="soilECType">
+          <mat-option *ngFor="let sect of soilECTypes" [value]="sect.value">{{sect.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="soilECType.hasError('server')">
+          {{soilECType.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="allowsAggregation">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Aggregate To" formControlName="aggregateTo">
+          <mat-option [value]="null">(None)</mat-option>
+          <mat-option *ngFor="let aggMod of targetAggregateModules" [value]="aggMod.value">{{aggMod.caption}}
+          </mat-option>
+          <mat-option [value]="'0000'">(Create New...)</mat-option>
+        </mat-select>
+        <mat-error *ngIf="aggregateTo.hasError('server')">
+          {{aggregateTo.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="mod.AggregateModuleId === '0000'">
+      <mat-form-field fxFlex="grow">
+        <input matInput placeholder="Aggregate Module Name" [formControl]="newAggregateName" #aggregateName
+          (keypress)="aggregateNameKey($event)">
+        <mat-error *ngIf="newAggregateName.hasError('required')">
+          Aggregate Module Name is required
+        </mat-error>
+      </mat-form-field>
+      <div fxFlex="auto" class="ml-4">
+        <button mat-raised-button (click)="registerAggregate()" color="primary"
+          [disabled]="loading || newAggregateName.invalid">Register Aggregate Module</button>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="supportOfflineAlerts">
+      <mat-checkbox fxFlex="50" formControlName="offlineAlerts">Enable Offline Alerts for this module</mat-checkbox>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-checkbox fxFlex="50" formControlName="hidden">Hide this module on the dashboard</mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="update()" color="primary"
+    [disabled]="editModuleForm.invalid || loading || mod.AggregateModuleId === '0000'">Save Changes</button>
+  <button mat-raised-button mat-dialog-close [disabled]="loading">Cancel</button>
+</div>

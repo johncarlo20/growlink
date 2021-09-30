@@ -1,0 +1,13 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center" *ngIf="deviceThrottles.length" [formGroup]="editForm">
+  <div fxLayout="column" fxFlex="50" *ngFor="let t of deviceThrottles"
+    [ngStyle]="{'padding': '0 1rem'}">
+    <mat-label *ngIf="t.HasPercentageSlider">{{t.Name}} [{{t.Throttle}}%]</mat-label>
+    <mat-slider *ngIf="t.HasPercentageSlider" min="0" max="100" step="5" thumbLabel [formControlName]="'throttle-' + t.Guid">
+    </mat-slider>
+    <mat-label *ngIf="t.HasBACNetValue">{{t.Name}}</mat-label>
+    <mat-form-field *ngIf="t.HasBACNetValue">
+      <input type="text" matInput placeholder="Value" [formControlName]="'bacnet-' + t.Guid" class="text-right">
+      <span matSuffix [innerHTML]="t.BACNetSuffix"></span>
+    </mat-form-field>
+  </div>
+</div>

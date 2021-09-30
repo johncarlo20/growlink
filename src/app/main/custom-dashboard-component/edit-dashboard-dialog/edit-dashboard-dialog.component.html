@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{dashboard.Id ? 'Edit' : 'Add'}} Dashboard</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editDashboardForm" (ngSubmit)="submit()" [formGroup]="editDashboardForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!generatedDashboard">
+      <mat-form-field fxFlex="100">
+        <input id="name" type="text" matInput placeholder="Dashboard Name" formControlName="name">
+        <mat-error *ngIf="name.hasError('server')">
+          {{name.getError('server')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Chart Duration" [formControl]="chartsDuration">
+          <mat-option *ngFor="let option of durationOptions" [value]="option.value">{{option.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="chartsDuration.hasError('required')">
+          Chart Duration is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+  <!-- <pre>{{dashboard | json}}</pre> -->
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="editDashboardForm.invalid">
+    {{dashboard.Id ? 'Update' : 'Add'}} Dashboard
+  </button>
+  <button mat-raised-button (click)="dialogRef.close(null)">Close</button>
+</div>

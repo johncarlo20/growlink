@@ -1,0 +1,122 @@
+<div id="dashboard" class="page-layout simple fullwidth p-8" fusePerfectScrollbar>
+  <div *ngIf="!config && loading" fxLayout="column" fxLayoutAlign="center center" style="height: 100%">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!config && !loading" fxLayout="column" class="content mat-white-bg">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="auto">
+        <input matInput placeholder="Heatmap Name" [formControl]="mapName">
+        <mat-error *ngIf="mapName.hasError('required')">
+          Heatmap Name is required
+        </mat-error>
+      </mat-form-field>
+      <button class="mat-raised-button mat-primary ml-8" (click)="selectFile()"
+        [disabled]="loading || !mapName.valid">Select
+        Facility Image</button>
+    </div>
+    <input hidden type="file" id="imageFile" ng2FileSelect [uploader]="uploader"
+      (onFileSelected)="imageSelected($event)" />
+  </div>
+  <div *ngIf="config" fxLayout="column" class="content mat-white-bg">
+    <div fxLayout="row" fxLayoutAlign="start center" class="mat-elevation-z1 p-4">
+      <h2 *ngIf="!rename" fxFlex="auto" class="m-0 pl-4" [class.unsaved]="unsavedChanges" style="cursor: text" (dblclick)="rename = true">{{config.Name}}</h2>
+      <mat-form-field *ngIf="rename" fxFlex="auto">
+        <input matInput placeholder="Heatmap Name" [formControl]="mapName">
+        <mat-error *ngIf="mapName.hasError('required')">
+          Heatmap Name is required
+        </mat-error>
+      </mat-form-field>
+      <button *ngIf="rename" fxFlex="0 1 auto" class="mat-raised-button mat-primary mx-4" (click)="renameHeatmap()">Rename
+        Heatmap</button>
+      <button fxFlex="0 1 auto" class="mat-raised-button mat-primary mx-4" (click)="saveHeatmap()"
+        [disabled]="buttonsDisabled || !unsavedChanges">Save Heatmap</button>
+      <button fxFlex="0 1 auto" class="mat-raised-button mat-primary mx-4" (click)="addGroup()"
+        [disabled]="buttonsDisabled">Add Sensor Group</button>
+    </div>
+    <div class="p-8" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start">
+      <canvas id="heatmap-canvas" (click)="canvasClick($event)" (mousemove)="canvasMove($event)"
+        style="cursor: crosshair" (wheel)="canvasScroll($event)"></canvas>
+      <div fxLayout="column" fxFlex="auto" fxFlex.lt-md="fill" class="sensor-list mat-elevation-z1">
+        <mat-accordion multi="true">
+          <mat-expansion-panel *ngFor="let group of config.Groups" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-slide-toggle [checked]="group.IsActive" (change)="setGroupActive($event, group)"
+                  [disabled]="loading" (click)="ignoreClick($event)">
+                  {{group.Name}}
+                </mat-slide-toggle>
+              </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end center">
+                [{{group.MinReading}} -&gt; {{group.MaxReading}}]
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-table *ngIf="group.Sensors.length" [dataSource]="getSensorDetails(group.Id)">
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Sensor</mat-header-cell>>
+                <mat-cell *matCellDef="let sensor">{{sensor.name}}</mat-cell>>
+              </ng-container>
+              <ng-container matColumnDef="value">
+                <mat-header-cell *matHeaderCellDef>Current Value</mat-header-cell>>
+                <mat-cell *matCellDef="let sensor">{{sensor.currentValue}}</mat-cell>>
+              </ng-container>
+              <ng-container matColumnDef="actions">
+                <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>>
+                <mat-cell fxFlex="100px" fxLayoutAlign="end center" *matCellDef="let sensor">
+                  <button mat-icon-button color="primary" (click)="editSensor(group, sensor)"
+                    [disabled]="buttonsDisabled">
+                    <mat-icon aria-label="Edit sensor">mode_edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteSensor(group, sensor)"
+                    [disabled]="buttonsDisabled">
+                    <mat-icon aria-label="Delete sensor">delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>>
+              <mat-row *matRowDef="let row; columns: dataColumns;" matRipple class="mat-ripple mat-row-selectable">
+              </mat-row>>
+            </mat-table>
+            <mat-table *ngIf="group.Devices.length" [dataSource]="getDeviceDetails(group.Id)">
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Device</mat-header-cell>>
+                <mat-cell *matCellDef="let device">{{device.name}}</mat-cell>>
+              </ng-container>
+              <ng-container matColumnDef="value">
+                <mat-header-cell *matHeaderCellDef>Current State</mat-header-cell>>
+                <mat-cell *matCellDef="let device">{{device.currentState}}</mat-cell>>
+              </ng-container>
+              <ng-container matColumnDef="actions">
+                <mat-header-cell fxFlex="100px" *matHeaderCellDef></mat-header-cell>>
+                <mat-cell fxFlex="100px" fxLayoutAlign="end center" *matCellDef="let device">
+                  <button mat-icon-button color="primary" (click)="editDevice(group, device)"
+                    [disabled]="buttonsDisabled">
+                    <mat-icon aria-label="Edit device">mode_edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteDevice(group, device)"
+                    [disabled]="buttonsDisabled">
+                    <mat-icon aria-label="Delete device">delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="dataColumns"></mat-header-row>>
+              <mat-row *matRowDef="let row; columns: dataColumns;" matRipple class="mat-ripple mat-row-selectable">
+              </mat-row>>
+            </mat-table>
+            <mat-action-row class="mat-primary-100-bg p-8">
+              <button class="mat-raised-button mat-primary" (click)="addSensor(group)" [disabled]="buttonsDisabled">Add
+                Sensor</button>
+              <button class="mat-raised-button mat-primary ml-4" (click)="addDevice(group)"
+                [disabled]="buttonsDisabled">Add Device</button>
+              <button class="mat-raised-button mat-primary ml-4" (click)="editGroup(group)"
+                [disabled]="buttonsDisabled">Edit Group</button>
+              <button class="mat-raised-button mat-primary ml-4" (click)="deleteGroup(group)"
+                [disabled]="buttonsDisabled">Delete Group</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+fuse-sensor-chart {
+    min-height: 350px;
+    max-height: 350px;
+    height: 350px;
+}
+
+.mat-card {
+    background: whitesmoke;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-bottom: 0.5rem;
+    .mat-card-title {
+        font-weight: 600;
+    }
+}
+
+.mat-form-field {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+mat-selection-list {
+    h3.mat-subheader {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    h4.mat-subheader {
+        padding-left: 24px
+    }
+}
+
+fuse-trend-chart-component {
+  min-height: 400px;
+  max-height: 1200px;
+  height: calc(100vh - 300px);
+}
+
+.mat-expansion-panel .mat-expansion-panel-body {
+  padding: 0 16px 8px;
+}

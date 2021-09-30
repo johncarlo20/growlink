@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Add Sensor</h2>
+<mat-dialog-content>
+  <div fxLayout="column">
+    <mat-form-field *ngIf="controllers.length">
+      <mat-select placeholder="Controller" [(value)]="selectedController">
+        <mat-option *ngFor="let controller of controllers" [value]="controller">{{controller}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="selectedController">
+      <mat-select placeholder="Module" [(value)]="selectedModule">
+        <mat-option *ngFor="let module of modules" [value]="module">{{module}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="selectedController && selectedModule">
+      <mat-select placeholder="Sensor" [(value)]="selectedSensor">
+        <mat-option *ngFor="let sensor of sensors" [value]="sensor">{{sensor.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div style="text-align: center; font-weight: 500; margin-bottom: 5rem;" *ngIf="!controllers.length">
+      All available sensors have already been added to this group
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button *ngIf="controllers.length" (click)="add()" color="primary" [disabled]="!selectedSensor">
+    Add Sensor
+  </button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

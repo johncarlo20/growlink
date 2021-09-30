@@ -1,0 +1,28 @@
+.unread {
+  color: #039be5;
+  font-weight: 500;
+}
+.mat-column-activate,
+.mat-column-deactivate {
+  max-width: 174px;
+}
+.mat-column-type {
+  max-width: 16rem;
+}
+.mat-column-status {
+  max-width: 10rem;
+  text-align: center;
+
+}
+.mat-column-controller {
+  max-width: 280px;
+}
+.unread {
+  border-left: 5px solid #039be5;
+  margin-left: 3px;
+  font-weight: bold;
+}
+.read {
+  border-left: 5px solid transparent;
+  margin-left: 3px;
+}

@@ -1,0 +1,109 @@
+<mat-list class="date" cdkFocusRegionStart>
+
+  <h3 matSubheader cdkFocusInit>
+    <span>Today</span>
+  </h3>
+
+  <div class="secondary-text mat-display-1 mb-0 p-16">
+    <div class="mb-12">
+      {{date | date:'EEEE'}}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start">
+      <span> {{date | date:'d'}}</span>
+      <span class="mat-subheading-1">{{daySuffix}}</span>
+      <span> {{date | date:'MMMM'}}</span>
+    </div>
+  </div>
+</mat-list>
+
+<mat-divider cdkFocusRegionEnd></mat-divider>
+
+<mat-list>
+  <h3 matSubheader>
+    <span>Quick Settings</span>
+  </h3>
+
+  <h4 matSubheader>
+    <span>Temperature</span>
+  </h4>
+  <mat-list-item>
+    <mat-button-toggle-group appearance="legacy" name="temperature" [(ngModel)]="userPrefs.temp"
+      aria-label="Temperature" (change)="updatePrefs()">
+      <mat-button-toggle [value]="0">{{unitDescription(0)}}</mat-button-toggle>
+      <mat-button-toggle [value]="1">{{unitDescription(1)}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-list-item>
+
+  <h4 matSubheader>
+    <span>TDS</span>
+  </h4>
+  <mat-list-item>
+    <mat-button-toggle-group appearance="legacy" name="tds" [(ngModel)]="userPrefs.tds" aria-label="TDS"
+      (change)="updatePrefs()">
+      <mat-button-toggle [value]="3">{{unitDescription(3)}}</mat-button-toggle>
+      <mat-button-toggle [value]="6">{{unitDescription(6)}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-list-item>
+
+  <h4 matSubheader>
+    <span>Light Level</span>
+  </h4>
+  <mat-list-item>
+    <mat-form-field style="width: 100%;">
+    <mat-select [(ngModel)]="userPrefs.lightLevel" (selectionChange)="updatePrefs()">
+      <mat-option [value]=7>{{unitDescription(7)}}</mat-option>
+      <mat-option [value]=16>{{unitDescription(16)}}</mat-option>
+      <mat-option [value]=20>{{unitDescription(20)}}</mat-option>
+      <mat-option [value]=21>{{unitDescription(21)}}</mat-option>
+      <mat-option [value]=22>{{unitDescription(22)}}</mat-option>
+      <mat-option [value]=23>{{unitDescription(23)}}</mat-option>
+      <mat-option [value]=24>{{unitDescription(24)}}</mat-option>
+      <mat-option [value]=25>{{unitDescription(25)}}</mat-option>
+      <mat-option [value]=26>{{unitDescription(26)}}</mat-option>
+      <mat-option [value]=27>{{unitDescription(27)}}</mat-option>
+      <mat-option [value]=28>{{unitDescription(28)}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </mat-list-item>
+
+  <h4 matSubheader>
+    <span>VPD</span>
+  </h4>
+  <mat-list-item>
+    <mat-button-toggle-group appearance="legacy" name="vpd" [(ngModel)]="userPrefs.vpd" aria-label="VPD"
+      (change)="updatePrefs()">
+      <mat-button-toggle [value]="8">{{unitDescription(8)}}</mat-button-toggle>
+      <mat-button-toggle [value]="9">{{unitDescription(9)}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+<mat-list>
+  <h3 matSubheader>
+    <span>Preferences</span>
+  </h3>
+
+  <h4 matSubheader>
+    <span>Dashboard View</span>
+  </h4>
+  <mat-list-item>
+    <mat-button-toggle-group appearance="legacy" name="dashboard" [(ngModel)]="userPrefs.dashboard"
+      aria-label="Dashboard View" (change)="updatePrefs()">
+      <mat-button-toggle value="charts">Charts</mat-button-toggle>
+      <mat-button-toggle value="gauges">Gauges</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-list-item>
+  <h4 matSubheader>
+    <span>Time Format</span>
+  </h4>
+  <mat-list-item>
+    <mat-button-toggle-group appearance="legacy" name="prefer24Hour" [(ngModel)]="userPrefs.prefer24Hour"
+      aria-label="Time Display Format" (change)="updatePrefs()">
+      <mat-button-toggle [value]="true">24-hour</mat-button-toggle>
+      <mat-button-toggle [value]="false">12-hour</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>

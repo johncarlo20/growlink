@@ -1,0 +1,247 @@
+@use '~@angular/material' as mat;
+@import "src/@fuse/scss/fuse";
+
+:host {
+
+    #login {
+        width: 100%;
+        overflow: auto;
+        background-color: #3C4252;
+        width: 100%;
+        overflow: auto;
+        background-color: #3C4252;
+        background-image: url('/assets/images/backgrounds/login-bg.png');
+        background-position-x: right;
+        background-size: 55%;
+        background-position-y: top;
+
+        #login-form-wrapper {
+            flex: 1 0 auto;
+
+            @include media-breakpoint('xs') {
+                padding: 16px;
+            }
+
+            #login-form {
+                width: 45%;
+                background: #FFFFFF;
+                
+                height: 100%;
+                padding: 120px 160px;
+
+                @include mat.elevation(16);
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                }
+
+                .logo {
+                    margin-bottom: 32px;
+
+                    &-bottom {
+                        position: fixed;
+                        left: 45%;
+                        margin-left: 24px;
+                        bottom: 24px;
+                    }
+                }
+
+                .title {
+                    font-size: 20px;
+                    margin: 16px 0 2px 0;
+                    font-weight: 800;
+                    font-size: 24px;
+                    color: #1E293B;
+                }
+
+                .subtitle {
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #1E293B;
+                    margin-bottom: 32px;
+                }
+
+                label {
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #374151;
+                }
+
+                form {
+                    width: 100%;
+                    text-align: left;
+
+                    mat-form-field {
+                        width: 100%;
+                    }
+
+                    mat-checkbox {
+                        margin: 0;
+                    }
+
+                    .submit-button, .forgot-password {
+                        width: 220px;
+                        margin: 16px auto;
+                        display: block;
+
+                        @include media-breakpoint('xs') {
+                            width: 90%;
+                        }
+                    }
+                }
+
+                .separator {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin: 24px auto;
+                    position: relative;
+                    overflow: hidden;
+                    width: 100px;
+                    color: rgba(0, 0, 0, 0.54);
+
+                    .text {
+                        display: inline-flex;
+                        position: relative;
+                        padding: 0 8px;
+                        z-index: 9999;
+
+                        &:before, &:after {
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            position: absolute;
+                            top: 10px;
+                            border-top: 1px solid rgba(0, 0, 0, 0.12);
+                        }
+
+                        &:before {
+                            right: 100%;
+                        }
+
+                        &:after {
+                            left: 100%;
+                        }
+                    }
+                } 
+                
+                
+            }
+
+            .mat-flat-button {
+                border-radius: 30px;
+                max-width: 100%;
+                width: 100% !important;
+            }
+
+            .forgot-password-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 24px;           
+            }
+
+            .continue-with {
+                margin-top: 32px;
+
+                &-or {
+                    display: flex;
+                    align-items: center;
+
+                    hr {
+                        border-top: 1px solid #E2E8F0;
+                        flex: 1;
+                    }
+
+                    span {
+                        margin: 0 8px;
+                        color: #4B5563;
+                        font-size: 14px;
+
+                    }
+                }
+
+                &-social {
+                    margin-top: 32px;
+                    display: flex;
+                    align-items: center;
+
+                    div {
+                        border: 1px solid #D1D5DB;
+                        border-radius: 21px;
+                        height: 40px;
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &:first-child {
+                            margin-right: 16px;
+                        }
+
+                        &:last-child {
+                            margin-left: 16px;
+                        }
+                    }
+                }
+            }
+           
+        }
+    }
+}
+
+::ng-deep .login-field .mat-form-field-flex > .mat-form-field-infix {   
+    padding: 4px 0 9px 0!important;
+}
+
+::ng-deep .mat-checkbox-label {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.login-background {
+    display: none;
+}
+
+#login.mobile {
+    background: #F1F5F9 !important;
+
+    #login-form-wrapper {
+        padding: 20px;
+
+        #login-form {
+            box-shadow: 0px 1px 3px rgb(0 0 0 / 10%), 0px 1px 2px rgb(0 0 0 / 6%) !important;
+            border-radius: 16px;
+        }
+    }
+}
+
+#login.tablet {
+    #login-form-wrapper {
+        flex-direction: row !important;
+        
+        #login-form {
+            padding: 20px;
+            width: 50%;
+            border-radius: 16px 0 0 16px;
+
+            .logo-bottom {
+                left: 50%;
+                bottom: 40px;
+            }
+        }
+
+        .login-background {
+            background-color: #3C4252;
+            background-image: url('/assets/images/backgrounds/login-bg.png');
+            background-position-x: right;
+            background-size: auto 100%;
+            background-position-y: top;
+            width: 50%;
+            height: 100%;
+            display: block;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0px 1px 3px rgb(0 0 0 / 10%), 0px 1px 2px rgb(0 0 0 / 6%) !important;
+        }
+    }
+}

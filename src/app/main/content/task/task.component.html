@@ -1,0 +1,118 @@
+<div id="modules" ngClass.xs="mobile" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start center">
+    Grow recipes
+  </div>
+  <div class="header-subtitle mat-bg" fxLayout="row" fxLayoutAlign="start center">Monitor metrics, check reports and review performance</div>
+
+  <div class="mt-24" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="column">
+        <div class="task">
+          <div class="task-header">
+            <div class="task-add">
+              <div class="btn-group">
+                <button class="btn">
+                  <svg ibmIconAdd size="20"></svg>
+                  Add task
+                </button>
+                <div class="btn-group-addon">
+                  <svg ibmIconChevronDown size="20"></svg>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-tool">
+              <svg ibmIconCheckmark size="20"></svg>
+              <span>All tasks</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconFilter size="20"></svg>
+              <span>Filter</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconCaretSort size="20"></svg>
+              <span>Sort</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconEdit size="20"></svg>
+              <span>Customize</span>
+            </button>
+            <button class="btn-tool">
+              <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+            </button>
+          </div>
+          <div class="task-search">
+            <div class="task-search-input">
+              <input type="text" placeholder="Task name">
+            </div>
+
+            <button class="btn-tool">
+              <span>Assignee</span>
+              <svg ibmIconChevronSort size="20"></svg>
+            </button>
+            <button class="btn-tool">
+              <span>Date</span>
+              <svg ibmIconChevronSort size="20"></svg>
+            </button>
+            <button class="btn-tool">
+              <span>Priority</span>
+              <svg ibmIconChevronSort size="20"></svg>              
+            </button>
+            <button class="btn-tool">
+              <span>Status</span>
+            </button>
+          </div>
+          <ng-container *ngFor="let item of items">
+            <div class="task-item" (click)="item.expanded = !item.expanded">
+              <svg *ngIf="item.expanded" ibmIconCaretDown size="20"></svg>
+              <svg *ngIf="!item.expanded" ibmIconCaretUp size="20"></svg>
+              <span class="task-item-title">{{item.name}}</span>
+              <svg ibmIconOverflowMenuHorizontal size="20"></svg>
+            </div>
+            <div class="task-item-expand" *ngFor="let expandeditem of item.expandItems" [class]="{ 'expanded': item.expanded }">
+              <svg ibmIconCheckmarkOutline size="20"></svg>
+              <span class="task-item-expand-title" routerLink="/recipe">{{expandeditem.name}}</span>
+              <button class="btn-tool">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9.5" fill="#F1F5F9" stroke="#6B7280" stroke-linecap="square" stroke-dasharray="2 6"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.5C11.0355 4.5 11.875 5.33947 11.875 6.375C11.875 7.41053 11.0355 8.25 10 8.25C8.96447 8.25 8.125 7.41053 8.125 6.375C8.125 5.33947 8.96447 4.5 10 4.5ZM10 3.75C8.55025 3.75 7.375 4.92525 7.375 6.375C7.375 7.82475 8.55025 9 10 9C11.4497 9 12.625 7.82475 12.625 6.375C12.625 4.92525 11.4497 3.75 10 3.75ZM13.75 14.25H13V12.375C13 11.8777 12.8025 11.4008 12.4508 11.0492C12.0992 10.6975 11.6223 10.5 11.125 10.5H8.875C7.83947 10.5 7 11.3395 7 12.375V14.25H6.25V12.375C6.25 10.9253 7.42525 9.75 8.875 9.75H11.125C12.5747 9.75 13.75 10.9253 13.75 12.375V14.25Z" fill="#6B7280"/>
+                  </svg>
+                <span>Assignee</span>
+              </button>
+              <button class="btn-tool btn-tool-date">
+                <span>7-11 Aug</span>
+                <svg ibmIconCalendar size="20"></svg>
+              </button>
+              <div class="label label-success">High</div>
+              <div class="label label-warning">At risk</div>
+              <button class="btn-tool btn-tool-icon">
+                <svg ibmIconChevronDown size="20"></svg>
+              </button>
+              <div class="task-item-expand-mobile">
+                <svg ibmIconCheckmarkOutline size="20"></svg>
+                <span class="task-item-expand-title" routerLink="/recipe">{{expandeditem.name}}</span>
+              </div>
+              <div class="task-item-expand-mobile-info">
+                <button class="btn-tool">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="9.5" fill="#F1F5F9" stroke="#6B7280" stroke-linecap="square" stroke-dasharray="2 6"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 4.5C11.0355 4.5 11.875 5.33947 11.875 6.375C11.875 7.41053 11.0355 8.25 10 8.25C8.96447 8.25 8.125 7.41053 8.125 6.375C8.125 5.33947 8.96447 4.5 10 4.5ZM10 3.75C8.55025 3.75 7.375 4.92525 7.375 6.375C7.375 7.82475 8.55025 9 10 9C11.4497 9 12.625 7.82475 12.625 6.375C12.625 4.92525 11.4497 3.75 10 3.75ZM13.75 14.25H13V12.375C13 11.8777 12.8025 11.4008 12.4508 11.0492C12.0992 10.6975 11.6223 10.5 11.125 10.5H8.875C7.83947 10.5 7 11.3395 7 12.375V14.25H6.25V12.375C6.25 10.9253 7.42525 9.75 8.875 9.75H11.125C12.5747 9.75 13.75 10.9253 13.75 12.375V14.25Z" fill="#6B7280"/>
+                    </svg>
+                  <span>Assignee</span>
+                </button>
+                <button class="btn-tool btn-tool-date">
+                  <span>7-11 Aug</span>
+                  <svg ibmIconCalendar size="20"></svg>
+                </button>
+                <div class="label label-success">High</div>
+                <div class="label label-warning">At risk</div>
+                <button class="btn-tool btn-tool-icon">
+                  <svg ibmIconChevronDown size="20"></svg>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+    </div>
+  </div>
+</div>
+

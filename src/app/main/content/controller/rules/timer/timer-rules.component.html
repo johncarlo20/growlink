@@ -1,0 +1,50 @@
+<mat-table [dataSource]="dataSource" matSort matSortActive="device" matSortDirection="asc"
+(matSortChange)="sortOrderChange($event)">
+  <ng-container matColumnDef="device">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Device</mat-header-cell>
+    <mat-cell *matCellDef="let timer">{{timer.DisplayName || timer.DeviceNames}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="timeOfDay">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Time of Day</mat-header-cell>
+    <mat-cell *matCellDef="let timer">{{timer.TimeOfDay}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="startTime">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Sync Time</mat-header-cell>
+    <mat-cell *matCellDef="let timer">{{timer.SyncTimeDisplay}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="frequency">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Frequency</mat-header-cell>
+    <mat-cell *matCellDef="let timer">Every {{timer.FrequencyHuman}}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="duration">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Duration</mat-header-cell>
+    <mat-cell *matCellDef="let timer">For {{timer.DurationHuman}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell fxFlex="250px" *matHeaderCellDef></mat-header-cell>>
+    <mat-cell fxFlex="250px" fxLayoutAlign="end center" *matCellDef="let timer">
+      <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading" (click)="editTimer(timer)">
+        <mat-icon aria-label="Edit timer">mode_edit</mat-icon>
+      </button>
+      <button mat-icon-button color="secondary" [disabled]="loading" (click)="viewHistory(timer.Id, timer.Name)">
+        <mat-icon aria-label="View History">list_alt</mat-icon>
+      </button>
+      <button *ngIf="!isReadOnly" mat-icon-button color="warn" [disabled]="loading" (click)="deleteTimer(timer)">
+        <mat-icon aria-label="Delete timer">delete</mat-icon>
+      </button>
+      <mat-slide-toggle [checked]="timer.IsActive" (change)="setTimerActive($event, timer)"
+        (click)="ignoreClick($event)" [disabled]="loading || isReadOnly" style="min-width: 100px">
+        {{timer.IsActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+    </mat-cell>>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="timerColumns"></mat-header-row>>
+  <mat-row *matRowDef="let row; columns: timerColumns;" matRipple class="mat-ripple mat-row-selectable"
+    [class.accent-50-bg]="selectedTimer == row" [class.mat-row-disabled]="row && !row.IsActive"
+    (click)="selectTimer(row)" (dblclick)="editTimer(row)"></mat-row>>
+</mat-table>
+<mat-action-row class="mat-primary-100-bg">
+  <button mat-raised-button color="accent" (click)="addTimer()" [disabled]="loading">Add
+    Timer</button>
+</mat-action-row>

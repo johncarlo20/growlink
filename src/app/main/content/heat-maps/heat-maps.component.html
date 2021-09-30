@@ -1,0 +1,154 @@
+<div id="modules" ngClass.xs="mobile" ngClass.sm="tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="header mat-bg mt-24" fxLayout="row" fxLayoutAlign="start">
+    Heat Maps
+  </div>
+
+  <div fxLayout="row" class="mt-24" >
+    <div fxFlex="70" class="row-select" fxLayout="column">
+      <mat-select multiple>
+        <mat-option>Fertigation - Fill Rules</mat-option>
+        <mat-option>Fertigation - HE Anderson</mat-option>
+        <mat-option>Flower 01...10</mat-option>
+      </mat-select>
+    </div>
+    <div fxFlex="30" fxLayoutAlign="end center" class="justify-content-flexend">
+      <div class="card-tabs tabs">
+        <div class="card-tab"> Sensor Name</div>
+        <div class="card-tab active">Sensor Type</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-24" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="column">
+      <div class="card">
+        <table mat-table [dataSource]="items">
+          <!-- Position Column -->
+          <ng-container matColumnDef="sensor">
+            <th width="130" mat-header-cell *matHeaderCellDef> Sensor </th>
+            <td class="sensor" mat-cell *matCellDef="let element"> {{element.sensor}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="fertigation">
+            <th mat-header-cell *matHeaderCellDef> Fertigation - HE Anderson </th>
+            <td mat-cell *matCellDef="let element"> {{element.fertigation}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="flower01canopy">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01">
+            <th mat-header-cell *matHeaderCellDef> Flower 02 </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="flower01canopy1">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy2">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy2}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy3">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy3}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy4">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy4}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy5">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy5}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy6">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy6}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy7">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy7}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="flower01canopy8">
+            <th mat-header-cell *matHeaderCellDef> Flower 01 Canopy </th>
+            <td mat-cell *matCellDef="let element"> {{element.flower01canopy8}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div class="heat-maps-item" *ngFor="let item of items; index as i;">
+          <div class="heat-maps-item-title">
+            <b>Sensor</b>
+            <span>{{item.sensor}}</span>
+          </div>
+          <div class="heat-maps-item-info">
+            <div>
+              <div class="heat-maps-item-title">
+                <b>Fertigation - 
+                  HE Anderson</b>
+                <span>{{item.fertigation}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 02</b>
+                <span>{{item.flower01}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy1}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy2}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy3}}</span>
+              </div>
+            </div>
+            <div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy4}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy5}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy6}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy7}}</span>
+              </div>
+              <div class="heat-maps-item-title">
+                <b>Flower 01 Canopy</b>
+                <span>{{item.flower01canopy8}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

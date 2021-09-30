@@ -1,0 +1,54 @@
+.calendar-irr-dialog {
+    display: flex;
+    align-items: center;
+    margin: 0 -8px;
+    margin-bottom: 24px;
+
+    &-label {
+        color: #374151;
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    &-day {
+        color: #1E293B;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        margin: 0 -4px;
+        margin-bottom: 48px;
+
+        span {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E2E8F0;
+            cursor: pointer;
+            border-radius: 100%;
+            margin: 0 4px;
+
+            &:hover {
+                background: #0EA5E9;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .mat-select-dialog {
+        margin: 0 8px;
+        flex: 1;
+
+        .mat-select {
+            max-width: 100%;
+        }
+    }
+}
+
+.cdk-overlay-pane {
+    max-width: 90vw !important;
+}

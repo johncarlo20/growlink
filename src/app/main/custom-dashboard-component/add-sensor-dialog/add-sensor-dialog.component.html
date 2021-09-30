@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Add Sensor</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editAlertForm" (ngSubmit)="submit()" [formGroup]="addSensorForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="controllerOptions.length > 1">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Controller" [formControl]="controller">
+          <mat-option *ngFor="let option of controllerOptions" [value]="option">{{option.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="controller.hasError('required')">
+          Controller is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="moduleOptions.length > 1">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Module" [formControl]="module">
+          <mat-option *ngFor="let option of filteredModuleOptions" [value]="option">{{option.module.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="module.hasError('required')">
+          Module is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Sensor" [formControl]="sensor">
+          <mat-option *ngFor="let option of filteredSensorOptions" [value]="option">{{option.sensor.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="sensor.hasError('required')">
+          Sensor is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Display as" [formControl]="dashboardType">
+          <mat-option *ngFor="let type of dashboardTypeOptions" [value]="type.value">{{type.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="dashboardType.hasError('required')">
+          Display as is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="addSensorForm.invalid">Add Sensor</button>
+  <button mat-raised-button (click)="dialogRef.close(changes)">Close</button>
+</div>

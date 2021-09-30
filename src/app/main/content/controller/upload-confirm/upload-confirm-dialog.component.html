@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Upload Required</h2>
+<mat-dialog-content>
+  <p>{{data.msg}}</p>
+  <strong>Please confirm that you want to proceed without uploading?</strong>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="onConfirm()" color="warn">Proceed</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>

@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Add Manual Task</h2>
+<mat-dialog-content>
+  <form class="p-24" name="editAlertForm" (ngSubmit)="submit()" [formGroup]="addTaskForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="controllerOptions.length > 1">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Controller" [formControl]="controller">
+          <mat-option *ngFor="let option of controllerOptions" [value]="option">{{option.Name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="controller.hasError('required')">
+          Controller is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="100">
+        <mat-select placeholder="Manual Task" [formControl]="task">
+          <mat-option *ngFor="let option of filteredTaskOptions" [value]="option.value">{{option.caption}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="task.hasError('required')">
+          Manual Task is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="addTaskForm.invalid">Add Manual Task</button>
+  <button mat-raised-button (click)="dialogRef.close(changes)">Close</button>
+</div>

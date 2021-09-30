@@ -1,0 +1,84 @@
+<div id="batch-tanks-new" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row">
+    <div fxFlex="100" fxLayout="column">
+      <div class="header mat-bg mt-32" fxLayout="row" fxLayoutAlign="start center">
+        Create Batch Tanks Fill
+      </div>
+    </div>
+  </div>
+  <div class="mt-32" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="90" fxLayout="column">
+      <div class="nutrient-new-card">
+          <div class="nutrient-new-card-title">Create Tanks</div>
+          <div class="nutrient-new-card-time">
+            <mat-slide-toggle>All Day</mat-slide-toggle>  
+            <div class="input-clock">
+              <label>Time of Day</label>
+              <input type="text" placeholder="Custom Time">
+              <svg ibmIconTime size="20"></svg>
+            </div>
+          </div>
+          <label class="mt-16">Name Tank</label>
+          <input type="text" placeholder="Type Field">
+          <label class="mt-16">Select Recipe</label>
+          <mat-select placeholder="Clearex Flush">
+            <mat-option>Test</mat-option>
+            <mat-option>Test 1</mat-option>
+            <mat-option>Test 2</mat-option>
+          </mat-select>
+          <div class="nutrient-new-card-details">
+            <div class="input-clock">
+              <label>Start Time</label>
+              <input type="text" placeholder="11:44:00 AM">
+              <svg ibmIconTime size="20"></svg>
+            </div>
+            <div  class="input-clock">
+              <label>End Time</label>
+              <input type="text" placeholder="12:50:00 PM">
+              <svg ibmIconTime size="20"></svg>
+            </div>
+          </div>
+          <div class="nutrient-new-card-slider-container">
+            <div class="nutrient-new-card-slider">
+              <mat-slider
+                [(ngModel)]="scale"
+                color="accent"
+                [max]="100"
+                [min]="0"
+                [thumbLabel]="false"
+                class="full-width cdk-focused slider-over slider-max-value"
+                step="1">
+              </mat-slider>
+              <div>
+                <span>0</span>
+                <span>100</span>
+              </div>
+              <label>Start Value [ {{scale}}% ]</label>
+              <input [(ngModel)]="scale" type="text" placeholder="30">
+            </div>
+            <div class="nutrient-new-card-slider">
+              <mat-slider
+                [(ngModel)]="scale1"
+                color="accent"
+                [max]="100"
+                [min]="0"
+                [thumbLabel]="false"
+                class="full-width cdk-focused slider-over slider-max-value"
+                step="1">
+              </mat-slider>
+              <div>
+                <span>0</span>
+                <span>100</span>
+              </div>
+              <label>End Value [ {{scale1}}% ]</label>
+              <input [(ngModel)]="scale1" type="text" placeholder="30">
+            </div>
+          </div>
+          <div class="nutrient-new-card-actions">
+            <button mat-button>Cancel</button>
+            <button mat-button class="primary">Save</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

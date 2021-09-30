@@ -1,0 +1,25 @@
+<h1 class="nutrient" mat-dialog-title>
+  <span *ngIf="this.data.type === 'add'">Add Cost</span>
+  <span *ngIf="this.data.type === 'per'">Cost per</span>
+  <svg ibmIconClose size="24" (click)="onNoClick()"></svg>
+</h1>
+<div mat-dialog-content>
+  <div class="mat-input-dialog" *ngIf="this.data.type === 'add'">
+    <label>Recipe Name*</label>
+    <input type="text" placeholder="Add Cost">
+  </div>
+
+  <div class="mat-badges" *ngIf="this.data.type === 'per'">
+    <div>ML</div>
+    <div>Gal</div>
+  </div>
+
+  <div class="mat-input-dialog" *ngIf="this.data.type === 'per'">
+    <label>Cost per ml*</label>
+    <input type="text" placeholder="$2500">
+  </div>
+</div>
+  
+<div class="dialog-actions nutrient-btn">
+  <button mat-button color="primary" cdkFocusInitial>Add</button>
+</div>

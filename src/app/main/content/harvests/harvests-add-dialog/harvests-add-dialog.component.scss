@@ -1,0 +1,61 @@
+.harvests-input {
+    margin-bottom: 16px;
+
+    label {
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        color: #374151;
+        margin-bottom: 4px;
+    }
+
+    input {
+        background: #FFFFFF;
+        border: 1px solid #D1D5DB;
+        border-radius: 6px;
+        padding: 9px 13px;
+        font-size: 16px;
+        color: #1E293B;
+        width: 100%;
+    }
+
+    &-plant {
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 180px;
+            border-left: 0;
+            border-right: 0;
+            border-top: 1px solid #D1D5DB;
+            border-bottom: 1px solid #D1D5DB;
+            border-radius: 0px;
+            text-align: center;
+        }
+
+        svg {
+            border: 1px solid #D1D5DB;
+            padding: 9px;
+            height: 38px;
+            width: 38px;
+            fill: #9CA3AF;
+            cursor: pointer;
+            transition: .3s;
+            border-radius: 6px;
+
+            &:hover {
+                fill: #1E293B;
+            }
+
+            &:first-child {
+                border-right: 0;
+                border-radius: 6px 0 0 6px;
+            }
+
+            &:last-child {
+                border-left: 0;
+                border-radius: 0 6px 6px 0;
+            }
+        }
+    }
+}

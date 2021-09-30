@@ -1,0 +1,69 @@
+<div id="inbox" class="page-layout simple fullwidth" fusePerfectScrollbar>
+
+  <div class="p-24" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-raised-button (click)="markAllRead()" color="primary" [disabled]="(UnreadCount | async) == 0">
+      Mark All Read
+    </button>
+    <button mat-raised-button (click)="refresh()" color="secondary" class="ml-4 mr-16">Refresh</button>
+    <mat-slide-toggle [checked]="onlyUnseen" (change)="toggleOnlyUnseen()">Unread only</mat-slide-toggle>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <div>
+      <mat-form-field style="width: 75%" class="ml-4">
+        <mat-select placeholder="Controllers" multiple [(value)]="controllerIds" (closed)="refresh()">
+          <mat-option *ngFor="let c of allControllers" [value]="c.value">{{c.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 24%" class="ml-4">
+        <mat-select placeholder="Type" multiple [(value)]="notificationTypes" (closed)="refresh()">
+          <mat-option *ngFor="let c of allNotificationTypes" [value]="c.value">{{c.caption}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-table [dataSource]="NotificationsSource">
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">{{notification.TypeName}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="controller">
+        <mat-header-cell *matHeaderCellDef>Controller</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">{{notification.Controller?.Name}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="activate">
+        <mat-header-cell *matHeaderCellDef>Activated</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">{{notification.ControllerActivateTimestamp}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="deactivate">
+        <mat-header-cell *matHeaderCellDef>Deactivated</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">{{notification.ControllerDeactivateTimestamp}}</mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">
+          <div fxLayout="row" fxLayoutAlign="start center" *ngIf="notification.Active">
+            <mat-icon class="mr-4" [ngStyle]="{'color': 'orange'}">warning</mat-icon> Active
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!notification.Active">
+            <mat-icon class="mr-4" [ngStyle]="{'color': 'green'}">check_circle</mat-icon>Resolved
+          </div>
+        </mat-cell>>
+      </ng-container>
+      <ng-container matColumnDef="detail">
+        <mat-header-cell *matHeaderCellDef>Detail</mat-header-cell>>
+        <mat-cell *matCellDef="let notification">{{notification.Details}}</mat-cell>>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns" class="read"></mat-header-row>>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="mat-ripple mat-row-selectable"
+        (click)="showNotification(row)" [class.unread]="!row.Seen" [class.read]="row.Seen"></mat-row>>
+    </mat-table>
+
+    <div class="p-24" fxLayout="row" fxLayoutAlign="center center" *ngIf="(Count | async) == TotalLoaded">
+      <button mat-raised-button (click)="loadMore()" color="primary">
+        Load More...
+      </button>
+    </div>
+  </div>
+</div>

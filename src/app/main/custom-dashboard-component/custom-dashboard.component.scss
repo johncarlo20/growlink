@@ -1,0 +1,75 @@
+:host {
+  width: inherit;
+}
+
+.add-item-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 10;
+}
+
+gridster {
+  background: none;
+}
+
+gridster-item {
+  background: none;
+}
+
+.manage-overlay {
+  background: rgba(128, 128, 128, 0.5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 5;
+
+  &.manage-overlay-resizable {
+    border-right: 3px solid black;
+    animation: flickerAnimation 1s infinite alternate;
+  }
+}
+
+.overlay-bar {
+  position: fixed;
+  right: 0px;
+  z-index: 15;
+  align-items: center;
+  height: 54px;
+  width: calc(100% - 280px);
+
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-areas: "recipes rules durations";
+    width: 100%;
+  }
+}
+
+.charts-durations {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 95%;
+}
+
+@keyframes flickerAnimation {
+  from { border-right-color: white;}
+}
+@-moz-keyframes flickerAnimation{
+  from { border-right-color: white;}
+}
+@-webkit-keyframes flickerAnimation{
+  from { border-right-color: white;}
+}

@@ -1,0 +1,18 @@
+<div class="gauge-chart" [style.width.px]="canvasWidth">
+  <span fxLayout="row" fxLayoutAlign="center center" [style.font-size.px]="nameFont"
+    [style.margin-bottom.px]="nameMargin" [class.active-alert]="(hasActiveAlerts | async)">
+    <mat-icon *ngIf="hasActiveAlerts | async" matTooltip="Sensor Alert active" matTooltipClass="tooltip-default">warning</mat-icon>
+    {{name}}
+  </span>
+  <div *ngIf="(hasActiveAlerts | async)" fxLayout="row" fxLayoutAlign="center center" class="h3 nowrap-text"
+    [class.active-alert]="(hasActiveAlerts | async)">
+    <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 0">arrow_drop_up</mat-icon>
+    <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 1">arrow_drop_down</mat-icon>
+    {{(firstActiveAlert | async).Threshold}}{{readingSuffix}}
+  </div>
+  <div #gaugeArea></div>
+  <span class="gauge-chart__label" [style.font-size.px]="bottomLabelFont" [style.margin-top.px]="bottomLabelMargin"
+    [class.active-alert]="(hasActiveAlerts | async)">
+    {{bottomLabel}}
+  </span>
+</div>

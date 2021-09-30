@@ -1,0 +1,60 @@
+<mat-card class="auto-width mb-8" [ngClass.gt-sm]="custom ? '' : 'mr-8'" *ngIf="sensor"
+  [class.custom-dashboard]="custom" [class.sensor-alert]="hasActiveAlerts | async">
+
+  <div fxLayout="row" fxLayoutAlign="space-between start" class="pb-8">
+    <div class="pr-8" [ngStyle]="{'max-width': timestamp ? '70%' : '100%'}">
+      <div fxLayout="row" class="h3 secondary-text nowrap-text" [class.active-alert]="(hasActiveAlerts | async)">
+        <mat-icon *ngIf="hasActiveAlerts | async" matTooltip="Sensor Alert active" matTooltipClass="tooltip-default">
+          warning
+        </mat-icon>
+        {{customName || sensor.name}}
+      </div>
+    </div>
+    <div *ngIf="(hasActiveAlerts | async) && timestamp" fxLayout="row" fxLayoutAlign="center center" class="h3 nowrap-text"
+      [class.active-alert]="(hasActiveAlerts | async)">
+      <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 0">arrow_drop_up</mat-icon>
+      <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 1">arrow_drop_down</mat-icon>
+      {{(firstActiveAlert | async).Threshold}}{{sensor.readingSuffix}}
+    </div>
+    <div class="h3 secondary-text nowrap-text" *ngIf="timestamp && sensor.age == 1">
+      {{sensor.tstamp | mdate:'short' : sensor.tz}} {{sensor.tzAbbr}}
+    </div>
+    <div class="h3 secondary-text nowrap-text" *ngIf="timestamp && sensor.age == -1">
+      --
+    </div>
+    <div class="h3 secondary-text nowrap-text" [class.active-alert]="(hasActiveAlerts | async)" *ngIf="timestamp && !sensor.age">
+      {{sensor.tstamp | mdate:'mediumTime' : sensor.tz}} {{sensor.tzAbbr}}
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="pb-8">
+    <div class="font-size-28 font-weight-300 line-height-1 nowrap-text" [class.outdated]="sensor.outdated"
+      [class.active-alert]="(hasActiveAlerts | async)" [class.font-size-28]="timestamp"
+      [class.font-size-20]="!timestamp" fxLayout="row" fxLayoutAlign="space-between flex-end">
+      {{sensor.age == -1 ? '--' : sensor.value | async}}
+      <div *ngIf="(hasActiveAlerts | async) && !timestamp" fxLayout="row" fxLayoutAlign="center center" class="h3 nowrap-text"
+        [class.active-alert]="(hasActiveAlerts | async)">
+        <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 0">arrow_drop_up</mat-icon>
+        <mat-icon *ngIf="(firstActiveAlert | async).ComparisonType === 1">arrow_drop_down</mat-icon>
+        {{(firstActiveAlert | async).Threshold}}{{sensor.readingSuffix}}
+      </div>
+    </div>
+    <div *ngIf="chart" class="font-size-14 secondary-text nowrap-text text-right"
+      [class.active-alert]="(hasActiveAlerts | async)">
+      {{minMaxLabel | async}}
+    </div>
+  </div>
+
+  <div *ngIf="chart && hasChartData" class="h-112 pointer"
+    [class.chart-loading]="isLoading && !sensor.chartData.length" (click)="showChart()">
+    <ngx-charts-line-chart [results]="sensor.chartData" [autoScale]="chartOptions.autoScale"
+      [scheme]="chartOptions.scheme" [gradient]="chartOptions.gradient" [xAxis]="chartOptions.xAxis"
+      [yAxis]="chartOptions.yAxis" [legend]="chartOptions.legend" [showXAxisLabel]="chartOptions.showXAxisLabel"
+      [showYAxisLabel]="chartOptions.showYAxisLabel" [xAxisLabel]="chartOptions.xAxisLabel"
+      [yScaleMin]="chartOptions.yScaleMin" [yScaleMax]="chartOptions.yScaleMax"
+      [yAxisLabel]="chartOptions.yAxisLabel" [curve]="chartOptions.curve">
+    </ngx-charts-line-chart>
+    <mat-spinner *ngIf="isLoading && !sensor.chartData.length"></mat-spinner>
+  </div>
+
+</mat-card>

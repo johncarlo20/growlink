@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Available Modules</h2>
+<mat-dialog-content>
+  <mat-table [dataSource]="availableModules" style="height: 40vh">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>>
+      <mat-cell *matCellDef="let module">
+        <mat-form-field fxFlex="100" floatLabel="never" class="input-field">
+          <input matInput placeholder="Module Name" [(ngModel)]="module.Name" [disabled]="loading">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>>
+      <mat-cell *matCellDef="let module">{{getTypeName(module)}}</mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="serial">
+      <mat-header-cell *matHeaderCellDef>Serial #</mat-header-cell>>
+      <mat-cell *matCellDef="let module">
+        {{module.SerialNumber}}
+        <div *ngIf="module.RegistrationError" class="reg-error">{{module.RegistrationError}}</div>
+      </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell fxFlex="150px" *matHeaderCellDef></mat-header-cell>
+      <mat-cell fxFlex="150px" fxLayoutAlign="end center" *matCellDef="let module">
+        <button mat-flat-button color="primary" [disabled]="loading || module.CantRegister"
+          (click)="registerModule(module)">Register</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedRegColumns"></mat-header-row>>
+    <mat-row *matRowDef="let row; columns: displayedRegColumns;"></mat-row>>
+  </mat-table>
+
+  <div fxLayout="row" fxLayoutAlign="start center" *ngIf="showManualEntry">
+    <mat-form-field fxFlex="grow" class="mr-4">
+      <input matInput type="text" [(ngModel)]="manualEntry" placeholder="Serial number..." #manualSerial (keypress)="manualSerialKey($event)">
+    </mat-form-field>
+    <button fxFlex="auto" mat-raised-button (click)="checkSerialField()" color="primary" [disabled]="loading">Check</button>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="showSerialField()" color="primary" [disabled]="loading">Enter Serial Number</button>
+  <button mat-raised-button (click)="refreshModules()" color="primary" [disabled]="loading">Refresh Modules</button>
+  <button mat-raised-button (click)="onClose()" [disabled]="loading">Close</button>
+</div>

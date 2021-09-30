@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>
+  <span>Custom recurrence</span>
+  <svg ibmIconClose size="24" (click)="onNoClick()"></svg>
+</h1>
+<div mat-dialog-content>
+  <label class="calendar-irr-dialog-label">Repeat every</label>
+
+  <div class="calendar-irr-dialog">
+    <div class="mat-select-dialog">
+      <mat-select multiple placeholder="1">
+        <mat-option>Test</mat-option>
+        <mat-option>Test 1</mat-option>
+        <mat-option>Test 2</mat-option>
+      </mat-select>
+    </div>
+  
+    <div class="mat-select-dialog">
+      <mat-select multiple placeholder="Week">
+        <mat-option>Test</mat-option>
+        <mat-option>Test 1</mat-option>
+        <mat-option>Test 2</mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="calendar-irr-dialog-day">
+    <span>S</span>
+    <span>M</span>
+    <span>T</span>
+    <span>W</span>
+    <span>T</span>
+    <span>F</span>
+    <span>S</span>
+  </div>
+</div>
+
+<div class="mb-24">
+  <mat-radio-group>
+    <mat-radio-button value="0" class="mr-32">Never</mat-radio-button>
+    <mat-radio-button value="1" class="mr-32">On</mat-radio-button>
+    <mat-radio-button value="2">After</mat-radio-button>
+  </mat-radio-group>
+</div>
+  
+<div class="dialog-actions">
+  <button mat-stroked-button class="mr-10" (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" cdkFocusInitial>Add</button>
+</div>

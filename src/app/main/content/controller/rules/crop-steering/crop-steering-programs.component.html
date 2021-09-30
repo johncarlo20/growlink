@@ -1,0 +1,41 @@
+<mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc"
+  (matSortChange)="sortOrderChange($event)">
+  <ng-container matColumnDef="sensor">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Sensor</mat-header-cell>
+    <mat-cell *matCellDef="let program">{{program.SensorName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let program">{{program.Name}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell fxFlex="250px" *matHeaderCellDef></mat-header-cell>
+    <mat-cell fxFlex="250px" fxLayoutAlign="end center" *matCellDef="let program">
+      <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading"
+        (click)="editProgram(program)">
+        <mat-icon aria-label="Edit program">mode_edit</mat-icon>
+      </button>
+      <button mat-icon-button color="secondary" [disabled]="loading"
+        (click)="viewHistory(program.Id, program.Name)">
+        <mat-icon aria-label="View History">list_alt</mat-icon>
+      </button>
+      <button *ngIf="!isReadOnly" mat-icon-button color="warn" [disabled]="loading"
+        (click)="deleteProgram(program)">
+        <mat-icon aria-label="Delete program">delete</mat-icon>
+      </button>
+      <mat-slide-toggle [checked]="program.IsActive" (change)="setProgramActive($event, program)"
+        (click)="ignoreClick($event)" [disabled]="loading || isReadOnly" style="min-width: 100px">
+        {{program.IsActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="programColumns"></mat-header-row>>
+  <mat-row *matRowDef="let row; columns: programColumns;" matRipple class="mat-ripple mat-row-selectable"
+    [class.accent-50-bg]="selectedProgram == row" [class.mat-row-disabled]="row && !row.IsActive"
+    (click)="selectProgram(row)" (dblclick)="editProgram(row)"></mat-row>>
+</mat-table>
+<mat-action-row class="mat-primary-100-bg">
+  <button mat-raised-button color="accent" (click)="addProgram()" [disabled]="loading">
+    Add Crop Steering Program
+  </button>
+</mat-action-row>

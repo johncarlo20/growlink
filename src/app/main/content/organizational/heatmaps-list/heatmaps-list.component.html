@@ -1,0 +1,26 @@
+<div id="dashboard" class="page-layout simple fullwidth p-8" fusePerfectScrollbar>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <div fxLayout="row" fxLayoutAlign="center start">
+      <button class="mat-raised-button mat-primary" (click)="addHeatmap()" [disabled]="loading">Add heatmap</button>
+    </div>
+    <div class="px-16" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="row wrap" fxLayoutAlign.gt-xs="center center">
+      <mat-card class="auto-width m-8" *ngFor="let map of heatmapList">
+        <div fxLayout="column" fxLayoutAlign="center" class="text-center">
+          {{map.Name}}
+          <img style="width: 192px; cursor: pointer;" [src]="environmentAPI(map.BackgroundImageUrl)"
+            (click)="viewHeatmap(map.Id)" />
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-icon-button color="primary" (click)="editHeatmap(map.Id)">
+              <mat-icon aria-label="Edit Heatmap">mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteHeatmap(map.Id)">
+              <mat-icon aria-label="Delete sensor">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+.nowrap-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.outdated {
+  opacity: 0.5;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  max-width: 100%;
+}
+
+fuse-sensor-value .custom-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 98%;
+  padding: 10px;
+
+  &.sensor-alert {
+    border: 1px solid darkred;
+  }
+
+  .active-alert {
+    animation: ease-in-out fadeInOut 3s 0s infinite;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    color: darkred;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: darkred;
+  }
+}

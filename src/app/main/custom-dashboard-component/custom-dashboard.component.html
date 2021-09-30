@@ -1,0 +1,110 @@
+<mat-nav-list *ngIf="dashboards && !dashboard" class="mx-8" style="min-width: 50%;">
+  <h3 mat-subheader>Available {{dashboardType}} Dashboards</h3>
+  <mat-list-item *ngFor="let item of dashboards" class="mat-elevation-z1" style="cursor: pointer;"
+    (click)="navigateToDashboard(item)">
+    <h3 mat-line style="padding-right: 48px;">
+      {{item.Name}}
+      <span *ngIf="item.Id === controllerResponse?.DefaultDashboardId">(current default)</span>
+      <button *ngIf="dashboardType === 'Controller' && item.Id !== controllerResponse?.DefaultDashboardId" class="ml-16"
+        style="position: absolute; right: 8px;" [style.top]="item.Id === 'generated' ? '3px' : null" color="accent"
+        mat-mini-fab matTooltip="Make Default" (click)="defaultDashboard(item, $event)">
+        <mat-icon>done_outline</mat-icon>
+      </button>
+      <button *ngIf="item.Id !== 'generated'" class="ml-16" style="position: absolute; right: 60px;" color="warn"
+        mat-mini-fab matTooltip="Delete Dashboard" (click)="deleteDashboard(item, $event)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </h3>
+    <p mat-line *ngIf="item.Id !== 'generated'">{{item.Items.length}} items</p>
+  </mat-list-item>
+</mat-nav-list>
+<div fxFlex="0 1 auto" fxLayout="row" class="overlay-bar" *ngIf="!manageItems">
+  <div>
+    <div *ngIf="dashboard && (hasActiveDosingRecipes | async)"
+      class="mat-toolbar charts-durations secondary-text p-8"
+      style="font-size: larger; padding-top: 12px !important; cursor: pointer; grid-area: recipes; margin-left: 0px;">
+      Active Recipe: {{(activeDosingRecipeNames | async)}}
+    </div>
+    <div *ngIf="dashboard && dashboardType === 'Controller'"
+      class="mat-toolbar charts-durations secondary-text p-8"
+      style="font-size: larger; padding-top: 12px !important; cursor: pointer; grid-area: rules; margin-right: 0px;"
+      (click)="navToRules()">
+      Active Rules: {{(activeRuleGroup | async)?.Name}}
+    </div>
+    <div *ngIf="hasCharts" class="py-8 pr-8 mat-toolbar charts-durations" style="grid-area: durations;">
+      <button mat-button class="px-16" (click)="setChartDuration(10)" [disabled]="dashboard.ChartDuration === 10">
+        10 min
+      </button>
+      <button mat-button class="px-16" (click)="setChartDuration(60)" [disabled]="dashboard.ChartDuration === 60">
+        1 hour
+      </button>
+      <button mat-button class="px-16" (click)="setChartDuration(1440)" [disabled]="dashboard.ChartDuration === 1440">
+        1 day
+      </button>
+    </div>
+  </div>
+</div>
+<gridster id="grid" *ngIf="dashboard" [options]="options">
+  <gridster-item [item]="item" *ngFor="let item of dashboard.Items; let idx = index">
+    <fuse-sensor-gauge *ngIf="item.type == 'gauge' && item.sensor" [sensor]="item.sensor" [isLoading]="loading"
+      [sensorHistoricMin]="item.sensor.rangeMin | async" [sensorHistoricMax]="item.sensor.rangeMax | async"
+      [custom]="true" [customName]="item.customName" [euMin]="item.sensor.euMin" [euMax]="item.sensor.euMax">
+    </fuse-sensor-gauge>
+    <fuse-sensor-display *ngIf="item.type == 'chart' && item.sensor" [sensor]="item.sensor" [isLoading]="loading"
+      [custom]="true" [customName]="item.customName">
+    </fuse-sensor-display>
+    <fuse-sensor-display *ngIf="item.type == 'sensor' && item.sensor" [sensor]="item.sensor" [isLoading]="loading"
+      [custom]="true" [customName]="item.customName" [chart]="false">
+    </fuse-sensor-display>
+    <fuse-sensor-display *ngIf="item.type == 'sensor-min' && item.sensor" [sensor]="item.sensor" [isLoading]="loading"
+      [custom]="true" [customName]="item.customName" [chart]="false" [timestamp]="false">
+    </fuse-sensor-display>
+    <fuse-sensor-value *ngIf="item.type == 'sensor-value' && item.sensor" [sensor]="item.sensor" [isLoading]="loading"
+      [custom]="true" [customName]="item.customName">
+    </fuse-sensor-value>
+    <fuse-sensor-light *ngIf="item.type == 'light-sensor' && item.sensor" [sensor]="item.sensor"
+      [options]="item.options" [isLoading]="loading" [custom]="true" [customName]="item.customName">
+    </fuse-sensor-light>
+    <fuse-device-display *ngIf="item.type == 'device' && item.device" [device]="item.device"
+      (stateChanged)="onDeviceStateChange($event)" [custom]='true' [customName]="item.customName">
+    </fuse-device-display>
+    <fuse-manual-task-display *ngIf="item.type == 'task' && item.task" [task]="item.task" [state]="item.task.state"
+      (stateChanged)="onManualTaskStateChange($event)" (error)="onManualTaskError($event)" [custom]='true'
+      [customName]="item.customName" [controllerRemaining]="item.task.remaining">
+    </fuse-manual-task-display>
+    <fuse-label-display *ngIf="item.type == 'label'" [caption]="item.customName" [options]="item.options">
+    </fuse-label-display>
+    <div *ngIf="manageItems" class="manage-overlay" [class.manage-overlay-resizable]="item.type == 'label'"
+      [style.width]="item.type == 'label' ? 'calc(100% - 8px)' : '100%'">
+      <button class="mr-4" mat-mini-fab (mousedown)="renameItem($event, idx)" (touchstart)="renameItem($event, idx)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button class="ml-4" mat-mini-fab color="warn" (mousedown)="deleteItem($event, idx)"
+        *ngIf="item.options?.WidgetSize !== 'icon-only'" (touchstart)="deleteItem($event, idx)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </gridster-item>
+</gridster>
+<mat-menu #dashboardMenu="matMenu">
+  <button mat-menu-item *ngIf="dashboard" (click)="addLabel()">Add Label</button>
+  <button mat-menu-item *ngIf="dashboard && sensorOptions.length" (click)="addSensor()">Add Sensor</button>
+  <button mat-menu-item *ngIf="dashboard && sensorOptions.length" (click)="addLight()">Add Light Indicator</button>
+  <button mat-menu-item *ngIf="dashboard && deviceOptions.length" (click)="addDevice()">Add Device</button>
+  <button mat-menu-item *ngIf="dashboard && taskOptions.length" (click)="addTask()">Add Manual Task</button>
+  <button mat-menu-item *ngIf="dashboard && dashboard.Items.length" (click)="manageMode(true)">Manage Items</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="addDashboard()">Add New Dashboard</button>
+  <button mat-menu-item *ngIf="currentDashboardId == 'generated'" (click)="saveDashboard()">Save Dashboard
+    as...</button>
+  <button mat-menu-item *ngIf="dashboard" (click)="editDashboard()">Edit Dashboard</button>
+  <button mat-menu-item *ngIf="dashboard" (click)="switchDashboard()">Switch Dashboard</button>
+</mat-menu>
+<button *ngIf="!manageItems" mat-fab color="accent" class="add-item-button" aria-label="Dashboard Menu"
+  [matMenuTriggerFor]="dashboardMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<button *ngIf="manageItems" mat-fab color="accent" class="add-item-button" aria-label="Exit Remove Mode"
+  (click)="manageMode(false)">
+  <mat-icon>cancel</mat-icon>
+</button>

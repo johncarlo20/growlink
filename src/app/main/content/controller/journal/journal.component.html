@@ -1,0 +1,142 @@
+<div id="modules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-expansion-panel [expanded]="showSearch" class="mat-primary-50-bg" (opened)="showSearch = true"
+      (closed)="showSearch = false">
+      <mat-expansion-panel-header [collapsedHeight]="'32px'" [expandedHeight]="'48px'">
+        <mat-panel-title>Search parameters</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form class="p-8 pb-0" name="searchForm" [formGroup]="searchForm" novalidate>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field fxFlex="25">
+            <input matInput [matDatepicker]="startDatepicker" placeholder="Start Date" formControlName="startDate"
+              (dateChange)="customDate($event)">
+            <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatepicker></mat-datepicker>
+            <mat-error *ngIf="startDate.hasError('required')">
+              Start Date is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex="25">
+            <input matInput [matDatepicker]="endDatepicker" placeholder="End Date" formControlName="endDate"
+              (dateChange)="customDate($event)">
+            <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatepicker></mat-datepicker>
+            <mat-error *ngIf="endDate.hasError('required')">
+              End Date is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex="25">
+            <mat-select placeholder="Range" formControlName="range">
+              <mat-option *ngFor="let rng of searchRanges" [value]="rng.value">{{rng.caption}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="range.hasError('required')">
+              Range is required
+            </mat-error>
+          </mat-form-field>
+          <mat-checkbox fxFlex="25" formControlName="hourly">Report Hourly</mat-checkbox>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" [disabled]="loading || searchForm.invalid"
+            (click)="search()">Search</button>
+          <button class="ml-8" *ngIf="(journalData | async).length" mat-raised-button color="accent"
+            [disabled]="loading" (click)="exportSensorData()">Export
+            sensor data</button>
+          <button class="ml-8" *ngIf="(journalData | async).length" mat-raised-button color="accent"
+            [disabled]="loading" (click)="exportDeviceData()">Export
+            device data</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+    <mat-tab-group *ngIf="(journalData | async).length" [(selectedIndex)]="selectedTab">
+      <mat-tab label="Individual Charts">
+        <div fxLayout="column" fxLayoutAlign="start stretch">
+          <div fxFlex="100">
+            <mat-form-field class="pt-4" style="min-width: 25%; max-width: 100%;">
+              <mat-label>Sensors</mat-label>
+              <mat-select #sensorSelect multiple (selectionChange)="sensorNodesChanged($event)">
+                <ng-container *ngFor="let module of (journalData | async)">
+                  <mat-optgroup *ngIf="module.sensors.length" [label]="module.moduleName">
+                    <mat-option *ngFor="let sensor of module.sensors" [value]="sensor">
+                      {{sensor.sensorName}}
+                    </mat-option>
+                  </mat-optgroup>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" class="px-8">
+            <ng-container *ngFor="let module of (journalData | async)">
+              <mat-card *ngFor="let sensor of module.selectedSensors">
+                <mat-card-header>
+                  <mat-card-title>{{sensor.sensorName}}</mat-card-title>
+                  <mat-card-subtitle>{{module.moduleName}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <div *ngIf="sensor.loading">
+                    Loading...
+                  </div>
+                  <fuse-sensor-chart *ngIf="!sensor.loading" fxFlex="100"
+                    [results]="sensor.individualChart | async"[isHourly]="isHourly" [userPrefs]="userPrefs">
+                  </fuse-sensor-chart>
+                </mat-card-content>
+                <mat-card-actions fxLayoutAlign="end center" *ngIf="!sensor.loading">
+                  <mat-button-toggle-group
+                    *ngIf="sensor.individual && isHourly === false"
+                    [value]="sensor.individual.currentMode" (change)="updateSensorChart($event, sensor)">
+                    <mat-button-toggle [value]="1">Day</mat-button-toggle>
+                    <mat-button-toggle [value]="0">24hr</mat-button-toggle>
+                    <mat-button-toggle [value]="2">Night</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </mat-card-actions>
+              </mat-card>
+            </ng-container>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Trends">
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="mat-primary-50-bg">
+          <div fxFlex="100">
+            <mat-form-field class="pt-4" style="min-width: 25%; max-width: 100%;">
+              <mat-label>Sensors & Devices</mat-label>
+              <mat-select #trendSelect multiple (selectionChange)="trendNodesChanged($event)">
+                <ng-container *ngFor="let module of (journalData | async)">
+                  <mat-optgroup *ngIf="module.sensors.length || module.devices.length" [label]="module.moduleName">
+                    <mat-option *ngFor="let sensor of module.sensors" [value]="sensor">
+                      <span style="display: flex">{{sensor.sensorName}}
+                        <mat-spinner *ngIf="sensor.loading" [mode]="'indeterminate'" [diameter]="16"
+                          style="margin-left: 0.25rem; margin-top: auto; margin-bottom: auto;"></mat-spinner>
+                        <svg *ngIf="sensor.selected" height="16" width="64"
+                          style="vertical-align: text-bottom; margin-left: auto; margin-top: auto; margin-bottom: auto;">
+                          <line x1="0" x2="64" y1="8" y2="8" [attr.stroke]="sensor.color" stroke-width="4" />
+                        </svg>
+                      </span>
+                    </mat-option>
+                    <mat-option *ngFor="let device of module.devices" [value]="device">
+                      <span style="display: flex">{{device.deviceName}}
+                        <mat-spinner *ngIf="device.loading" [mode]="'indeterminate'" [diameter]="16"
+                          style="margin-left: 0.25rem; margin-top: auto; margin-bottom: auto;"></mat-spinner>
+                        <svg *ngIf="device.selected" height="16" width="64"
+                          style="vertical-align: text-bottom; margin-left: auto; margin-top: auto; margin-bottom: auto;">
+                          <line x1="0" x2="64" y1="8" y2="8" [attr.stroke]="device.color" stroke-width="4" />
+                        </svg>
+                      </span>
+                    </mat-option>
+                  </mat-optgroup>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" style="background: white">
+            <fuse-trend-chart-component #trend fxFlex="100" [sensorsSeries]="trendSensorChartSeries | async"
+              [deviceSeries]="trendDeviceChartSeries | async" [modeSeries]="trendDeviceChartModeSeries | async"
+              [scheme]="trendScheme" [scheme2]="trendScheme2"
+              [isHourly]="isHourly" [userPrefs]="userPrefs"
+              [controller]="controller" (updated)="trendUpdated()">
+            </fuse-trend-chart-component>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

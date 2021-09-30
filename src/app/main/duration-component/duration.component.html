@@ -1,0 +1,8 @@
+<div [formGroup]="parts">
+  <input type="number" min="0" class="hours" [ngClass]="condensed ? 'condensed' : ''" formControlName="hours" size="3">
+  <span>{{condensed ? 'H' : 'Hrs'}}</span>
+  <input type="number" min="0" max="59" class="minutes" formControlName="minutes" size="2">
+  <span>{{condensed ? 'M' : 'Mins'}}</span>
+  <input type="number" min="0" max="59" class="seconds" formControlName="seconds" size="2">
+  <span>{{condensed ? 'S' : 'Secs'}}</span>
+</div>

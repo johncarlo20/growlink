@@ -1,0 +1,166 @@
+<div id="modules" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="tablet"  class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="mt-32" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="90" fxLayout="column">
+      <div class="nutrient-new-card">
+          <div class="nutrient-new-card-title">Create Nutrients Recipe</div>
+          <label>Recipe Name*</label>
+          <input type="text" placeholder="Watering Flowers">
+          <div class="nutrient-new-card-details">
+            <div>
+              <label>Target TDS</label>
+              <input type="text" placeholder="ppm  600">
+              <label>Max 660 ppm</label>
+            </div>
+            <div>
+              <label>Target PH</label>
+              <input type="text" placeholder="PH  6.2">
+              <label>PH 6.2 ppm</label>
+            </div>
+          </div>
+          <div class="nutrient-new-card-slider">
+            <label>Scale By [ {{scale}}% ]</label>
+            <input [(ngModel)]="scale" type="text" placeholder="30">
+            <mat-slider
+              [(ngModel)]="scale"
+              color="accent"
+              [max]="100"
+              [min]="0"
+              [thumbLabel]="false"
+              class="full-width cdk-focused slider-over slider-max-value"
+              step="1">
+            </mat-slider>
+            <div>
+              <span>0</span>
+              <span>100</span>
+            </div>
+          </div>
+          <div class="nutrient-new-card-items">
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+            <div class="nutrient-new-card-items-item">
+              <div class="nutrient-new-card-items-item-title">Empty (A3-1.9GPH)</div>
+              <input type="text" placeholder="ml/gl">
+              <div class="nutrient-new-card-items-item-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <rect width="56" height="56" rx="28" fill="#F1F5F9"/>
+                  <path d="M29 25L32 28M32 28L29 31M32 28L24 28M37 28C37 32.9706 32.9706 37 28 37C23.0294 37 19 32.9706 19 28C19 23.0294 23.0294 19 28 19C32.9706 19 37 23.0294 37 28Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="nutrient-new-card-items-item-mobile">0.3ml/gal</div>
+              </div>
+              <div class="mr-24">0.3ml/gal</div>
+              <mat-slide-toggle>
+                <span class="ml-10">Empty (A3-1.9GPH)</span>
+              </mat-slide-toggle>
+            </div>
+          </div>
+          <div class="nutrient-new-card-actions">
+            <button mat-button>Discard</button>
+            <button mat-button class="primary">Save changes</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

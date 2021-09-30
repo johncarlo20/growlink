@@ -1,0 +1,98 @@
+<div id="heat-maps-new" ngClass.xs="mobile" ngClass.sm="tablet" ngClass.md="tablet" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div class="mt-24" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="60" fxLayout="column">
+      <div class="card">
+        <div class="card-title">New Heatmap</div>
+        <label class="card-label">Heatmap Name</label>
+        <input type="text" placeholder="Watering Flowers">
+        <div class="pt-24" *ngIf="imgPreviewSrc">
+          <img id="previewImage" [src]="imgPreviewSrc" accept="image/*" />
+        </div>
+        <div *ngIf="!imgPreviewSrc" class="card-img-upload">
+          <label class="card-img-upload-label">Photo</label>
+          <div class="card-img-upload-content">
+            <img class="img-empty" src="assets/images/img-empty.svg" width="48" height="48">
+            <input class="ng-hide" id="input-file-id" hidden (change)="imageChange($event)" type="file" />
+            <label for="input-file-id" class="btn-upload">Upload</label>
+          </div>
+        </div>
+        <div class="card-group">
+          <mat-slide-toggle>Group 1</mat-slide-toggle>
+          <div class="card-group-tool">
+            <span>[20 -> 40]</span>
+            <svg ibmIconChevronDown size="20"></svg>
+          </div>
+        </div>
+        <div class="card-group-expanded">
+          <div>
+            <div class="card-group-expanded-label">Sensor</div>
+            <div class="card-group-expanded-value">Room VPD</div>
+          </div>
+          <div>
+            <div class="card-group-expanded-label">Current Value</div>
+            <div class="card-group-expanded-value">13.8 mbar</div>
+          </div>
+          <div>
+            <svg ibmIconRequestQuote size="20"></svg>
+            <svg ibmIconTrashCan size="20"></svg>
+          </div>
+        </div>
+        <div class="card-add-group">
+          <div>
+            <span class="badge" (click)="openDialog('sensor')"><svg ibmIconAddAlt size="16"></svg> Add Sensor</span>
+            <span class="badge" (click)="openDialog('device')"><svg ibmIconAddAlt size="16"></svg>Add Device</span>
+          </div>         
+          <div>
+            <svg ibmIconRequestQuote size="20"></svg>
+            <svg ibmIconTrashCan size="20"></svg>
+          </div>
+        </div>
+        <div class="card-new-group">
+          <div class="card-new-group-title">Add New Group</div>
+          <div class="card-new-group-content">
+            <div>
+              <label class="card-label">Group Name</label>
+              <input type="text" placeholder="Group 1">
+            </div>
+            <div>
+              <label class="card-label">Group Name</label>
+              <mat-select multiple placeholder="Sensor Type">
+                <mat-option>Test</mat-option>
+                <mat-option>Test 1</mat-option>
+                <mat-option>Test 2</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="card-new-group-range">
+            <range-slider 
+            (output)="output($event)"
+            [thumbLabel]="false"
+            [minValue]="rangeMin"
+            [maxValue]="rangeMax"></range-slider>
+          </div>
+          <div class="card-new-group-content">
+            <div>
+              <label class="card-label">Range Minimum</label>
+              <input [(ngModel)]="rangeMin" type="text" placeholder="10">
+            </div>
+            <div>
+              <label class="card-label">Range Maximum</label>
+              <input [(ngModel)]="rangeMax" placeholder="100">
+            </div>
+          </div>
+        </div>
+        <div class="card-add-group btns">
+          <button mat-button>Cancel</button>
+          <button mat-raised-button class="mat-accent">Add Group</button>
+        </div>
+        <div class="card-add-group">
+          <span class="badge"><svg ibmIconAddAlt size="16"></svg> Add Sensor Group</span>
+        </div>
+        <div class="card-actions">
+          <button>Save Heatmap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,53 @@
+<div id="modules" class="page-layout simple fullwidth" fusePerfectScrollbar>
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-24" *ngIf="!isReadOnly">
+    <button mat-raised-button (click)="pushControllerUpdate()" color="primary" [disabled]="!changes || loading">Update
+      Controller</button>
+    <button mat-raised-button (click)="addRuleGroup()" color="primary" [disabled]="loading">Add Rule Group</button>
+  </div>
+
+  <div fxLayout="column" class="content mat-white-bg">
+    <mat-accordion multi="true">
+      <ng-container *ngFor="let ruleGroup of (ruleGroups | async)">
+        <mat-expansion-panel *ngIf="ruleGroupStates[ruleGroup.Id]" [expanded]="ruleGroupStates[ruleGroup.Id].expanded"
+          (opened)="ruleGroupStates[ruleGroup.Id].expanded = true"
+          (closed)="ruleGroupStates[ruleGroup.Id].expanded = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title fxLayoutAlign="start center">{{ruleGroup.Name}}</mat-panel-title>
+            <mat-panel-description fxLayoutAlign="end center">
+              <button *ngIf="!isReadOnly" mat-icon-button color="primary" [disabled]="loading"
+                (click)="editRuleGroup(ruleGroup, $event)">
+                <mat-icon aria-label="Edit Rule Group">mode_edit</mat-icon>
+              </button>
+              <button *ngIf="!isReadOnly" mat-icon-button color="secondary" [disabled]="loading"
+                (click)="duplicateRuleGroup(ruleGroup, $event)">
+                <mat-icon aria-label="Duplicate Rule Group">file_copy</mat-icon>
+              </button>
+              <button mat-icon-button color="secondary" [disabled]="loading"
+                (click)="viewHistory(ruleGroup.Id, ruleGroup.Name)">
+                <mat-icon aria-label="View History">list_alt</mat-icon>
+              </button>
+              <button *ngIf="!isReadOnly" mat-icon-button color="warn" [disabled]="loading"
+                (click)="deleteRuleGroup(ruleGroup, $event)">
+                <mat-icon aria-label="Delete Rule Group">delete</mat-icon>
+              </button>
+
+              <mat-slide-toggle [checked]="ruleGroup.IsActive" (change)="setActiveGroup($event, ruleGroup)"
+                (click)="ignoreClick($event)" [disabled]="loading || isReadOnly" style="min-width: 100px">
+                {{ruleGroup.IsActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="start start">
+            <div class="w-100-p" fxFlex="100">
+              <fuse-rule-group *ngIf="ruleGroupStates[ruleGroup.Id].expanded" [controller]="controller"
+                [deviceOptions]="deviceOptions" [sharedDevices]="sharedDevices" [sensorOptions]="sensorOptions"
+                [deviceAllowsThrottles]="deviceAllowsThrottles" [dosingRecipes]="dosingRecipes" [ruleGroup]="ruleGroup"
+                [panelStates]="ruleGroupStates[ruleGroup.Id]" (ruleChanged)="ruleWasChanged()"
+                (pushUpdate)="updatePushed()" (controllerUpdate)="controllerUpdateRequested($event)"
+                (ruleGroupChanged)="ruleGroupWasChanged()"></fuse-rule-group>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
+</div>

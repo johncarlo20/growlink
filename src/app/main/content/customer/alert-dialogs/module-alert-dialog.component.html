@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Module Failure Alert - {{alertDetails.Module.Name}}
+  <span *ngIf="Controller | async"> -
+    <a [routerLink]="ControllerUrl | async">{{(Controller | async).Name}}</a>
+  </span></h2>
+<mat-dialog-content>
+  <p>
+    {{Details}}
+  </p>
+  <div>
+    <label>Last Seen:</label>{{FormattedLastSeen}}
+  </div>
+  <div>
+    <label>Activated At:</label>{{FormattedActivated}}
+  </div>
+  <div *ngIf="Deactivated">
+    <label>Deactivated At:</label>{{FormattedDeactivated}}
+  </div>
+  <div *ngIf="Controller | async">
+    <label>Controller:</label>{{(Controller | async).Name}}
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button (click)="toggleRead()">{{Seen ? 'Mark Unread' : 'Mark Read'}}</button>
+  <button mat-raised-button mat-dialog-close color="primary">Close</button>
+</div>
